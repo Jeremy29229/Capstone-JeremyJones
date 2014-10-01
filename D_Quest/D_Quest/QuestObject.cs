@@ -44,7 +44,6 @@ namespace D_Quester
         }
 
         public bool IsHiddenFromPlayer { get; set; }
-        public QuestNode Node { get; set; }
 
         public QuestObject(Object owner = null, string name = "", bool isHidden = false)
         {
@@ -52,7 +51,6 @@ namespace D_Quester
             Name = name;
             PreviousState = QuestObjectState.Uninitialized;
             CurrentState = QuestObjectState.Uninitialized;
-            Node = new QuestNode();
             IsHiddenFromPlayer = isHidden;
         }
     }

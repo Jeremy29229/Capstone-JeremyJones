@@ -11,6 +11,6 @@ namespace D_Quester
     /// </summary>
     interface IInteractable
     {
-        List<QuestNode> Nodes { get; set; }
+        List<Node<QuestObject>> Nodes { get; set; }
     }
 }

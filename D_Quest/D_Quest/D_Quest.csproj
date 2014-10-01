@@ -43,15 +43,20 @@
   <ItemGroup>
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="IInteractable.cs" />
+    <Compile Include="IOnStateChange.cs" />
+    <Compile Include="RewardableInt.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestMap.cs" />
-    <Compile Include="QuestNode.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="QuestObject.cs" />
     <Compile Include="QuestObjectChangedEvent.cs" />
     <Compile Include="QuestObjectChangedEventArgs.cs" />
     <Compile Include="QuestObjectChangedListener.cs" />
     <Compile Include="Enums\QuestObjectState.cs" />
+    <Compile Include="RewardIntEvent.cs" />
+    <Compile Include="TestQuestRewarder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
