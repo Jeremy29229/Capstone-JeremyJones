@@ -14,6 +14,12 @@ namespace D_Quester
         private const string LAST_LINE = "}";
         public static readonly string[] DYNAMIC_ENUMERATION_NAMES = { "QuestObjectState" };
 
+        public static void AddEnum(string enumeration, string newEnumeration)
+        {
+            EnumerationValidationCheck(enumeration);
+            AddEnum(Type.GetType("D_Quester." + enumeration), newEnumeration);
+        }
+
         public static void AddEnum(Type enumeration, string newEnumerator)
         {
             EnumerationValidationCheck(enumeration);
@@ -44,6 +50,12 @@ namespace D_Quester
             SaveEnumeration(enumeration.Name, enumerationLine);
         }
 
+        public static void RemoveEnum(string enumeration, string enumerator)
+        {
+            EnumerationValidationCheck(enumeration);
+            RemoveEnum(Type.GetType("D_Quester." + enumeration), enumerator);
+        }
+
         public static void RemoveEnum(Type enumeration, string enumerator)
         {
             EnumerationValidationCheck(enumeration);
@@ -69,6 +81,13 @@ namespace D_Quester
             enumerationLine += " }";
 
             SaveEnumeration(enumeration.Name, enumerationLine);
+        }
+
+
+        public static void ResetToDefault(string enumeration)
+        {
+            EnumerationValidationCheck(enumeration);
+            ResetToDefault(Type.GetType("D_Quester." + enumeration));
         }
 
         public static void ResetToDefault(Type enumeration)
@@ -102,6 +121,22 @@ namespace D_Quester
             {
                 string message = enumeration.Name + " is not a dynamic enumeration used by the D-Quester API."
                     + "\nThe following are supported dynamic enumerations:";
+
+                foreach (string s in DYNAMIC_ENUMERATION_NAMES)
+                {
+                    message += s + "\n";
+                }
+
+                throw new ArgumentException(message, "enumeration");
+            }
+        }
+
+        private static void EnumerationValidationCheck(string enumeration)
+        {
+            if (!DYNAMIC_ENUMERATION_NAMES.Contains(enumeration))
+            {
+                string message = enumeration + " is not a dynamic enumeration used by the D-Quester API."
+                    + "\nThe following are supported dynamic enumerations:\n";
 
                 foreach (string s in DYNAMIC_ENUMERATION_NAMES)
                 {

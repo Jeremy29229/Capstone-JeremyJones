@@ -41,9 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums.cs" />
-    <Compile Include="enumtest.cs" />
-    <Compile Include="Meow.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="IInteractable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,7 +51,7 @@
     <Compile Include="QuestObjectChangedEvent.cs" />
     <Compile Include="QuestObjectChangedEventArgs.cs" />
     <Compile Include="QuestObjectChangedListener.cs" />
-    <Compile Include="QuestObjectState.cs" />
+    <Compile Include="Enums\QuestObjectState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

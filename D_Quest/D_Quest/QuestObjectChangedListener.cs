@@ -8,21 +8,41 @@ namespace D_Quester
 {
     class QuestObjectChangedListener
     {
-        //private QuestObject q;
+        public List<QuestObject> Clients { get; private set; }
 
-        //public QuestObjectChangedListener(QuestObject q)
-        //{
-        //    q.changed += Changed;
-        //}
+        public QuestObjectChangedListener()
+        {
+            Clients = new List<QuestObject>();
+        }
 
         public void Attach(QuestObject q)
         {
             q.changed += Changed;
+            Clients.Add(q);
+        }
+
+        public void AttachAll(IEnumerable<QuestObject> clients)
+        {
+            foreach (QuestObject q in clients)
+            {
+                q.changed += Changed;
+                Clients.Add(q);
+            }
         }
 
         public void Detach(QuestObject q)
         {
             q.changed -= Changed;
+            Clients.Remove(q);
+        }
+
+        public void DetachAll()
+        {
+            foreach (QuestObject q in Clients)
+            {
+                q.changed -= Changed;
+            }
+            Clients.Clear();
         }
 
         public void Changed(QuestObject sender, QuestObjectChangedEventArgs e)

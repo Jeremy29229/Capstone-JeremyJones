@@ -8,5 +8,6 @@ namespace D_Quester
 {
     class QuestMap
     {
+
     }
 }

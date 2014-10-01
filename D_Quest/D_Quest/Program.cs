@@ -14,11 +14,6 @@ namespace D_Quester
     {
         static void Main(string[] args)
         {
-            //Enums.ResetToDefault(typeof(QuestObjectState));
-
-            Enums.AddEnum(typeof(QuestObjectState), "potato");
-
-            //QuestObjectState.
 
         }
    
