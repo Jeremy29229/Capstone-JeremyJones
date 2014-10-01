@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3126EC8C-31C0-4730-BA1F-8824D91978EC}</ProjectGuid>
+    <ProjectGuid>{25C1C95C-5B15-4726-8780-298A7EE0F15A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>D_Quester</RootNamespace>
@@ -42,19 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Enums\QuestObjectState.cs" />
     <Compile Include="IInteractable.cs" />
     <Compile Include="IOnStateChange.cs" />
-    <Compile Include="RewardableInt.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestMap.cs" />
-    <Compile Include="Node.cs" />
     <Compile Include="QuestObject.cs" />
     <Compile Include="QuestObjectChangedEvent.cs" />
     <Compile Include="QuestObjectChangedEventArgs.cs" />
     <Compile Include="QuestObjectChangedListener.cs" />
-    <Compile Include="Enums\QuestObjectState.cs" />
+    <Compile Include="RewardableInt.cs" />
     <Compile Include="RewardIntEvent.cs" />
     <Compile Include="TestQuestRewarder.cs" />
   </ItemGroup>
@@ -62,10 +62,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
