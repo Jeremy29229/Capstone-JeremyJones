@@ -6,11 +6,24 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class QuestNode
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public List<QuestNode> parents{ get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public List<QuestNode> children{ get; private set; }
      
+        /// <summary>
+        /// 
+        /// </summary>
         public QuestNode()
         {
             parents = new List<QuestNode>();

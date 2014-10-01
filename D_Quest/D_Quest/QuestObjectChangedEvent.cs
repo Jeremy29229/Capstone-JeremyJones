@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class Program
+    class QuestObjectChangedEvent
     {
-        static void Main(string[] args)
-        {
-
-        }
+        public delegate void QuestObjectChangedHandler(object sender, QuestObjectChangedEventArgs e);
     }
 }

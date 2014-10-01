@@ -1,0 +1,6 @@
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\obj\Debug\D_Quest.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\bin\Debug\D_Quester.exe.config
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\bin\Debug\D_Quester.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\bin\Debug\D_Quester.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\obj\Debug\D_Quester.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quest\D_Quest\obj\Debug\D_Quester.pdb

@@ -6,5 +6,7 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    enum QuestObjectStates {Uninitialized, NotStarted, InProgress, Completed, Failed};
+    class QuestMap
+    {
+    }
 }
