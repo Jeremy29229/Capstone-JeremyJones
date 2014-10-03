@@ -16,13 +16,6 @@ namespace D_Quester
 
         static void Main(string[] args)
         {
-            //Console.WriteLine(Direction.left.Opposite());
-            Direction d = Direction.right;
-            Console.WriteLine(d);
-            OD o = (OD)d;
-            Console.WriteLine(o);
-            Direction di = (Direction)o;
-            Console.WriteLine(di);
             CreateQuests();
             PlayGame();
         }
@@ -31,9 +24,13 @@ namespace D_Quester
         {
             game = new Game() { World = new AreaExplorer() };
 
-            Area start = new Area("Joe's Farm");
+            Area farm1 = new Area("Joe's Farm");
 
             Area farm2 = new Area("Rick's Farm");
+
+            NPC joe = new NPC() { Name = "Joe"};
+            NPC rick = new NPC() { Name = "Rick" };
+
 
             //start.nearbyPlaces[Direction.right] = 
             //game.World.Current;
@@ -61,11 +58,28 @@ namespace D_Quester
             JoesDialog[1].GetResponseByText("Sure").Result = JoesDialog[3];
             JoesDialog[1].GetResponseByText("No").Result = JoesDialog[2];
 
-            Conversation JoesCon = new Conversation() { Current = JoesDialog[0], Starter = JoesDialog[0] };
+            joe.Convo = new Conversation() { Current = JoesDialog[0], Starter = JoesDialog[0] };
+
 
             List<Dialog> RicksDialog = new List<Dialog>();
             current = new Dialog() { DialogLine = "Sorry can this wait?" };
-            current.Responses = new List<DialogResponse> { new DialogResponse("Fine I didn't want to talk with you anyway..."), new DialogResponse("") };
+            current.Responses = new List<DialogResponse> { new DialogResponse("Fine I didn't want to talk with you anyway..."), new DialogResponse("Just a quick thing. Joe says he needs his toola.") };
+            RicksDialog.Add(current);
+
+            current = new Dialog() { DialogLine = "Oh yeah, I'll get them back to him at some point today." };
+            current.Responses = new List<DialogResponse> { new DialogResponse("Cool thanks.") };
+            RicksDialog.Add(current);
+
+            RicksDialog[0].GetResponseByText("Just").Result = RicksDialog[1];
+
+            rick.Convo = new Conversation() { Current = RicksDialog[0], Starter = RicksDialog[0] };
+
+            farm1.People.Add(joe);
+            farm2.People.Add(rick);
+
+            farm1.AddNearbyPlace(Direction.right, farm2);
+
+            game.World.Current = farm1;
         }
 
         public static void PlayGame()

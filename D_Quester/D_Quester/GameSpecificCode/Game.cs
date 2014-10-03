@@ -28,17 +28,30 @@ namespace D_Quester
 
         public void Loop()
         {
-            bool isPlaying = true;
+            bool isRestarting = true;
 
-            while(isPlaying)
+            while (isRestarting)
             {
+                bool isPlaying = true;
 
+                while (isPlaying)
+                {
+
+                    isPlaying = World.DoSomething();
+                }
+
+                switch (Menu.PromptForMenuSelection("\nWant to play again?", new string[] { "Sure", "No thanks" }))
+                {
+                    case 2:
+                        isRestarting = false;
+                        break;
+                }
             }
         }
 
         public void Stop()
         {
-            Console.WriteLine("Thanks for playing!");
+            Console.WriteLine("\nThanks for playing!");
         }
     }
 }

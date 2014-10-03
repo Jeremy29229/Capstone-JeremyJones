@@ -14,10 +14,10 @@ namespace D_Quester
         { 
             get
             {
-                if(_current == null)
-                {
-                    _current = Starter;
-                }
+                //if(_current == null)
+                //{
+                //    _current = Starter;
+                //}
                 return _current;
             }
             set

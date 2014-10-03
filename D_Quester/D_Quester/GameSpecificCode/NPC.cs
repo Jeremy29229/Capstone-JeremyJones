@@ -8,12 +8,25 @@ namespace D_Quester
 {
     class NPC
     {
-        public Interactions Interactions { get; set; }
         public string Name { get; set; }
+        public Conversation Convo { get; set; }
 
         public NPC()
         {
-            Interactions = new Interactions();
+            Convo = new Conversation();
         }
+
+        public void TalkTo()
+        {
+            Convo.Current = Convo.Starter;
+
+            while (Convo.Current != null)
+            {
+                int selectionResponse = Menu.PromptForMenuSelection(Name + ": " + Convo.Current.DialogLine, Convo.Current.Responses.AsStrings());
+                Convo.Current = Convo.Current.Responses[selectionResponse - 1].Result;
+            }
+        }
+
+
     }
 }

@@ -14,6 +14,8 @@ namespace D_Quester
 
         QuestJournal qj;
 
+        Area currentLocation;
+
         //public RewardableInt gold;
 
         public Player(string name = "Jim", int position = 0)

@@ -18,7 +18,7 @@ namespace D_Quester
 
         public bool IsMet()
         {
-            if (Requirement == null || Requirement.CurrentState == null || RequiredStates == null)
+            if (Requirement == null || RequiredStates == null)
             {
                 throw new InvalidOperationException("Contains null object. Make sure QuestRequirement is correct populated");
             }

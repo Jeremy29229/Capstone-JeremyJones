@@ -10,8 +10,19 @@ namespace D_Quester
     {
         public static Direction Opposite(this Direction d)
         {
-            OD o = (OD)d;
-            return Direction.right;
+            return (Direction)Enum.Parse(typeof(Direction), ((OD)d).ToString());
+        }
+
+        public static List<string> AsStrings(this List<DialogResponse> d)
+        {
+            List<string> responseText = new List<string>();
+
+            foreach (var v in d)
+            {
+                responseText.Add(v.Text);
+            }
+
+            return responseText;
         }
     }
 }

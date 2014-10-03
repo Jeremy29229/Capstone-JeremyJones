@@ -18,7 +18,7 @@ namespace D_Quester
 
             while (!validInput)
             {
-                Console.WriteLine(message);
+                Console.WriteLine("\n" + message);
                 for (int index = 0; index < sOptions.Count(); index++)
                 {
                     Console.WriteLine(index + 1 + ". " + sOptions.ElementAt(index));
