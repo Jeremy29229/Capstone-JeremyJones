@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class Player
-    {
-        public RewardableInt gold;
+    public delegate void StartHandler();
 
-        public Player()
-        {
-            gold = new RewardableInt();
-        }
+    interface IQuestStarter
+    {
+        event StartHandler StarterEvent;
+        void OnStartEvent();
     }
 }

@@ -149,7 +149,7 @@ namespace D_Quester
 
         private static void SaveEnumeration(string enumerationName, string enumerationLine)
         {
-            using (StreamWriter sw = new StreamWriter("../../Enums/" + enumerationName + ".cs"))
+            using (StreamWriter sw = new StreamWriter("../../API/Enums/" + enumerationName + ".cs"))
             {
                 sw.NewLine = "\n";
                 sw.WriteLine(FIRST_LINE);

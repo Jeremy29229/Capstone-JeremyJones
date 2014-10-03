@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
+
     /// <summary>
-    /// Adds quest object functionality to existing object
+    /// 
     /// </summary>
-    interface IInteractable
+    class Quest
     {
-        List<Node<QuestObject>> Nodes { get; set; }
+        public Node<QuestObject> StartingNode { get; set; }
+        public Node<QuestObject> CurrentNode { get; set; }
     }
 }

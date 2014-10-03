@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class QuestObjectChangedEvent
+    class Interactions
     {
-        public delegate void QuestObjectChangedHandler(object sender, QuestObjectChangedEventArgs e);
+        private List<Node<QuestObject>> list { get; set; }
     }
 }

@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class QuestMap
-    {
-
-    }
+    enum Direction { left, right };
 }

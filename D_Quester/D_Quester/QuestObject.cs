@@ -13,6 +13,8 @@ namespace D_Quester
 
         public string Name { get; set; }
         public object Owner { get; private set; }
+        public int NumObjectives { get; set; }
+        public int ObjectivesCompleted { get; set; }
 
         public QuestObjectState PreviousState { get; set; }
 
@@ -36,7 +38,7 @@ namespace D_Quester
         }
 
         protected virtual void OnStateChange()
-        {
+        { 
             if(changed != null)
             {
                 changed(this, new QuestObjectChangedEventArgs(PreviousState, CurrentState));
@@ -52,6 +54,24 @@ namespace D_Quester
             PreviousState = QuestObjectState.Uninitialized;
             CurrentState = QuestObjectState.Uninitialized;
             IsHiddenFromPlayer = isHidden;
+        }
+
+        public void StartUp()
+        {
+            if (CurrentState == QuestObjectState.NotStarted)
+            {
+                CurrentState = QuestObjectState.InProgress;
+            }
+        }
+
+        public void Progress()
+        {
+            ObjectivesCompleted++;
+
+            if (ObjectivesCompleted == NumObjectives)
+            {
+                CurrentState = QuestObjectState.Completed;
+            }
         }
     }
 }

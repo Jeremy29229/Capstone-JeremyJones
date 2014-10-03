@@ -11,6 +11,21 @@
     <AssemblyName>D_Quester</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,25 +56,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Enums.cs" />
-    <Compile Include="Enums\QuestObjectState.cs" />
-    <Compile Include="IInteractable.cs" />
-    <Compile Include="IOnStateChange.cs" />
+    <Compile Include="API\Enums\Enums.cs" />
+    <Compile Include="API\Enums\Quest.cs" />
+    <Compile Include="API\Enums\QuestObjectState.cs" />
+    <Compile Include="API\Extensions.cs" />
+    <Compile Include="GameSpecificCode\Speech\Conversation.cs" />
+    <Compile Include="GameSpecificCode\Speech\DialogResponse.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="GameSpecificCode\Area.cs" />
+    <Compile Include="GameSpecificCode\AreaExplorer.cs" />
+    <Compile Include="GameSpecificCode\Speech\Dialog.cs" />
+    <Compile Include="GameSpecificCode\Game.cs" />
+    <Compile Include="Interactions.cs" />
+    <Compile Include="API\Interfaces\IQuestProgresser.cs" />
+    <Compile Include="API\Interfaces\IQuestStarter.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="OppositeDirection.cs" />
+    <Compile Include="QuestRequirment.cs" />
+    <Compile Include="Unimplemented\IOnStateChange.cs" />
     <Compile Include="Node.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="GameSpecificCode\Player.cs" />
+    <Compile Include="GameSpecificCode\NPC.cs" />
+    <Compile Include="Objective.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestMap.cs" />
+    <Compile Include="QuestJournal.cs" />
     <Compile Include="QuestObject.cs" />
-    <Compile Include="QuestObjectChangedEvent.cs" />
     <Compile Include="QuestObjectChangedEventArgs.cs" />
     <Compile Include="QuestObjectChangedListener.cs" />
-    <Compile Include="RewardableInt.cs" />
-    <Compile Include="RewardIntEvent.cs" />
-    <Compile Include="TestQuestRewarder.cs" />
+    <Compile Include="Unimplemented\RewardableInt.cs" />
+    <Compile Include="Unimplemented\TestQuestRewarder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
