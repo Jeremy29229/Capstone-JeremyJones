@@ -8,7 +8,7 @@ namespace D_Quester
 {
     class Node<T>
     {
-        T info;
+        public T info;
 
         public List<Node<T>> parents{ get; private set; }
 

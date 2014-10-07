@@ -6,41 +6,39 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class DialogResponse : IQuestProgresser, IQuestStarter
-    {
-        public string Text { get; set; }
-        public Dialog Result { get; set; }
-        public QuestRequirment Requirment { get; set; }
+	class DialogResponse : IQuestStarter
+	{
+		public string Text { get; set; }
+		public Dialog Result { get; set; }
+		public QuestRequirment Requirment { get; set; }
 
-        public DialogResponse(string text)
-        {
-            Text = text;
-            Result = null;
-        }
+		public DialogResponse(string text)
+		{
+			Text = text;
+			Result = null;
+		}
 
-        public override string ToString()
-        {
-            return Text;
-        }
+		public override string ToString()
+		{
+			return Text;
+		}
 
-        public event ProgressionHandler ProgressionEvent;
+		public event StartHandler StarterEvent;
 
-        void IQuestProgresser.OnProgressionEvent()
-        {
-            if (ProgressionEvent != null)
-            {
-                ProgressionEvent();
-            }
-        }
+		void IQuestStarter.OnStartEvent()
+		{
+			if (StarterEvent != null)
+			{
+				StarterEvent();
+			}
+		}
 
-        public event StartHandler StarterEvent;
-
-        void IQuestStarter.OnStartEvent()
-        {
-            if (StarterEvent != null)
-            {
-                StarterEvent();
-            }
-        }
-    }
+		public void Pop()
+		{
+			if (StarterEvent != null)
+			{
+				StarterEvent();
+			}
+		}
+	}
 }

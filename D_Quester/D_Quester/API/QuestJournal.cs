@@ -11,7 +11,7 @@ namespace D_Quester
     /// </summary>
     class QuestJournal
     {
-        private List<Quest> Quests { get; set; }
+        public List<Quest> Quests { get; set; }
 
         public QuestJournal()
         {

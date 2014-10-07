@@ -22,8 +22,9 @@ namespace D_Quester
 
             while (Convo.Current != null)
             {
-                int selectionResponse = Menu.PromptForMenuSelection(Name + ": " + Convo.Current.DialogLine, Convo.Current.Responses.AsStrings());
-                Convo.Current = Convo.Current.Responses[selectionResponse - 1].Result;
+                int selectionResponse = Menu.PromptForMenuSelection(Name + ": \"" + Convo.Current.DialogLine + "\"", Convo.Current.Responses.AsStrings());
+                //Convo.Current = Convo.Current.Responses[selectionResponse - 1].Result;
+				Convo.Advance(Convo.Current.Responses[selectionResponse - 1]);
             }
         }
 
