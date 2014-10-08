@@ -15,7 +15,8 @@ namespace D_Quester
 		private const string LAST_LINE = "}";
 		private const string FLAG_LINE = "\t[System.Flags]";
 		public static readonly string[] DYNAMIC_ENUMERATION_NAMES = { "QuestObjectState" };
-		private static bool isThrowingExceptions = true;
+		//private static bool isThrowingExceptions = true;
+		private static List<Type> enumsOperatedOn = new List<Type>();
 
 		public static void AddEnum(string enumeration, string newEnumeration)
 		{
@@ -228,6 +229,16 @@ namespace D_Quester
 				HandleError(new ArgumentException(message, "enumeration"));
 				return;
 			}
+
+			if (enumsOperatedOn.Contains(enumeration))
+			{
+				HandleError(new ArgumentException("Only one change is allowed to each enumeration per compilation.", "enumeration"));
+				return;
+			}
+			else
+			{
+				enumsOperatedOn.Add(enumeration);
+			}
 		}
 
 		private static void EnumerationValidationCheck(string enumeration)
@@ -267,21 +278,22 @@ namespace D_Quester
 			return enumeration.IsDefined(typeof(FlagsAttribute), false);
 		}
 
-		public static void DisableExceptionThrowing(bool disabledExceptions = true)
-		{
-			isThrowingExceptions = !disabledExceptions;
-		}
+		//public static void DisableExceptionThrowing(bool disabledExceptions = true)
+		//{
+		//	isThrowingExceptions = !disabledExceptions;
+		//}
 
 		private static void HandleError(ArgumentException a)
 		{
-			if (isThrowingExceptions)
-			{
-				throw a;
-			}
-			else
-			{
-				Console.WriteLine(a.ToString());
-			}
+			//if (isThrowingExceptions)
+			//{
+			//	throw a;
+			//}
+			//else
+			//{
+			//	Console.WriteLine(a.ToString());
+			//}
+			throw a;
 		}
 	}
 }

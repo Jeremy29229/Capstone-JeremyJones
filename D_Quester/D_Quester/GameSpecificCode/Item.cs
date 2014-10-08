@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    interface IOnStateChange
-    {
-
-    }
+	class Item
+	{
+		public string Name { get; set; }
+		public int Amount { get; set; }
+	}
 }

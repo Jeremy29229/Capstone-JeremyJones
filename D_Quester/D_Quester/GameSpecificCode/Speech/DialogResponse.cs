@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-	class DialogResponse : IQuestStarter
+	class DialogResponse : IQuestProgresser
 	{
 		public string Text { get; set; }
 		public Dialog Result { get; set; }
@@ -23,21 +23,21 @@ namespace D_Quester
 			return Text;
 		}
 
-		public event StartHandler StarterEvent;
+		public event ProgressionHandler ProgressionEvent;
 
-		void IQuestStarter.OnStartEvent()
+		public void OnProgressionEvent()
 		{
-			if (StarterEvent != null)
+			if (ProgressionEvent != null)
 			{
-				StarterEvent();
+				ProgressionEvent();
 			}
 		}
 
 		public void Pop()
 		{
-			if (StarterEvent != null)
+			if (ProgressionEvent != null)
 			{
-				StarterEvent();
+				ProgressionEvent();
 			}
 		}
 	}

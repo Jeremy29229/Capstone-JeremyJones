@@ -12,9 +12,11 @@ namespace D_Quester
 		public event QuestObjectChangedHandler changed;
 
 		public string Name { get; set; }
-		public object Owner { get; private set; }
+		public Quest Owner { get; private set; }
 		public int NumObjectives { get; set; }
 		public int ObjectivesCompleted { get; set; }
+		public QuestRewarder QuestRewarder { get; set; }
+		public List<string> NamedObjectives { get; set; }
 
 		public QuestObjectState PreviousState { get; set; }
 
@@ -32,7 +34,6 @@ namespace D_Quester
 					PreviousState = CurrentState;
 					_currentState = value;
 					OnStateChange();
-
 				}
 			}
 		}
@@ -47,13 +48,15 @@ namespace D_Quester
 
 		public bool IsHiddenFromPlayer { get; set; }
 
-		public QuestObject(Object owner = null, string name = "", bool isHidden = false)
+		public QuestObject(Quest owner = null, string name = "", bool isHidden = false)
 		{
 			Owner = owner;
 			Name = name;
+			NamedObjectives = new List<string>();
 			PreviousState = QuestObjectState.Uninitialized;
 			CurrentState = QuestObjectState.Uninitialized;
 			IsHiddenFromPlayer = isHidden;
+			QuestRewarder = new QuestRewarder();
 		}
 
 		public void StartUp()
@@ -67,13 +70,34 @@ namespace D_Quester
 
 		public void Progress()
 		{
-			ObjectivesCompleted++;
-			Console.WriteLine("You just started progressed in the quest node: " + Name);
-
-			if (ObjectivesCompleted == NumObjectives)
+			if (CurrentState == QuestObjectState.InProgress)
 			{
-				Console.WriteLine("You just finished quest node: " + Name);
-				CurrentState = QuestObjectState.Completed;
+				ObjectivesCompleted++;
+				Console.WriteLine("You just progressed the quest node: " + Name);
+
+				if (ObjectivesCompleted == NumObjectives)
+				{
+					Console.WriteLine("You just finished the quest node: " + Name);
+					QuestRewarder.GiveRewards();
+					CurrentState = QuestObjectState.Completed;
+					Owner.Advance();
+				}
+			}
+		}
+
+		public void NamedStartUp(string s)
+		{
+			if (NamedObjectives.Contains(s))
+			{
+				StartUp();
+			}
+		}
+
+		public void NamedProgress(string s)
+		{
+			if (NamedObjectives.Contains(s))
+			{
+				Progress();
 			}
 		}
 
@@ -81,10 +105,5 @@ namespace D_Quester
 		{
 			return new QuestRequirment(this, requiredStates);
 		}
-
-		//public void AddToQuestRequirement()
-		//{
-
-		//}
 	}
 }

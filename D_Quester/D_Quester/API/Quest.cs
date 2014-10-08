@@ -20,5 +20,18 @@ namespace D_Quester
 		{
 			Title = "None";
 		}
+
+		public void Advance()
+		{
+			if (CurrentNode.children.FirstOrDefault() != null)
+			{
+				CurrentNode = CurrentNode.children.First();
+				CurrentNode.info.StartUp();
+			}
+			else
+			{
+				Console.WriteLine("You just finished the Quest " + Title + "!");
+			}
+		}
 	}
 }

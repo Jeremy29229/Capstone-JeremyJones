@@ -19,7 +19,7 @@ namespace D_Quester
 
             foreach (var v in d)
             {
-                if (v.Text.ElementAt(0) != null && v.Text.ElementAt(0) == '<')
+                if (v.Text.ElementAt(0) == '<')
                 {
                     responseText.Add(v.Text);
                 }

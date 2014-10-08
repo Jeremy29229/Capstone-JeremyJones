@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    class Player
-    {
-        //Information not relavent to Q_Quester
-        public string Name { get; set; }
-        public int Position { get; set; }
+	class Player
+	{
+		public string Name { get; set; }
+		public Inventory Inventory { get; set; }
+		public QuestJournal QuestJournal { get; set; }
+		public RewardableInt Gold { get; set; }
+		public RewardableDouble Experience { get; set; }
+		public RewardableBool DarkCastleAccess { get; set; }
 
-        QuestJournal qj;
-
-        Area currentLocation;
-
-        //public RewardableInt gold;
-
-        public Player(string name = "Jim", int position = 0)
-        {
-            Name = name;
-            Position = position;
-            //gold = new RewardableInt();
-        }
-    }
+		public Player(string name = "???")
+		{
+			Name = name;
+			Inventory = new Inventory();
+			QuestJournal = new QuestJournal();
+			Gold = new RewardableInt();
+			Experience = new RewardableDouble();
+			DarkCastleAccess = new RewardableBool();
+		}
+	}
 }

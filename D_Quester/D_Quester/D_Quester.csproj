@@ -60,7 +60,12 @@
     <Compile Include="API\Enums\Enums.cs" />
     <Compile Include="API\Quest.cs" />
     <Compile Include="API\Enums\QuestObjectState.cs" />
+    <Compile Include="API\BoolRewarder.cs" />
+    <Compile Include="API\DoubleRewarder.cs" />
     <Compile Include="GameSpecificCode\Extensions.cs" />
+    <Compile Include="GameSpecificCode\Inventory.cs" />
+    <Compile Include="GameSpecificCode\Item.cs" />
+    <Compile Include="GameSpecificCode\Monster.cs" />
     <Compile Include="GameSpecificCode\Speech\Conversation.cs" />
     <Compile Include="GameSpecificCode\Speech\DialogResponse.cs" />
     <Compile Include="GameSpecificCode\Direction.cs" />
@@ -70,23 +75,24 @@
     <Compile Include="GameSpecificCode\Game.cs" />
     <Compile Include="API\Interactions.cs" />
     <Compile Include="API\Interfaces\IQuestProgresser.cs" />
-    <Compile Include="API\Interfaces\IQuestStarter.cs" />
     <Compile Include="GameSpecificCode\Menu.cs" />
     <Compile Include="GameSpecificCode\OppositeDirection.cs" />
     <Compile Include="API\QuestRequirment.cs" />
-    <Compile Include="API\Unimplemented\IOnStateChange.cs" />
     <Compile Include="API\Node.cs" />
     <Compile Include="GameSpecificCode\Player.cs" />
     <Compile Include="GameSpecificCode\NPC.cs" />
     <Compile Include="API\Objective.cs" />
+    <Compile Include="API\IntRewarder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="API\QuestJournal.cs" />
     <Compile Include="API\QuestObject.cs" />
     <Compile Include="API\QuestObjectChangedEventArgs.cs" />
     <Compile Include="API\QuestObjectChangedListener.cs" />
-    <Compile Include="API\Unimplemented\RewardableInt.cs" />
-    <Compile Include="API\Unimplemented\TestQuestRewarder.cs" />
+    <Compile Include="API\RewardableInt.cs" />
+    <Compile Include="API\QuestRewarder.cs" />
+    <Compile Include="API\RewardableBool.cs" />
+    <Compile Include="API\RewardableDouble.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
