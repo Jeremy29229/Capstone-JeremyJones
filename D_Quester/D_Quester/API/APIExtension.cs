@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace D_Quester.API
 {
+	/// <summary>
+	/// Extension methods. Don't class this class directly.
+	/// </summary>
 	static class APIExtension
 	{
-		public static Quest GetByTitle(this List<Quest> l, string name)
+		/// <summary>
+		/// Find a quest in the list by title.
+		/// </summary>
+		/// <param name="questList">Instance of list.</param>
+		/// <param name="title">Title of desired quest. Can be a partial match.</param>
+		/// <returns>The quest that contains the title passed in (can be partial) or null if no quest contain the title passed in.</returns>
+		public static Quest GetByTitle(this List<Quest> questList, string title)
 		{
-			return l.FirstOrDefault(x => x.Title.ToLowerInvariant().Contains(name.ToLowerInvariant()));
+			return questList.FirstOrDefault(x => x.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()));
 		}
 	}
 }

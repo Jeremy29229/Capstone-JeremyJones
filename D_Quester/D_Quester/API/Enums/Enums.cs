@@ -14,16 +14,28 @@ namespace D_Quester
 		private const string FIRST_LINE = "namespace D_Quester\r\n{";
 		private const string LAST_LINE = "}";
 		private const string FLAG_LINE = "\t[System.Flags]";
+		/// <summary>
+		/// Names of all dynamic enumerations supported by D_Quester.
+		/// </summary>
 		public static readonly string[] DYNAMIC_ENUMERATION_NAMES = { "QuestObjectState" };
-		//private static bool isThrowingExceptions = true;
 		private static List<Type> enumsOperatedOn = new List<Type>();
 
+		/// <summary>
+		/// Adds an enumerator to an existing enumeration in D_Quester.
+		/// </summary>
+		/// <param name="enumeration">Name of the enumeration's type</param>
+		/// <param name="newEnumeration">Name of the new enumerator to be added</param>
 		public static void AddEnum(string enumeration, string newEnumeration)
 		{
 			EnumerationValidationCheck(enumeration);
 			AddEnum(Type.GetType("D_Quester." + enumeration), newEnumeration);
 		}
 
+		/// <summary>
+		/// Adds an enumerator to an existing enumeration in D_Quester.
+		/// </summary>
+		/// <param name="enumeration">Enumeration's type</param>
+		/// <param name="newEnumeration">Name of the new enumerator to be added</param>
 		public static void AddEnum(Type enumeration, string newEnumerator)
 		{
 			EnumerationValidationCheck(enumeration);
@@ -70,12 +82,22 @@ namespace D_Quester
 			SaveEnumeration(enumeration.Name, enumerationLine, HasFlags(enumeration));
 		}
 
+		/// <summary>
+		/// Removes an enumerator from an existing enumeration in D_Quester. Note that removing a default state may cause undefined behavior.
+		/// </summary>
+		/// <param name="enumeration">Name of the enumeration's type</param>
+		/// <param name="enumerator">Name of the enumerator to be removed</param>
 		public static void RemoveEnum(string enumeration, string enumerator)
 		{
 			EnumerationValidationCheck(enumeration);
 			RemoveEnum(Type.GetType("D_Quester." + enumeration), enumerator);
 		}
 
+		/// <summary>
+		/// Removes an enumerator from an existing enumeration in D_Quester. Note that removing a default state may cause undefined behavior.
+		/// </summary>
+		/// <param name="enumeration">Enumeration's type</param>
+		/// <param name="enumerator">Name of the enumerator to be removed</param>
 		public static void RemoveEnum(Type enumeration, string enumerator)
 		{
 			EnumerationValidationCheck(enumeration);
@@ -112,19 +134,27 @@ namespace D_Quester
 					}
 				}
 			}
-	
+
 			enumerationLine = enumerationLine.Substring(0, enumerationLine.Length - 2);
 			enumerationLine += " }";
 
 			SaveEnumeration(enumeration.Name, enumerationLine, HasFlags(enumeration));
 		}
 
+		/// <summary>
+		/// Restores enumeration to D_Quester's default enumerators.
+		/// </summary>
+		/// <param name="enumeration">Name of enumeration's type</param>
 		public static void ResetToDefault(string enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
 			ResetToDefault(Type.GetType("D_Quester." + enumeration));
 		}
 
+		/// <summary>
+		/// Restores enumeration to D_Quester's default enumerators.
+		/// </summary>
+		/// <param name="enumeration">Enumeration's type</param>
 		public static void ResetToDefault(Type enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
@@ -142,12 +172,20 @@ namespace D_Quester
 			SaveEnumeration(enumeration.Name, enumerationLine, hasFlags);
 		}
 
+		/// <summary>
+		/// Adds flag attribute to existing enumeration. Properly changes the value of each enumerator to be a bit field.
+		/// </summary>
+		/// <param name="enumeration">Name of enumeration's type</param>
 		public static void AddFlags(string enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
 			AddFlags(Type.GetType("D_Quester." + enumeration));
 		}
 
+		/// <summary>
+		/// Adds flag attribute to existing enumeration. Properly changes the value of each enumerator to be a bit field.
+		/// </summary>
+		/// <param name="enumeration">Enumeration's type</param>
 		public static void AddFlags(Type enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
@@ -173,12 +211,20 @@ namespace D_Quester
 			SaveEnumeration(enumeration.Name, enumerationLine, true);
 		}
 
+		/// <summary>
+		/// Removes flag attribute from an existing enumeration. Changes the value of each enumerator to C#'s default.
+		/// </summary>
+		/// <param name="enumeration">Name of enumeration's type</param>
 		public static void RemoveFlags(string enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
 			RemoveFlags(Type.GetType("D_Quester." + enumeration));
 		}
 
+		/// <summary>
+		/// Removes flag attribute from an existing enumeration. Changes the value of each enumerator to C#'s default.
+		/// </summary>
+		/// <param name="enumeration">Enumeration's type</param>
 		public static void RemoveFlags(Type enumeration)
 		{
 			EnumerationValidationCheck(enumeration);
@@ -212,7 +258,7 @@ namespace D_Quester
 
 			if (!enumeration.IsEnum)
 			{
-				HandleError( new ArgumentException(enumeration.Name + " is not an enumeration.", "enumeration"));
+				HandleError(new ArgumentException(enumeration.Name + " is not an enumeration.", "enumeration"));
 				return;
 			}
 
@@ -278,21 +324,8 @@ namespace D_Quester
 			return enumeration.IsDefined(typeof(FlagsAttribute), false);
 		}
 
-		//public static void DisableExceptionThrowing(bool disabledExceptions = true)
-		//{
-		//	isThrowingExceptions = !disabledExceptions;
-		//}
-
 		private static void HandleError(ArgumentException a)
 		{
-			//if (isThrowingExceptions)
-			//{
-			//	throw a;
-			//}
-			//else
-			//{
-			//	Console.WriteLine(a.ToString());
-			//}
 			throw a;
 		}
 	}

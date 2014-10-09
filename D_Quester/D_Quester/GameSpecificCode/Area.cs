@@ -48,7 +48,7 @@ namespace D_Quester
 		public bool InteractWith()
 		{
 			string message = "\nYou are currently at " + Name + ".\nWhat would you like to do?";
-			string[] options = { "Talk with someone nearby.", "Find an inn and take a nap.", "Look for treasure.", "Search for things to slay.", "Leave"};
+			string[] options = { "Talk with someone nearby.", "Look for treasure.", "Search for things to slay.", "Find an inn and take a nap. (Quit to Menu)", "Leave Area"};
 			bool isPlaying = true;
 
 			switch (Menu.PromptForMenuSelection(message, options))
@@ -57,13 +57,13 @@ namespace D_Quester
 					isPlaying = TalkWith();
 					break;
 				case 2:
-					isPlaying = false;
-					break;
-				case 3:
 					isPlaying = FindTreasure();
 					break;
-				case 4:
+				case 3:
 					isPlaying = HuntMonsters();
+					break;
+				case 4:
+					isPlaying = false;
 					break;
 				case 5:
 					break;

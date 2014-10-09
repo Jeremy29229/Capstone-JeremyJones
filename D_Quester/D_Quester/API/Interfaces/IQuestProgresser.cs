@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 
 namespace D_Quester
 {
-    public delegate void ProgressionHandler();
+	/// <summary>
+	/// Generic delegate for quest object progression.
+	/// </summary>
+	public delegate void ProgressionHandler();
 
-    interface IQuestProgresser
-    {
-        event ProgressionHandler ProgressionEvent;
-        void OnProgressionEvent();
-    }
+	/// <summary>
+	/// Must be implemented by any class that wishes to modify a quest object with events.
+	/// </summary>
+	interface IQuestProgresser
+	{
+		/// <summary>
+		/// Event the quest object needs to be subscribe to in order to be modified.
+		/// </summary>
+		event ProgressionHandler ProgressionEvent;
+		/// <summary>
+		/// Calls ProgressionEvent with null handling.
+		/// </summary>
+		void OnProgressionEvent();
+	}
 }

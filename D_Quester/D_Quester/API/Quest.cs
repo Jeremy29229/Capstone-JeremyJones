@@ -30,7 +30,7 @@ namespace D_Quester
 			}
 			else
 			{
-				Console.WriteLine("You just finished the Quest " + Title + "!");
+				Console.WriteLine("You just finished the Quest: " + Title + "!");
 			}
 		}
 	}

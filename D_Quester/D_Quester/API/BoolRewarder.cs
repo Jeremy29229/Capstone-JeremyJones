@@ -8,10 +8,24 @@ namespace D_Quester
 {
 	class BoolRewarder
 	{
+		/// <summary>
+		/// Delegate for reward handling.
+		/// </summary>
+		/// <param name="state">State bool will be changed to on event</param>
 		public delegate void RewardBoolDel(bool state);
+		/// <summary>
+		/// Event that rewarders must subscribe to.
+		/// </summary>
 		public event RewardBoolDel RewardBoolEvent;
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool RewardState { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="rewardState"></param>
 		public BoolRewarder(bool rewardState)
 		{
 			RewardState = rewardState;
@@ -25,6 +39,9 @@ namespace D_Quester
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void Reward()
 		{
 			OnStateChange();

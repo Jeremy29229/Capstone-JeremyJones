@@ -137,7 +137,7 @@ namespace D_Quester
 			OddsDialog.Add(current);
 
 			current = new Dialog() { DialogLine = "You have the sack!!! Give it to me or die!" };
-			current.Responses = new List<DialogResponse> { new DialogResponse("Nope. Nope. Nope. <Run Away>"), new DialogResponse("Just take it. I'm looking for any trouble.") };
+			current.Responses = new List<DialogResponse> { new DialogResponse("Nope. Nope. Nope. <Run Away>"), new DialogResponse("Just take it. I'm not looking for any trouble.") };
 			OddsDialog.Add(current);
 
 			//RicksDialog[0].GetResponseByText("Just").ProgressionEvent += farmersAid.StartingNode.info.Progress;
