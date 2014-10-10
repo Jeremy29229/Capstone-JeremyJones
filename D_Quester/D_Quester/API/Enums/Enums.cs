@@ -5,12 +5,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// Collection of methods for dynamically changing enumerations.
+	/// Currently only supports D_Quester defined dynamic enumerations.
+	/// Functionality only available in .NET 4.5+.
+	/// </summary>
 	static class Enums
 	{
+#if FRAMEWORK_V3_5
+
+#elif FRAMEWORK_V4_5
 		private const string FIRST_LINE = "namespace D_Quester\r\n{";
 		private const string LAST_LINE = "}";
 		private const string FLAG_LINE = "\t[System.Flags]";
@@ -328,5 +335,6 @@ namespace D_Quester
 		{
 			throw a;
 		}
+#endif
 	}
 }

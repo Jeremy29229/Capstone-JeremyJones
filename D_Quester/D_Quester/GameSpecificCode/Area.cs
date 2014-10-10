@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace D_Quester
 {
@@ -27,10 +27,18 @@ namespace D_Quester
 			_PlayerInventory = playerInventory;
 			Access = new RewardableBool(access, "You now have access to " + Name, "You have list access to " + Name);
 
+#if FRAMEWORK_V3_5
+			foreach (Direction d in Enum.GetValues(typeof(Direction)))
+			{
+				NearbyPlaces.Add(d, this);
+			}
+#elif FRAMEWORK_V4_5
 			foreach (Direction d in typeof(Direction).GetEnumValues())
 			{
 				NearbyPlaces.Add(d, this);
 			}
+#endif
+
 			r = new Random();
 		}
 
