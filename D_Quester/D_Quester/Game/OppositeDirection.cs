@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
-namespace D_Quester
+﻿
+namespace Game.D_Quester
 {
     /// <summary>
     /// Stands for OppositeDirection.

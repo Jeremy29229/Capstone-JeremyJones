@@ -1,14 +1,8 @@
-﻿using System;
+﻿using D_Quester;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
 
-using System.Reflection;
-using System.Reflection.Emit;
-
-namespace D_Quester
+namespace Game.D_Quester
 {
 	class Program
 	{
@@ -36,10 +30,8 @@ namespace D_Quester
 
 			Area farm1 = new Area("Joe's Farm", game.Player.Inventory);
 			
-
 			Area farm2 = new Area("Rick's Farm", game.Player.Inventory);
 			farm2.Collectables.Add(new Item { Name = "Odd Sack", Amount = 1 });
-			//game.Player.Inventory.ItemGotEvent
 
 			oddSack.StartingNode = new Node<QuestObject>(new QuestObject(oddSack, "Odd Sack 1"));
 			oddSack.CurrentNode = oddSack.StartingNode;
@@ -68,14 +60,11 @@ namespace D_Quester
 			wolfQuest2014.CurrentNode.info.CurrentState = QuestObjectState.NotStarted;
 			wolfQuest2014.CurrentNode.info.NumObjectives = 1;
 			
-
 			Area forest1 = new Area("Backwoods", game.Player.Inventory);
 			forest1.Monsters.Add(new Monster("Wolf"){ Drop = new Item(){ Name = "Wolf Head", Amount = 1}});
 			
-
 			Area darkCastle = new Area("Dark Castle", game.Player.Inventory, false);
 			wolfQuest2014.CurrentNode.info.QuestRewarder.AddReward(true).To(darkCastle.Access);
-
 
 			NPC joe = new NPC() { Name = "Joe" };
 			NPC rick = new NPC() { Name = "Rick" };
@@ -104,7 +93,6 @@ namespace D_Quester
 			farmersAid.StartingNode.info.CurrentState = QuestObjectState.NotStarted;
 			farmersAid.StartingNode.info.NumObjectives = 1;
 			farmersAid.StartingNode.info.QuestRewarder.AddReward(50).To(game.Player.Gold);
-			//farmersAid.StartingNode.info.QuestRewarder.AddReward(5).To(game.Player.penisPurse);
 
 			JoesDialog[0].GetResponseByText("Need").Result = JoesDialog[1];
 			JoesDialog[0].GetResponseByText("Need").Requirment = farmersAid.StartingNode.info.MakeQuestRequirement(QuestObjectState.NotStarted);
@@ -114,7 +102,6 @@ namespace D_Quester
 			JoesDialog[1].GetResponseByText("No").Result = JoesDialog[2];
 
 			joe.Convo = new Conversation() { Current = JoesDialog[0], Starter = JoesDialog[0] }; ;
-
 
 			List<Dialog> RicksDialog = new List<Dialog>();
 			current = new Dialog() { DialogLine = "Sorry can this wait?" };
@@ -127,7 +114,7 @@ namespace D_Quester
 
 			RicksDialog[0].GetResponseByText("Just").ProgressionEvent += farmersAid.StartingNode.info.Progress;
 			RicksDialog[0].GetResponseByText("Just").Result = RicksDialog[1];
-			RicksDialog[0].GetResponseByText("Just").Requirment = new QuestRequirment(farmersAid.CurrentNode.info, QuestObjectState.InProgress);
+			RicksDialog[0].GetResponseByText("Just").Requirment = new QuestRequirement(farmersAid.CurrentNode.info, QuestObjectState.InProgress);
 
 			rick.Convo = new Conversation() { Current = RicksDialog[0], Starter = RicksDialog[0] };
 
@@ -140,10 +127,9 @@ namespace D_Quester
 			current.Responses = new List<DialogResponse> { new DialogResponse("Nope. Nope. Nope. <Run Away>"), new DialogResponse("Just take it. I'm not looking for any trouble.") };
 			OddsDialog.Add(current);
 
-			//RicksDialog[0].GetResponseByText("Just").ProgressionEvent += farmersAid.StartingNode.info.Progress;
 			OddsDialog[0].GetResponseByText("...").Result = OddsDialog[0];
 			OddsDialog[0].GetResponseByText("Are").Result = OddsDialog[1];
-			OddsDialog[0].GetResponseByText("Are").Requirment = new QuestRequirment(oddSack.CurrentNode.info, QuestObjectState.InProgress);
+			OddsDialog[0].GetResponseByText("Are").Requirment = new QuestRequirement(oddSack.CurrentNode.info, QuestObjectState.InProgress);
 			OddsDialog[1].GetResponseByText("Just").ProgressionEvent += oddSack.CurrentNode.info.Progress;
 
 			oddOldMan.Convo = new Conversation() { Current = OddsDialog[0], Starter = OddsDialog[0] };
@@ -168,7 +154,7 @@ namespace D_Quester
 			WL[0].GetResponseByText("What").Result = WL[1];
 			WL[0].GetResponseByText("Of course").Result = WL[2];
 			WL[2].GetResponseByText("Yeah").ProgressionEvent += wolfQuest2014.CurrentNode.info.Progress;
-			WL[0].GetResponseByText("Of course").Requirment = new QuestRequirment(wolfQuest2014.CurrentNode.info, QuestObjectState.InProgress);
+			WL[0].GetResponseByText("Of course").Requirment = new QuestRequirement(wolfQuest2014.CurrentNode.info, QuestObjectState.InProgress);
 			WL[2].GetResponseByText("No").Result = WL[3];
 
 			wolfHeadLady.Convo = new Conversation() { Current = WL[0], Starter = WL[0] };

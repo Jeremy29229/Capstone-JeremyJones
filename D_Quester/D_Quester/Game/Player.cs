@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using D_Quester;
 
-
-namespace D_Quester
+namespace Game.D_Quester
 {
 	class Player
 	{

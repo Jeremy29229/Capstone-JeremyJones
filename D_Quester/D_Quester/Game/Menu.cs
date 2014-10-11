@@ -2,10 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-
-namespace D_Quester
+namespace Game.D_Quester
 {
 	static class Menu
 	{

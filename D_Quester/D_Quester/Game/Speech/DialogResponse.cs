@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using D_Quester;
 
-
-namespace D_Quester
+namespace Game.D_Quester
 {
 	class DialogResponse : IQuestProgresser
 	{
 		public string Text { get; set; }
 		public Dialog Result { get; set; }
-		public QuestRequirment Requirment { get; set; }
+		public QuestRequirement Requirment { get; set; }
 
 		public DialogResponse(string text)
 		{
