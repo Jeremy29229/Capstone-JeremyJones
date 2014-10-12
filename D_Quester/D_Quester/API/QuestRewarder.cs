@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace D_Quester
 {
 	/// <summary>
 	/// Represents anything that needs to remotely reward one or more rewardable classes.
 	/// </summary>
-	class QuestRewarder
+	public class QuestRewarder
 	{
 		/// <summary>
 		/// List of all int rewards this class has to give out.

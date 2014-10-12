@@ -1,12 +1,11 @@
 ﻿using System;
 
-
 namespace D_Quester
 {
 	/// <summary>
 	/// Represents the condition a quest object must be in and can be checked to show or hide aspects of a game depending on the implementation.
 	/// </summary>
-	class QuestRequirement
+	public class QuestRequirement
 	{
 		/// <summary>
 		/// Quest object to be watched for state.

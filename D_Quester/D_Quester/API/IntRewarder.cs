@@ -5,7 +5,7 @@ namespace D_Quester
 	/// <summary>
 	/// Handles specified rewards for all subscribed RewardableInts.
 	/// </summary>
-	class IntRewarder
+	public class IntRewarder
 	{
 		/// <summary>
 		/// Delegate for RewardableInt reward handling. 

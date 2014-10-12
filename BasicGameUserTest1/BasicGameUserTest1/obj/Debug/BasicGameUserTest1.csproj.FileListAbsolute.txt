@@ -1,0 +1,8 @@
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\bin\Debug\BasicGameUserTest1.exe.config
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\obj\Debug\BasicGameUserTest1.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\bin\Debug\BasicGameUserTest1.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\bin\Debug\BasicGameUserTest1.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\bin\Debug\D_Quester.dll
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\bin\Debug\D_Quester.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\obj\Debug\BasicGameUserTest1.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\BasicGameUserTest1\BasicGameUserTest1\obj\Debug\BasicGameUserTest1.pdb

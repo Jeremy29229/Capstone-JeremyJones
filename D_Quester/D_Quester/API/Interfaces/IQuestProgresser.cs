@@ -1,5 +1,4 @@
 ﻿
-
 namespace D_Quester
 {
 	/// <summary>
@@ -10,7 +9,7 @@ namespace D_Quester
 	/// <summary>
 	/// Must be implemented by any class that wishes to modify a quest object with events.
 	/// </summary>
-	interface IQuestProgresser
+	public interface IQuestProgresser
 	{
 		/// <summary>
 		/// Event the quest object needs to be subscribe to in order to be modified.

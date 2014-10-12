@@ -5,7 +5,7 @@ namespace D_Quester
 	/// <summary>
 	/// Handles specified rewards for all subscribed RewardableDoubles.
 	/// </summary>
-	class DoubleRewarder
+	public class DoubleRewarder
 	{
 		/// <summary>
 		/// Delegate for RewardableDouble reward handling. 

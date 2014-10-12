@@ -1,0 +1,8 @@
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\obj\Debug\TextBasedQuestTesterUnleashed.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\bin\Debug\TextBasedQuestTesterUnleashed.exe.config
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\bin\Debug\TextBasedQuestTesterUnleashed.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\bin\Debug\TextBasedQuestTesterUnleashed.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\bin\Debug\D_Quester.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\obj\Debug\TextBasedQuestTesterUnleashed.exe
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\obj\Debug\TextBasedQuestTesterUnleashed.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\TextBasedQuestTesterUnleashed\TextBasedQuestTesterUnleashed\bin\Debug\D_Quester.dll

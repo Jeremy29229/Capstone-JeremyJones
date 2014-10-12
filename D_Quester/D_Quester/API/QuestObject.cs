@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace D_Quester
 {
 	/// <summary>
 	/// Base object for D_Quester API. Represents a single task or event in a quest chain. Can be attached to any existing objects to give them meaning in a quest or story.
 	/// </summary>
-	class QuestObject
+	public class QuestObject
 	{
 		/// <summary>
 		/// Name of the quest object. Can be printed or displayed to indicate progress to the player.
@@ -63,6 +62,24 @@ namespace D_Quester
 		/// </summary>
 		public bool IsHiddenFromPlayer { get; set; }
 
+
+		/// <summary>
+		/// For a simple stand-alone quest object.
+		/// </summary>
+		/// <param name="name">Name of the quest object.</param>
+		/// <param name="starting">Sets the initial state the object should be in.</param>
+		public QuestObject(string name = "", QuestObjectState starting = QuestObjectState.Uninitialized)
+		{
+			Owner = null;
+			Name = name;
+			NamedObjectives = new List<string>();
+			PreviousState = QuestObjectState.Uninitialized;
+			CurrentState = QuestObjectState.Uninitialized;
+			CurrentState = starting;
+			IsHiddenFromPlayer = false;
+			QuestRewarder = new QuestRewarder();
+		}
+
 		/// <summary>
 		/// Initializes quest object with the information most quest objects need at minimum. All parameters have default values.
 		/// </summary>
@@ -111,7 +128,10 @@ namespace D_Quester
 					Console.WriteLine("You just finished the quest node: " + Name);
 					QuestRewarder.GiveRewards();
 					CurrentState = QuestObjectState.Completed;
-					Owner.Advance();
+					if (Owner != null)
+					{
+						Owner.Advance();
+					}
 				}
 			}
 		}

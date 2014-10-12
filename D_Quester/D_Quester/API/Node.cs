@@ -7,7 +7,7 @@ namespace D_Quester
 	/// Represents a node with can have one or more parent nodes and one or more child nodes.
 	/// </summary>
 	/// <typeparam name="T">Object stored within node</typeparam>
-	class Node<T>
+	public class Node<T>
 	{
 		/// <summary>
 		/// Object being stored.

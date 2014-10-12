@@ -1,12 +1,11 @@
 ﻿using System;
 
-
 namespace D_Quester
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	class RewardableInt
+	public class RewardableInt
 	{
 		/// <summary>
 		/// Name that represents what the class is being used for. Can be used when notifying the player that they were rewarded.

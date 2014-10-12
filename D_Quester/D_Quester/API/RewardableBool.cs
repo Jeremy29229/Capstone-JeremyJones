@@ -1,9 +1,11 @@
 ﻿using System;
 
-
 namespace D_Quester
 {
-	class RewardableBool
+	/// <summary>
+	/// 
+	/// </summary>
+	public class RewardableBool
 	{
 		/// <summary>
 		/// Message printed to the console when the underlying bool is changed to true.

@@ -1,24 +1,37 @@
 ﻿using System;
 using System.Linq;
 
-
 namespace D_Quester
 {
-
 	/// <summary>
 	/// 
 	/// </summary>
-	class Quest
+	public class Quest
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		public string Title { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public Node<QuestObject> StartingNode { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
 		public Node<QuestObject> CurrentNode { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public Quest()
 		{
 			Title = "None";
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void Advance()
 		{
 			if (CurrentNode.children.FirstOrDefault() != null)

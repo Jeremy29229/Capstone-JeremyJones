@@ -7,7 +7,7 @@ namespace D_Quester
 	/// <summary>
 	/// Extension methods. Don't call this class directly.
 	/// </summary>
-	static class Extensions
+	public static class Extensions
 	{
 		/// <summary>
 		/// Find a quest in the list by title.
