@@ -48,6 +48,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <CustomConstants Condition=" '$(TargetFrameworkVersion)' == 'v3.5' ">FRAMEWORK_V3_5</CustomConstants>
@@ -66,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\APIExtension.cs" />
+    <Compile Include="API\Extensions.cs" />
     <Compile Include="API\Enums\Enums.cs" />
     <Compile Include="API\Quest.cs" />
     <Compile Include="API\Enums\QuestObjectState.cs" />

@@ -1,0 +1,5 @@
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\bin\Release\D_Quester.dll.config
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\bin\Release\D_Quester.dll
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\bin\Release\D_Quester.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\obj\Release\D_Quester.dll
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\obj\Release\D_Quester.pdb

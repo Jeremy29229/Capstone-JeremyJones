@@ -22,6 +22,7 @@ namespace BasicGameUserTest1
 
 		static NPC npc;
 		static Player player;
+
 		//Edit this
 		public static void SetupGame()
 		{

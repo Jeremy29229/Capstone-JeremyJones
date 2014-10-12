@@ -3,3 +3,4 @@ C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\bin\Debug\D_Quester.pdb
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\obj\Debug\D_Quester.dll
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\obj\Debug\D_Quester.pdb
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\D_Quester\D_Quester\obj\Debug\D_Quester.csprojResolveAssemblyReference.cache
