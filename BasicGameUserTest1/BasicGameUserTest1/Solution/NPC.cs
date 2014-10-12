@@ -12,7 +12,7 @@ namespace BasicGameUserTest1.Solution
 		public string Name { get; set; }
 		public QuestObject questInfo { get; set; }
 
-		public void TalkTo()
+		public void TalkToPlayer()
 		{
 			questInfo.Progress();
 		}

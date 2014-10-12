@@ -3,7 +3,7 @@
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// A bool that can have its state changed remotely by a BoolRewarder class.
 	/// </summary>
 	public class RewardableBool
 	{

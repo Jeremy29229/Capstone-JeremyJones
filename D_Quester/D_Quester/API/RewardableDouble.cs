@@ -3,7 +3,7 @@
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// An double that can be added to remotely by a DoubleRewarder class.
 	/// </summary>
 	public class RewardableDouble
 	{

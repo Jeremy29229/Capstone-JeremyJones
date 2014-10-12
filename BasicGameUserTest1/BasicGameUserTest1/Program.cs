@@ -31,7 +31,7 @@ namespace BasicGameUserTest1
 		//Don't edit this
 		public static void PlayGame()
 		{
-			npc.TalkTo();
+			npc.TalkToPlayer();
 		}
 
 		#region Post-Feedback Information
@@ -47,7 +47,7 @@ namespace BasicGameUserTest1
 
 		public static void PlayGameSolution()
 		{
-			joe.TalkTo();
+			joe.TalkToPlayer();
 		}
 		#endregion
 	}

@@ -3,7 +3,7 @@
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// An int that can be added to remotely by an IntRewarder class.
 	/// </summary>
 	public class RewardableInt
 	{

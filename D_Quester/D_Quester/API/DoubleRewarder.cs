@@ -39,7 +39,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Triggers the rewarder add reward to subscribed RewardableDoubles.
+		/// 		/// Triggers class to add RewardAmount to subscribed RewardableDoubles.
 		/// </summary>
 		public void Reward()
 		{

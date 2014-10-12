@@ -16,7 +16,7 @@ namespace BasicGameUserTest1
 
 		}
 
-		public void TalkTo()
+		public void TalkToPlayer()
 		{
 
 		}

@@ -38,7 +38,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Triggers the rewarder to change all subscribed RewardableBools.
+		/// Triggers class to change all subscribed RewardableInts' states to RewardState.
 		/// </summary>
 		public void Reward()
 		{
