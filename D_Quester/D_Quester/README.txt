@@ -1,4 +1,4 @@
-D_Quester V1.0.1
+D_Quester V1.0.2
 
 QuestObject is the base class for handling a quest node. It holds anything a quest giver or quest node handler might need to handle what happens before during and after a quest node is started. It contains rewarders, objectives, its current state, and methods to advance its state and perform certain logic when a state is reached.
 

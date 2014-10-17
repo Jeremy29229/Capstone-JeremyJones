@@ -1,24 +1,18 @@
-﻿#if FRAMEWORK_V4_5
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq;
-#endif
 
 namespace D_Quester
 {
 	/// <summary>
 	/// Collection of methods for dynamically changing enumerations.
 	/// Currently only supports D_Quester defined dynamic enumerations.
-	/// Functionality only available in .NET 4.5+.
 	/// </summary>
-	static class Enums
+	public static class Enums
 	{
-#if FRAMEWORK_V3_5
-
-#elif FRAMEWORK_V4_5
 		private const string FIRST_LINE = "namespace D_Quester\r\n{";
 		private const string LAST_LINE = "}";
 		private const string FLAG_LINE = "\t[System.Flags]";
@@ -54,7 +48,11 @@ namespace D_Quester
 				return;
 			}
 
+#if FRAMEWORK_V3_5
+			string[] currentEnums = Enum.GetNames(enumeration);
+#elif FRAMEWORK_V4_5
 			string[] currentEnums = enumeration.GetEnumNames();
+#endif
 
 			if (currentEnums.Contains(newEnumerator))
 			{
@@ -110,7 +108,11 @@ namespace D_Quester
 		{
 			EnumerationValidationCheck(enumeration);
 
+#if FRAMEWORK_V3_5
+			string[] currentEnums = Enum.GetNames(enumeration);
+#elif FRAMEWORK_V4_5
 			string[] currentEnums = enumeration.GetEnumNames();
+#endif
 
 			if (!currentEnums.Contains(enumerator))
 			{
@@ -203,7 +205,12 @@ namespace D_Quester
 				return;
 			}
 
+#if FRAMEWORK_V3_5
+			string[] currentEnums = Enum.GetNames(enumeration);
+#elif FRAMEWORK_V4_5
 			string[] currentEnums = enumeration.GetEnumNames();
+#endif
+
 			string enumerationLine = "\tenum " + enumeration.Name + " { ";
 			int currentFlag = 1;
 
@@ -242,7 +249,12 @@ namespace D_Quester
 				return;
 			}
 
+#if FRAMEWORK_V3_5
+			string[] currentEnums = Enum.GetNames(enumeration);
+#elif FRAMEWORK_V4_5
 			string[] currentEnums = enumeration.GetEnumNames();
+#endif
+
 			string enumerationLine = "\tenum " + enumeration.Name + " { ";
 
 			foreach (string e in currentEnums)
@@ -314,7 +326,7 @@ namespace D_Quester
 
 		private static void SaveEnumeration(string enumerationName, string enumerationLine, bool hasFlags = false)
 		{
-			using (StreamWriter sw = new StreamWriter("../../API/Enums/" + enumerationName + ".cs"))
+			using (StreamWriter sw = new StreamWriter("../../../../D_Quester/D_Quester/API/Enums/" + enumerationName + ".cs"))
 			{
 				sw.NewLine = "\r\n";
 				sw.WriteLine(FIRST_LINE);
@@ -336,6 +348,5 @@ namespace D_Quester
 		{
 			throw a;
 		}
-#endif
 	}
 }
