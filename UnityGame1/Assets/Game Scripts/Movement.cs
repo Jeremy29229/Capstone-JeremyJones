@@ -5,7 +5,9 @@ public class Movement : MonoBehaviour
 	private float moveSpeed = 50.0f;
 	private float rotationSpeed = 150.0f;
 
+#pragma warning disable 0414
 	GameObject c;
+#pragma warning restore 0414
 
 	void Start()
 	{

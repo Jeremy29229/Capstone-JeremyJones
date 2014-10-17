@@ -14,9 +14,11 @@ public class ConversationManager : MonoBehaviour
 	private Text npcText;
 	private Text npcName;
 
+#pragma warning disable 0414
 	private Inventory inventory;
 	private GameObject player;
 	private Dialog last;
+#pragma warning restore 0414
 
 	void Start()
 	{

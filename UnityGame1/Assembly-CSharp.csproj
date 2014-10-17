@@ -46,43 +46,45 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\API\BoolRewarder.cs" />
-     <Compile Include="Assets\API\DingoSpawner.cs" />
-     <Compile Include="Assets\API\DoubleRewarder.cs" />
-     <Compile Include="Assets\API\Enums\Enums.cs" />
-     <Compile Include="Assets\API\Enums\QuestNodeState.cs" />
-     <Compile Include="Assets\API\Extensions.cs" />
-     <Compile Include="Assets\API\IntRewarder.cs" />
-     <Compile Include="Assets\API\Interfaces\IQuestProgresser.cs" />
-     <Compile Include="Assets\API\MonsterMovement.cs" />
-     <Compile Include="Assets\API\Node.cs" />
-     <Compile Include="Assets\API\Quest.cs" />
-     <Compile Include="Assets\API\QuestJournal.cs" />
-     <Compile Include="Assets\API\QuestObject.cs" />
-     <Compile Include="Assets\API\QuestRequirement.cs" />
-     <Compile Include="Assets\API\QuestRewarder.cs" />
-     <Compile Include="Assets\API\RewardableBool.cs" />
-     <Compile Include="Assets\API\RewardableDouble.cs" />
-     <Compile Include="Assets\API\RewardableInt.cs" />
+     <Compile Include="Assets\D_Quester\BoolRewarder.cs" />
+     <Compile Include="Assets\D_Quester\DoubleRewarder.cs" />
+     <Compile Include="Assets\D_Quester\Enums\DEnumInfo.cs" />
+     <Compile Include="Assets\D_Quester\Enums\Enums.cs" />
+     <Compile Include="Assets\D_Quester\Enums\QuestNodeState.cs" />
+     <Compile Include="Assets\D_Quester\Extensions.cs" />
+     <Compile Include="Assets\D_Quester\IntRewarder.cs" />
+     <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
+     <Compile Include="Assets\D_Quester\Node.cs" />
+     <Compile Include="Assets\D_Quester\Quest.cs" />
+     <Compile Include="Assets\D_Quester\QuestJournal.cs" />
+     <Compile Include="Assets\D_Quester\QuestObject.cs" />
+     <Compile Include="Assets\D_Quester\QuestRequirement.cs" />
+     <Compile Include="Assets\D_Quester\QuestRewarder.cs" />
+     <Compile Include="Assets\D_Quester\RewardableBool.cs" />
+     <Compile Include="Assets\D_Quester\RewardableDouble.cs" />
+     <Compile Include="Assets\D_Quester\RewardableInt.cs" />
+     <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
      <Compile Include="Assets\Game Scripts\Collectable.cs" />
      <Compile Include="Assets\Game Scripts\Conversable.cs" />
      <Compile Include="Assets\Game Scripts\Conversation.cs" />
      <Compile Include="Assets\Game Scripts\ConversationManager.cs" />
      <Compile Include="Assets\Game Scripts\Dialog.cs" />
+     <Compile Include="Assets\Game Scripts\DingoSpawner.cs" />
      <Compile Include="Assets\Game Scripts\Droper.cs" />
      <Compile Include="Assets\Game Scripts\Hurtable.cs" />
      <Compile Include="Assets\Game Scripts\IDeath.cs" />
      <Compile Include="Assets\Game Scripts\IInteractable.cs" />
      <Compile Include="Assets\Game Scripts\Interactable.cs" />
      <Compile Include="Assets\Game Scripts\InteractionManager.cs" />
+     <Compile Include="Assets\Game Scripts\Inventory.cs" />
      <Compile Include="Assets\Game Scripts\InventoryItem.cs" />
      <Compile Include="Assets\Game Scripts\MonsterDeath.cs" />
+     <Compile Include="Assets\Game Scripts\MonsterMovement.cs" />
      <Compile Include="Assets\Game Scripts\Movement.cs" />
      <Compile Include="Assets\Game Scripts\NPCDeath.cs" />
      <Compile Include="Assets\Game Scripts\Player.cs" />
      <Compile Include="Assets\Game Scripts\PlayerDeath.cs" />
      <Compile Include="Assets\Game Scripts\Weapon.cs" />
-     <Compile Include="Assets\Inventory.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

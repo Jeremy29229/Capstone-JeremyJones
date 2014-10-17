@@ -9,8 +9,11 @@ public class Hurtable : MonoBehaviour
 	public float currentHealth;
 
 	private GameObject UI;
+
+#pragma warning disable 0414
 	private Text monsterName;
 	private Text health;
+#pragma warning restore 0414
 
 	void Start()
 	{
