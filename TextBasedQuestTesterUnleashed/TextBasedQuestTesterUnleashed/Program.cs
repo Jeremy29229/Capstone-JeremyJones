@@ -10,8 +10,10 @@ namespace TextBasedQuestTesterUnleashed
 
 		static void Main(string[] args)
 		{
-			CreateTextGameQuests();
-			PlayGame();
+			Enums.AddEnum("QuestObjectState", "test");
+
+			//CreateTextGameQuests();
+			//PlayGame();
 		}
 
 		public static void CreateTextGameQuests()
