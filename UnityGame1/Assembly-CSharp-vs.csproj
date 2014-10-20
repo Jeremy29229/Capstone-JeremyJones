@@ -53,6 +53,7 @@
      <Compile Include="Assets\D_Quester\Enums\QuestNodeState.cs" />
      <Compile Include="Assets\D_Quester\Extensions.cs" />
      <Compile Include="Assets\D_Quester\IntRewarder.cs" />
+     <Compile Include="Assets\D_Quester\Interfaces\IQuestNamedProgresser.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
      <Compile Include="Assets\D_Quester\Node.cs" />
      <Compile Include="Assets\D_Quester\Quest.cs" />
@@ -60,9 +61,11 @@
      <Compile Include="Assets\D_Quester\QuestObject.cs" />
      <Compile Include="Assets\D_Quester\QuestRequirement.cs" />
      <Compile Include="Assets\D_Quester\QuestRewarder.cs" />
+     <Compile Include="Assets\D_Quester\Rewardable.cs" />
      <Compile Include="Assets\D_Quester\RewardableBool.cs" />
      <Compile Include="Assets\D_Quester\RewardableDouble.cs" />
      <Compile Include="Assets\D_Quester\RewardableInt.cs" />
+     <Compile Include="Assets\D_Quester\Rewarder.cs" />
      <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
      <Compile Include="Assets\Game Scripts\Collectable.cs" />
      <Compile Include="Assets\Game Scripts\Conversable.cs" />

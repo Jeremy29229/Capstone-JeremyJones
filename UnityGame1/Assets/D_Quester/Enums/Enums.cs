@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace D_Quester
 {
-	//add dictionary storage for added remove things
-	//add option path change
-	//add documentation
-
-#pragma warning disable 0618
-
 	/// <summary>
 	/// Collection of methods for dynamically changing enumerations.
-	/// Currently only supports D_Quester defined dynamic enumerations
+	/// Currently only supports D_Quester defined dynamic enumerations.
 	/// </summary>
 	static class Enums
 	{
@@ -40,16 +33,16 @@ namespace D_Quester
 		/// Adds an enumerator to an existing enumeration in D_Quester.
 		/// </summary>
 		/// <param name="enumeration">Name of the enumeration's type</param>
-		/// <param name="newEnumeration">Name of the new enumerator to be added</param>
-		/// <param name="enumUnityFilePath">Path file of the enumerator being changed starting at the unity project's containing folder.</param>
-		public static void AddEnum(string enumeration, string newEnumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
+		/// <param name="newEnumerator">Name of the new enumerator to be added</param>
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void AddEnum(string enumeration, string newEnumerator, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
 				return;
 			}
 
-			AddEnum(Type.GetType("D_Quester." + enumeration), newEnumeration, enumUnityFilePath);
+			AddEnum(Type.GetType("D_Quester." + enumeration), newEnumerator, enumUnityFilePath);
 		}
 
 		/// <summary>
@@ -57,7 +50,7 @@ namespace D_Quester
 		/// </summary>
 		/// <param name="enumeration">Enumeration's type</param>
 		/// <param name="newEnumeration">Name of the new enumerator to be added</param>
-		/// <param name="enumUnityFilePath">Path file of the enumerator being changed starting at the unity project's containing folder.</param>
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
 		public static void AddEnum(Type enumeration, string newEnumerator, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
@@ -65,7 +58,7 @@ namespace D_Quester
 				return;
 			}
 
-			if (!Regex.IsMatch(newEnumerator, "^[a-zA-Z0-9_]+$"))
+			if (newEnumerator == null || !Regex.IsMatch(newEnumerator, "^[a-zA-Z0-9_]+$"))
 			{
 				HandleError(new ArgumentException(newEnumerator + " is an invalid name. An enumerator must only contain alphanumeric characters and underscores.", "newEnumerator"));
 				return;
@@ -127,11 +120,11 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Removes an enumerator from an existing enumeration in D_Quester. Note that removing a default state may cause undefined behavior.
+		/// Removes an enumerator from an existing enumeration in D_Quester.
 		/// </summary>
 		/// <param name="enumeration">Name of the enumeration's type</param>
 		/// <param name="enumerator">Name of the enumerator to be removed</param>
-		/// <param name="enumUnityFilePath">Path file of the enumerator being changed starting at the unity project's containing folder.</param>
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
 		public static void RemoveEnum(string enumeration, string enumerator, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
@@ -143,11 +136,11 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Removes an enumerator from an existing enumeration in D_Quester. Note that removing a default state may cause undefined behavior.
+		/// Removes an enumerator from an existing enumeration in D_Quester.
 		/// </summary>
 		/// <param name="enumeration">Enumeration's type</param>
 		/// <param name="enumerator">Name of the enumerator to be removed</param>
-		/// <param name="enumUnityFilePath">Path file of the enumerator being changed starting at the unity project's containing folder.</param>
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
 		public static void RemoveEnum(Type enumeration, string enumerator, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
@@ -209,7 +202,7 @@ namespace D_Quester
 			enumerationLine = enumerationLine.Substring(0, enumerationLine.Length - 2);
 			enumerationLine += " }";
 
-			SaveEnumeration(enumeration.Name, enumerationLine, enumeration.HasFlags());
+			SaveEnumeration(enumeration.Name, enumerationLine, enumeration.HasFlags(), enumUnityFilePath);
 
 			if(enumerationAdditions.Keys.Contains(enumerator))
 			{
@@ -223,21 +216,23 @@ namespace D_Quester
 		/// Restores enumeration to D_Quester's default enumerators.
 		/// </summary>
 		/// <param name="enumeration">Name of enumeration's type</param>
-		public static void ResetToDefault(string enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void ResetToDefault(string enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
 				return;
 			}
 
-			ResetToDefault(Type.GetType("D_Quester." + enumeration));
+			ResetToDefault(Type.GetType("D_Quester." + enumeration), enumUnityFilePath);
 		}
 
 		/// <summary>
 		/// Restores enumeration to D_Quester's default enumerators.
 		/// </summary>
 		/// <param name="enumeration">Enumeration's type</param>
-		public static void ResetToDefault(Type enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void ResetToDefault(Type enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
@@ -266,7 +261,7 @@ namespace D_Quester
 			enumerationLine = enumerationLine.Substring(0, enumerationLine.Length - 2);
 			enumerationLine += " }";
 
-			SaveEnumeration(enumeration.Name, enumerationLine, ENUMERATION_INFORMATION[enumeration.Name].HasFlags);
+			SaveEnumeration(enumeration.Name, enumerationLine, ENUMERATION_INFORMATION[enumeration.Name].HasFlags, enumUnityFilePath);
 			
 			if(!enumerationsWithFlagChanges.Contains(enumeration.Name))
 			{
@@ -294,10 +289,11 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Adds flag attribute to existing enumeration. Properly changes the value of each enumerator to be a bit field.
+		/// Adds flag attribute to existing enumeration and automatically updates the value of each enumeration to support a proper bit field.
 		/// </summary>
 		/// <param name="enumeration">Name of enumeration's type</param>
-		public static void AddFlags(string enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void AddFlags(string enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
@@ -308,10 +304,11 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Adds flag attribute to existing enumeration. Properly changes the value of each enumerator to be a bit field.
+		/// Adds flag attribute to existing enumeration and automatically updates the value of each enumeration to support a proper bit field..
 		/// </summary>
 		/// <param name="enumeration">Enumeration's type</param>
-		public static void AddFlags(Type enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void AddFlags(Type enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
@@ -342,7 +339,7 @@ namespace D_Quester
 			enumerationLine = enumerationLine.Substring(0, enumerationLine.Length - 2);
 			enumerationLine += " }";
 
-			SaveEnumeration(enumeration.Name, enumerationLine, true);
+			SaveEnumeration(enumeration.Name, enumerationLine, true, enumUnityFilePath);
 			enumerationsWithFlagChanges.Add(enumeration.Name);
 		}
 
@@ -350,21 +347,23 @@ namespace D_Quester
 		/// Removes flag attribute from an existing enumeration. Changes the value of each enumerator to C#'s default.
 		/// </summary>
 		/// <param name="enumeration">Name of enumeration's type</param>
-		public static void RemoveFlags(string enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void RemoveFlags(string enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
 				return;
 			}
 
-			RemoveFlags(Type.GetType("D_Quester." + enumeration));
+			RemoveFlags(Type.GetType("D_Quester." + enumeration), enumUnityFilePath);
 		}
 
 		/// <summary>
 		/// Removes flag attribute from an existing enumeration. Changes the value of each enumerator to C#'s default.
 		/// </summary>
 		/// <param name="enumeration">Enumeration's type</param>
-		public static void RemoveFlags(Type enumeration)
+		/// <param name="enumUnityFilePath">File path of the enumeration being changed starting at the unity project's containing folder.</param>
+		public static void RemoveFlags(Type enumeration, string enumUnityFilePath = "Assets/D_Quester/Enums/")
 		{
 			if (!EnumerationValidationCheck(enumeration))
 			{
@@ -394,7 +393,7 @@ namespace D_Quester
 			enumerationLine = enumerationLine.Substring(0, enumerationLine.Length - 2);
 			enumerationLine += " }";
 
-			SaveEnumeration(enumeration.Name, enumerationLine, false);
+			SaveEnumeration(enumeration.Name, enumerationLine, false, enumUnityFilePath);
 			enumerationsWithFlagChanges.Add(enumeration.Name);
 		}
 
@@ -490,5 +489,4 @@ namespace D_Quester
 			Debug.LogException(a);
 		}
 	}
-#pragma warning restore 0618
 }
