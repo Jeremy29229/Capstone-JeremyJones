@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace D_Quester
 {
 	/// <summary>
+	/// Inherit from this to implement a specific class for the generic. 
 	/// Handles specified rewards for all subscribed Rewardables.
 	/// </summary>
-	public class Rewarder<T> : MonoBehaviour
+	public class Rewarder<T> : Rewarder
 	{
 		/// <summary>
 		/// Delegate for remotely modifying Rewardable class.
 		/// </summary>
 		/// <param name="rewardInstance">The value added to the RewardableInt.</param>
-		public delegate void RewardDel(T rewardInstance);
+		public delegate bool RewardDel(T rewardInstance);
 
 		/// <summary>
 		/// Name that represents this rewarder.
@@ -28,7 +25,7 @@ namespace D_Quester
 		public event RewardDel RewardEvent;
 
 		/// <summary>
-		/// Instance that will be given to subscribed rewardables.
+		/// Instance that will be given to subscribed Rewardables.
 		/// </summary>
 		public T RewardInstance;
 
@@ -41,9 +38,9 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Triggers class to add RewardAmount to subscribed RewardableInts.
+		/// Triggers class to reward all rewardables with approached rewards.
 		/// </summary>
-		public void Reward()
+		public override void Reward()
 		{
 			OnStateChange();
 		}

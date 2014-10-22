@@ -1,40 +1,45 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// Holds the flow of QuestPaths for a chain of events.
 	/// </summary>
 	public class Quest : MonoBehaviour
 	{
 		/// <summary>
-		/// 
+		/// Title of the quest.
 		/// </summary>
 		public string Title;
-		/// <summary>
-		/// 
-		/// </summary>
-		public Node<QuestObject> StartingNode;
-		/// <summary>
-		/// 
-		/// </summary>
-		public Node<QuestObject> CurrentNode;
 
 		/// <summary>
-		/// 
+		/// Start path or collection of quest nodes. The first node to complete becomes the chosen path.
 		/// </summary>
-		public void Advance()
+		public QuestPath StartingPath;
+
+		/// <summary>
+		/// Current path the quest is on.
+		/// </summary>
+		public QuestPath CurrentPath;
+
+		private void Advance(QuestPath newPath)
 		{
-			if (CurrentNode.children.FirstOrDefault() != null)
+			if (newPath != null)
 			{
-				CurrentNode = CurrentNode.children.First();
-				CurrentNode.info.StartUp();
+				CurrentPath = newPath;
 			}
 			else
 			{
-				Console.WriteLine("You just finished the Quest: " + Title + "!");
+				print("You just finished the Quest: " + Title + "!");
+				CurrentPath = null;
+			}
+		}
+
+		void Update()
+		{
+			if (CurrentPath != null && CurrentPath.isCompleted)
+			{
+				Advance(CurrentPath.SelectedPath);
 			}
 		}
 	}

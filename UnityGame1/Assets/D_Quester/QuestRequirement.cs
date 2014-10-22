@@ -4,30 +4,20 @@ using UnityEngine;
 namespace D_Quester
 {
 	/// <summary>
-	/// Represents the condition a quest object must be in and can be checked to show or hide aspects of a game depending on the implementation.
+	/// Represents the condition a quest node must be in and can be checked to show or hide aspects of a game depending on the implementation.
 	/// </summary>
 	public class QuestRequirement : MonoBehaviour
 	{
 		/// <summary>
-		/// Quest object to be watched for state.
+		/// Quest node to be watched for state.
 		/// </summary>
-		public QuestObject Requirement;
+		public QuestNode Requirement;
+
 		/// <summary>
 		/// State or states the quest object must be in for this Quest Requirement to be met.
 		/// By default, QuestObjectState is a bit field backed enumeration allowing for the used of the | operator to signify multiple states.
 		/// </summary>
 		public QuestNodeState RequiredStates;
-
-		/// <summary>
-		/// Initializes the quest requirement.
-		/// </summary>
-		/// <param name="requirement">Quest object to be watched as a requirement.</param>
-		/// <param name="requiredStates">Accepted states the quest object can be in to meet the requirement.</param>
-		//public QuestRequirement(QuestObject requirement, QuestObjectState requiredStates)
-		//{
-		//	RequiredStates = requiredStates;
-		//	Requirement = requirement;
-		//}
 
 		/// <summary>
 		/// Indicates if the quest requirement is being met.

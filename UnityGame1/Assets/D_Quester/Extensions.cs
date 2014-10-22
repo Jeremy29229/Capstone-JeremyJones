@@ -20,6 +20,11 @@ namespace D_Quester
 			return questList.FirstOrDefault(x => x.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()));
 		}
 
+		/// <summary>
+		/// Checks if the enumeration contains the FlagsAttribute. Throws an InvalidOperationException if called on an non-enumeration type.
+		/// </summary>
+		/// <param name="enumeration">Enumeration type instance this is being called on.</param>
+		/// <returns>True if the enumeration implements the FlagsAttribute.</returns>
 		public static bool HasFlags(this Type enumeration)
 		{
 			if (!enumeration.IsEnum)

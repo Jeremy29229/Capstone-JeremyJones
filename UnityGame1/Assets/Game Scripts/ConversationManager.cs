@@ -6,6 +6,16 @@ using System.Linq;
 
 public class ConversationManager : MonoBehaviour
 {
+	public delegate void ResponseDelegate();
+	public event ResponseDelegate ResponseEvent;
+	public virtual void OnResponseEvent()
+	{
+		if (ResponseEvent != null)
+		{
+			ResponseEvent();
+		}
+	}
+
 	private Canvas UI;
 
 	private Dialog[] response;
@@ -101,7 +111,7 @@ public class ConversationManager : MonoBehaviour
 
 		//	inventory.items.Remove(inventory.items.FirstOrDefault(x => x.Name == last.requiredItemName[choice]));
 		//}
-
+		OnResponseEvent();
 		ProcessDialog(response[choice]);
 	}
 }

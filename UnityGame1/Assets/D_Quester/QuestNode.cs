@@ -6,13 +6,46 @@ using UnityEngine;
 namespace D_Quester
 {
 	/// <summary>
-	/// Base object for D_Quester API. Represents a single task or event in a quest chain. Can be attached to any existing objects to give them meaning in a quest or story.
+	/// Base object for D_Quester API. Represents a single task or event in a quest chain. Can be attached to any existing game objects to give them meaning in a quest or story.
 	/// </summary>
-	public class QuestObject : MonoBehaviour
+	public class QuestNode : MonoBehaviour
 	{
+		public QuestNodeState StartingState;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public QuestPath NextPathIfCompleted;
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public QuestNode nextNodeIfNoPath;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public DateTime CompletionTime;
+
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public string[] QuestObjectMethod;
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public string[] GameObjectWithEventComponentName;
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public string[] ComponentWithEvent;
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public string[] eventName;
 
 		private List<EventInfo> eventinfos;
@@ -38,6 +71,8 @@ namespace D_Quester
 				eventinfos[i].AddEventHandler(classContainEvent[i], dels[i]);
 			}
 
+			CurrentState = StartingState;
+
 		}
 
 		void OnDisable()
@@ -52,28 +87,26 @@ namespace D_Quester
 			dels.Clear();
 		}
 
-
 		/// <summary>
 		/// Name of the quest object. Can be printed or displayed to indicate progress to the player.
 		/// </summary>
 		public string Name;
-		/// <summary>
-		/// Quest that this quest node belongs to.
-		/// </summary>
-		public Quest Owner;
+
 		/// <summary>
 		/// Number of objectives this object has until it will be marked as finished.
 		/// </summary>
 		public int NumObjectives;
+
 		/// <summary>
 		/// Number of objectives currently completed.
 		/// </summary>
 		public int ObjectivesCompleted;
+
 		/// <summary>
 		/// Holds all the rewards this object will distribute when this node is completed.
 		/// </summary>
 		public QuestRewarder QuestRewarder;
-		
+
 		/// <summary>
 		/// List of acceptable strings that will advance the number of completed objectives.
 		/// </summary>
@@ -85,6 +118,7 @@ namespace D_Quester
 		public QuestNodeState PreviousState { get; private set; }
 
 		private QuestNodeState _currentState;
+
 		/// <summary>
 		///	Current state of the object. Automatically updates the previous state. 
 		/// </summary>
@@ -115,7 +149,7 @@ namespace D_Quester
 		/// </summary>
 		public void StartUp()
 		{
-			Console.WriteLine("You just started the quest node: " + Name);
+			print("You just started the quest node: " + Name);
 			if (CurrentState == QuestNodeState.NotStarted)
 			{
 				CurrentState = QuestNodeState.InProgress;
@@ -131,17 +165,19 @@ namespace D_Quester
 			if (CurrentState == QuestNodeState.InProgress)
 			{
 				ObjectivesCompleted++;
-				Console.WriteLine("You just progressed the quest node: " + Name);
+				print("You just progressed the quest node: " + Name);
 
 				if (ObjectivesCompleted == NumObjectives)
 				{
-					Console.WriteLine("You just finished the quest node: " + Name);
-					//QuestRewarder.GiveRewards();
-					CurrentState = QuestNodeState.Completed;
-					if (Owner != null)
+					print("You just finished the quest node: " + Name);
+
+					if (QuestRewarder != null)
 					{
-						Owner.Advance();
+						QuestRewarder.GiveRewards();
 					}
+
+					CompletionTime = DateTime.UtcNow;
+					CurrentState = QuestNodeState.Completed;
 				}
 			}
 		}
@@ -157,7 +193,7 @@ namespace D_Quester
 				if (ObjectivesCompleted != 0)
 				{
 					ObjectivesCompleted = 0;
-					Console.WriteLine("Your progress in: " + Name + " has just been reset");
+					print("Your progress in: " + Name + " has just been reset");
 				}
 			}
 		}
@@ -174,7 +210,7 @@ namespace D_Quester
 				if (ObjectivesCompleted != 0)
 				{
 					ObjectivesCompleted--;
-					Console.WriteLine("You have taken a step back in: " + Name);
+					print("You have taken a step back in: " + Name);
 				}
 			}
 		}
@@ -234,15 +270,5 @@ namespace D_Quester
 				Regress();
 			}
 		}
-
-		/// <summary>
-		/// Makes a QuestRequirement with this quest object with the acceptable that you pass in. 
-		/// </summary>
-		/// <param name="requiredStates">States the QuestObject must be in for the new quest requirement to be met.</param>
-		/// <returns>new QuestRequirement setup with the criteria passed in and this quest object being monitored.</returns>
-		//public QuestRequirement MakeQuestRequirement(QuestObjectState requiredStates)
-		//{
-		//	return new QuestRequirement(this, requiredStates);
-		//}
 	}
 }

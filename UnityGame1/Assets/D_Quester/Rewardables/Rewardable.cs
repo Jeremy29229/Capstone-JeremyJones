@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using UnityEngine;
-using System.Linq;
 
 namespace D_Quester
 {
@@ -11,7 +11,7 @@ namespace D_Quester
 	///	Inherit from this script to make custom Rewardable Scripts
 	/// </summary>
 	/// <typeparam name="T">Underlying type being rewarded to.</typeparam>
-	public class Rewardable<T> : MonoBehaviour
+	public class Rewardable<T> : Rewardable
 	{
 		/// <summary>
 		/// Indicates which method will be subscribing to each event.
@@ -27,6 +27,10 @@ namespace D_Quester
 		/// Name of the rewarder to disambiguate between GameObjects with multiple rewarders.
 		/// </summary>
 		public string[] RewarderName;
+
+		private List<EventInfo> eventinfos = new List<EventInfo>();
+		private List<object> classContainEvent = new List<object>();
+		private List<Delegate> dels = new List<Delegate>();
 
 		/// <summary>
 		/// Underlying type instance being rewarded to.
@@ -126,13 +130,18 @@ namespace D_Quester
 			return wasSuccessful;
 		}
 
+		/// <summary>
+		/// Sets up all rewarder subscriptions based on the string array outlets.
+		/// Should be called in inheritor's OnEnabled method.
+		/// </summary>
+		/// <param name="callerInstance">Instance of the class calling this method.</param>
 		public void AddRewarders(object callerInstance)
 		{
 			for (int i = 0; i < RewardableMethods.Length; i++)
 			{
 				var rewarderContainer = GameObject.Find(GameObjectsWithRewardNames[i]).GetComponents<Rewarder<T>>();
 				Rewarder<T> rewarder = rewarderContainer.FirstOrDefault(x => x.Name == RewarderName[i]);
-				AddRewarder(rewarder, callerInstance, RewardableMethods[i] );
+				AddRewarder(rewarder, callerInstance, RewardableMethods[i]);
 			}
 		}
 
@@ -145,26 +154,30 @@ namespace D_Quester
 			Delegate del = Delegate.CreateDelegate(eventInfo.EventHandlerType, callerInstance, methodInfo);
 
 			eventInfo.AddEventHandler(rewarder, del);
+
+			eventinfos.Add(eventInfo);
+			dels.Add(del);
+			classContainEvent.Add(rewarder);
 		}
 
+		/// <summary>
+		/// Properly unsubscribes rewardable from all rewarders
+		/// Should be called in inheritor's OnDisabled method.
+		/// </summary>
+		/// <param name="callerInstance">Instance of the class calling this method.</param>
 		public void RemoveRewarders(object callerInstance)
 		{
-			for (int i = 0; i < RewardableMethods.Length; i++)
+			for (int i = 0; i < eventinfos.Count; i++)
 			{
-				var rewarderContainer = GameObject.Find(GameObjectsWithRewardNames[i]).GetComponents<Rewarder<T>>();
-				Rewarder<T> rewarder = rewarderContainer.FirstOrDefault(x => x.Name == RewarderName[i]);
-				RemoveRewarder(rewarder, callerInstance, RewardableMethods[i]);
+				RemoveRewarder(eventinfos[i], dels[i], classContainEvent[i]);
 			}
+			eventinfos.Clear();
+			classContainEvent.Clear();
+			dels.Clear();
 		}
 
-		private void RemoveRewarder(Rewarder<T> rewarder, object callerInstance, string methodName)
+		private void RemoveRewarder(EventInfo eventInfo, Delegate del, object rewarder)
 		{
-			EventInfo eventInfo = rewarder.GetType().GetEvent("RewardEvent");
-
-			MethodInfo methodInfo = callerInstance.GetType().GetMethod(methodName);
-
-			Delegate del = Delegate.CreateDelegate(eventInfo.EventHandlerType, callerInstance, methodInfo);
-
 			eventInfo.RemoveEventHandler(rewarder, del);
 		}
 
