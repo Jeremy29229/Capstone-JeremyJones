@@ -136,7 +136,7 @@ namespace D_Quester
 				if (ObjectivesCompleted == NumObjectives)
 				{
 					Console.WriteLine("You just finished the quest node: " + Name);
-					QuestRewarder.GiveRewards();
+					//QuestRewarder.GiveRewards();
 					CurrentState = QuestNodeState.Completed;
 					if (Owner != null)
 					{
