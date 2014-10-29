@@ -10,29 +10,20 @@ namespace D_Quester
 	public class EnumUpdater : MonoBehaviour
 	{
 		/// <summary>
-		/// Controls when this script is run. Click "Run Script" in an instance of this script in the editor to apply your changes to D_Quester's dynamic enumerations.
-		/// </summary>
-		public bool RunScript = false;
-
-		/// <summary>
 		/// Proof of live update.
 		/// </summary>
-		public QuestNodeState qns;
+		public QuestNodeState CurrentQuestNodeStateEnums;
 
 		/// <summary>
-		/// Runs the YourEnumChanges function whenever the RunScript bool is true. Can be easily run once by checking RunScript in an instance of this script in the editor.
+		/// Runs the YourEnumChanges function whenever "Run Enum Updater" button is clicked.
 		/// </summary>
-		void Update()
+		public void RunEnumUpdater()
 		{
-			if (RunScript)
-			{
-				print("Running EnumUpdater script.");
-				YourEnumChanges();
-				Enums.Clear();
-				RunScript = false;
-				AssetDatabase.Refresh();
-				print("EnumUpdater script completed.");
-			}
+			print("Running EnumUpdater script.");
+			YourEnumChanges();
+			Enums.Clear();
+			AssetDatabase.Refresh();
+			print("EnumUpdater script completed.");
 		}
 
 		/// <summary>

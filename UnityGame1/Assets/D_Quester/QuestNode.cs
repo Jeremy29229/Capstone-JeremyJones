@@ -10,7 +10,9 @@ namespace D_Quester
 	/// </summary>
 	public class QuestNode : MonoBehaviour
 	{
-		public QuestNodeState StartingState;
+		public static QuestNodeState defaultState;
+
+		public QuestNodeState StartingState = defaultState;
 
 		/// <summary>
 		/// 

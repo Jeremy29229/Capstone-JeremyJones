@@ -5,6 +5,7 @@ namespace D_Quester
 	/// <summary>
 	/// Holds the flow of QuestPaths for a chain of events.
 	/// </summary>
+	[System.Serializable]
 	public class Quest : MonoBehaviour
 	{
 		/// <summary>

@@ -5,8 +5,14 @@ namespace D_Quester
 	/// <summary>
 	/// Holds nodes for a dynamic player choice. The node first marked as completed will become the selected path or node.
 	/// </summary>
+	[System.Serializable]
 	public class QuestPath : MonoBehaviour
 	{
+		/// <summary>
+		/// Name of the QuestPath. Useful for Identifying the correct QuestPath in a GameObject.
+		/// </summary>
+		public string QuestPathName;
+
 		/// <summary>
 		/// All node options for this QuestPath
 		/// </summary>

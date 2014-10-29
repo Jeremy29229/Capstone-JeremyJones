@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.UnityGame1.CSharp", "UnityVS.UnityGame1.CSharp.csproj", "{B0ED3641-446B-72C0-8732-629DD002FBD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.UnityGame1.CSharp.Editor", "UnityVS.UnityGame1.CSharp.Editor.csproj", "{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B0ED3641-446B-72C0-8732-629DD002FBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0ED3641-446B-72C0-8732-629DD002FBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0ED3641-446B-72C0-8732-629DD002FBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
