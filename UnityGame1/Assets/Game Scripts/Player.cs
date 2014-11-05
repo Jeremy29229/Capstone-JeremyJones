@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 	void Update()
 	{
 		int percentHealth = (int)(100 * (hurtable.currentHealth / hurtable.MaxHealth));
-		UI.GetComponentInChildren<Text>().text = "Health: " + percentHealth + "%";
+		//UI.GetComponentInChildren<Text>().text = "Health: " + percentHealth + "%";
 
 		if (Input.GetKeyDown("l"))
 		{

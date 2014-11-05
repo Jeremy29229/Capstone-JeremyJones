@@ -46,12 +46,27 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\D_Quester\Conversation\Collectable.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\Conversable.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\Conversation.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\ConversationDisplayer.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\ConversationManager.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\Correspondence.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\Dialog.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\DialogResponse.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\IInteractable.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\Interactable.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\InteractionManager.cs" />
+     <Compile Include="Assets\D_Quester\Conversation\ItemRequirement.cs" />
      <Compile Include="Assets\D_Quester\Enums\DEnumInfo.cs" />
      <Compile Include="Assets\D_Quester\Enums\Enums.cs" />
      <Compile Include="Assets\D_Quester\Enums\QuestNodeState.cs" />
      <Compile Include="Assets\D_Quester\Extensions.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestNamedProgresser.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
+     <Compile Include="Assets\D_Quester\Inventory\CapacityUnit.cs" />
+     <Compile Include="Assets\D_Quester\Inventory\Inventory.cs" />
+     <Compile Include="Assets\D_Quester\Inventory\Item.cs" />
      <Compile Include="Assets\D_Quester\Quest.cs" />
      <Compile Include="Assets\D_Quester\QuestJournal.cs" />
      <Compile Include="Assets\D_Quester\QuestNode.cs" />
@@ -65,20 +80,10 @@
      <Compile Include="Assets\D_Quester\Rewarders\IntRewarder.cs" />
      <Compile Include="Assets\D_Quester\Rewarders\Rewarder.cs" />
      <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
-     <Compile Include="Assets\Game Scripts\Collectable.cs" />
-     <Compile Include="Assets\Game Scripts\Conversable.cs" />
-     <Compile Include="Assets\Game Scripts\Conversation.cs" />
-     <Compile Include="Assets\Game Scripts\ConversationManager.cs" />
-     <Compile Include="Assets\Game Scripts\Dialog.cs" />
      <Compile Include="Assets\Game Scripts\DingoSpawner.cs" />
      <Compile Include="Assets\Game Scripts\Droper.cs" />
      <Compile Include="Assets\Game Scripts\Hurtable.cs" />
      <Compile Include="Assets\Game Scripts\IDeath.cs" />
-     <Compile Include="Assets\Game Scripts\IInteractable.cs" />
-     <Compile Include="Assets\Game Scripts\Interactable.cs" />
-     <Compile Include="Assets\Game Scripts\InteractionManager.cs" />
-     <Compile Include="Assets\Game Scripts\Inventory.cs" />
-     <Compile Include="Assets\Game Scripts\InventoryItem.cs" />
      <Compile Include="Assets\Game Scripts\MonsterDeath.cs" />
      <Compile Include="Assets\Game Scripts\MonsterMovement.cs" />
      <Compile Include="Assets\Game Scripts\Movement.cs" />

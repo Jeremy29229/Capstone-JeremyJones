@@ -151,9 +151,9 @@ namespace D_Quester
 		/// </summary>
 		public void StartUp()
 		{
-			print("You just started the quest node: " + Name);
 			if (CurrentState == QuestNodeState.NotStarted)
 			{
+				print("You just started the quest node: " + Name);
 				CurrentState = QuestNodeState.InProgress;
 			}
 		}
