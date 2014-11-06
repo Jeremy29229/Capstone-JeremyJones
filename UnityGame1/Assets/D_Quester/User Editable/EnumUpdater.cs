@@ -35,7 +35,7 @@ namespace D_Quester
 			//Enums.AddEnum("QuestNodeState", "test2");
 			//Enums.AddEnum("QuestNodeState", "test3");
 
-			//Enums.ResetToDefault("QuestNodeState");
+			Enums.ResetToDefault("QuestNodeState");
 
 			//Enums.AddEnum("QuestNodeState", "test1");
 			//Enums.AddEnum("QuestNodeState", "test2");
