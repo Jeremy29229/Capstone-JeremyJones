@@ -5,7 +5,7 @@ using System.Linq;
 namespace D_Quester
 {
 	/// <summary>
-	/// Extension methods. Don't call this class directly.
+	/// Extension methods. Do not call this class directly.
 	/// </summary>
 	public static class Extensions
 	{

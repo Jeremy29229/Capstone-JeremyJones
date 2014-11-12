@@ -16,16 +16,19 @@ namespace D_Quester
 		/// <summary>
 		/// Indicates which method will be subscribing to each event.
 		/// </summary>
+		[Tooltip("")]
 		public string[] RewardableMethods;
 
 		/// <summary>
 		/// Game object that contains the rewarder.
 		/// </summary>
+		[Tooltip("")]
 		public string[] GameObjectsWithRewardNames;
 
 		/// <summary>
 		/// Name of the rewarder to disambiguate between GameObjects with multiple rewarders.
 		/// </summary>
+		[Tooltip("")]
 		public string[] RewarderName;
 
 		private List<EventInfo> eventinfos = new List<EventInfo>();

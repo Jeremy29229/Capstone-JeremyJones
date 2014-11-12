@@ -9,7 +9,6 @@ public enum DialogMode { DynamiclyFitOptions, StaticFitMaxOptions };
 /// </summary>
 public class ConversationDisplayer : MonoBehaviour
 {
-
 	public float NPCDialogSizePercentage = 0.25f;
 	public Vector2 NPCDialogPaddingPercentage = new Vector2(0.05f, 0.10f);
 	public float NPCNameHeightPercentage = 0.2f;

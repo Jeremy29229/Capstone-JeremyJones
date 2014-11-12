@@ -5,14 +5,21 @@ using UnityEngine;
 namespace D_Quester
 {
 	/// <summary>
-	/// Represents anything that needs to remotely reward one or more rewardable classes.
+	/// Represents anything that needs to remotely reward one or more rewardable components.
 	/// </summary>
 	public class QuestRewarder : MonoBehaviour
 	{
 		/// <summary>
-		/// List of all rewards this class has to give out.
+		/// List of all rewards this component has to give out.
 		/// </summary>
+		[Tooltip("List of all rewards this component has to give out.")]
 		public Rewarder[] rewarders;
+		
+		/// <summary>
+		/// Allow QuestNode to deliver rewards when it is completed.
+		/// </summary>
+		[HideInInspector]
+		public bool GiveReward = false;
 
 		/// <summary>
 		/// When called, triggers all individual rewarders events to reward every object listening with their specified rewards.
@@ -24,8 +31,6 @@ namespace D_Quester
 				rewarder.Reward();
 			}
 		}
-
-		public bool GiveReward = false;
 
 		void Update()
 		{

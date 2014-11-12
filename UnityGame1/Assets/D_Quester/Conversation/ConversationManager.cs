@@ -6,10 +6,26 @@ using System.Linq;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class ConversationManager : MonoBehaviour
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="responseName"></param>
 		public delegate void ResponseDelegate(string responseName);
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public event ResponseDelegate ResponseEvent;
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="responseName"></param>
 		public virtual void OnResponseEvent(string responseName)
 		{
 			if (ResponseEvent != null)
@@ -69,6 +85,10 @@ namespace D_Quester
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="d"></param>
 		public void ProcessDialog(Dialog d)
 		{
 			if (d == null)
@@ -114,6 +134,10 @@ namespace D_Quester
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="choiceIndex"></param>
 		public void ProcessDialog(int choiceIndex)
 		{
 			DialogResponse choice = null;
@@ -122,7 +146,7 @@ namespace D_Quester
 			if (!ignoreSelection && choiceIndex < last.Responses.Length)
 			{
 				choice = last.Responses[choiceIndex];
-				ResponseEvent(choice.DialogResponseName);
+				OnResponseEvent(choice.DialogResponseName);
 				if (!ignoreSelection)
 				{
 					choice.NumTimesSelected++;
@@ -138,7 +162,7 @@ namespace D_Quester
 				{
 					foreach (var item in choice.Items)
 					{
-						if (item.takeItems)
+						if (item.AreItemsTaken)
 						{
 							inventory.Remove(item.ItemName, item.Amount);
 						}

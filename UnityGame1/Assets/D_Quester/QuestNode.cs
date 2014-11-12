@@ -10,44 +10,51 @@ namespace D_Quester
 	/// </summary>
 	public class QuestNode : MonoBehaviour
 	{
+		/// <summary>
+		/// The default state new QuestNodes will have based on the settings selected in the D_Quester options window.
+		/// </summary>
 		public static QuestNodeState defaultState;
 
+		/// <summary>
+		/// The initial state of the QuestNode. The default for newly created nodes can be changed in the settings window.
+		/// </summary>
+		[Tooltip("The initial state of the QuestNode. The default for newly created nodes can be changed in the settings window.")]
 		public QuestNodeState StartingState = defaultState;
 
 		/// <summary>
-		/// 
+		/// Next branch of QuestPaths that will start once this QuestNode is marked as completed.
 		/// </summary>
+		[Tooltip("Next branch of QuestPaths that will start once this QuestNode is marked as completed.")]
 		public QuestPath NextPathIfCompleted;
-		
-		/// <summary>
-		/// 
-		/// </summary>
-		public QuestNode nextNodeIfNoPath;
 
 		/// <summary>
-		/// 
+		/// The time this node is completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.
 		/// </summary>
+		[Tooltip("The time this node is completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.")]
 		public DateTime CompletionTime;
 
-
 		/// <summary>
-		/// 
+		/// Method in this QuestNode that will be called when one called by event.
 		/// </summary>
-		public string[] QuestObjectMethod;
+		[Tooltip("Method in this QuestNode that will be called when one called by event.")]
+		public QuestNodeMethod[] QuestNodeMethodSubscriptions;
 		
 		/// <summary>
-		/// 
+		/// Name of the GameObject that contains the component with the desired event.
 		/// </summary>
+		[Tooltip("Name of the GameObject that contains the component with the desired event.")]
 		public string[] GameObjectWithEventComponentName;
 		
 		/// <summary>
-		/// 
+		/// Name of component with the desired event.
 		/// </summary>
+		[Tooltip("Name of component with the desired event.")]
 		public string[] ComponentWithEvent;
 		
 		/// <summary>
-		/// 
+		/// Name of event that will be listened to by this QuestNode.
 		/// </summary>
+		[Tooltip("Name of event that will be listened to by this QuestNode.")]
 		public string[] eventName;
 
 		private List<EventInfo> eventinfos;
@@ -56,7 +63,7 @@ namespace D_Quester
 
 		void OnEnable()
 		{
-			if (QuestObjectMethod.Length != GameObjectWithEventComponentName.Length || GameObjectWithEventComponentName.Length != ComponentWithEvent.Length || ComponentWithEvent.Length != eventName.Length)
+			if (QuestNodeMethodSubscriptions.Length != GameObjectWithEventComponentName.Length || GameObjectWithEventComponentName.Length != ComponentWithEvent.Length || ComponentWithEvent.Length != eventName.Length)
 			{
 				throw new UnityException("Invalid quest object configuration");
 			}
@@ -65,11 +72,11 @@ namespace D_Quester
 			classContainEvent = new List<object>();
 			dels = new List<Delegate>();
 
-			for (int i = 0; i < QuestObjectMethod.Length; i++)
+			for (int i = 0; i < QuestNodeMethodSubscriptions.Length; i++)
 			{
 				classContainEvent.Add(GameObject.Find(GameObjectWithEventComponentName[i]).GetComponent(ComponentWithEvent[i]));
 				eventinfos.Add(classContainEvent[i].GetType().GetEvent(eventName[i]));
-				dels.Add(Delegate.CreateDelegate(eventinfos[i].EventHandlerType, this, this.GetType().GetMethod(QuestObjectMethod[i])));
+				dels.Add(Delegate.CreateDelegate(eventinfos[i].EventHandlerType, this, this.GetType().GetMethod(QuestNodeMethodSubscriptions[i].ToString())));
 				eventinfos[i].AddEventHandler(classContainEvent[i], dels[i]);
 			}
 
@@ -79,7 +86,7 @@ namespace D_Quester
 
 		void OnDisable()
 		{
-			for (int i = 0; i < QuestObjectMethod.Length; i++)
+			for (int i = 0; i < QuestNodeMethodSubscriptions.Length; i++)
 			{
 				eventinfos[i].RemoveEventHandler(classContainEvent[i], dels[i]);
 			}
@@ -90,33 +97,39 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Name of the quest object. Can be printed or displayed to indicate progress to the player.
+		/// Name of the QuestNode. Can be printed or displayed to indicate progress to the player.
 		/// </summary>
-		public string Name;
+		[Tooltip("Name of the QuestNode. Can be printed or displayed to indicate progress to the player.")]
+		public string QuestNodeName;
 
 		/// <summary>
-		/// Number of objectives this object has until it will be marked as finished.
+		/// Number of objectives this node has until it will be marked as finished.
 		/// </summary>
+		[Tooltip("Number of objectives this node has until it will be marked as finished.")]
 		public int NumObjectives;
 
 		/// <summary>
 		/// Number of objectives currently completed.
 		/// </summary>
+		[HideInInspector]
 		public int ObjectivesCompleted;
 
 		/// <summary>
 		/// Holds all the rewards this object will distribute when this node is completed.
 		/// </summary>
+		[Tooltip("Holds all the rewards this object will distribute when this node is completed.")]
 		public QuestRewarder QuestRewarder;
 
 		/// <summary>
 		/// List of acceptable strings that will advance the number of completed objectives.
 		/// </summary>
+		[Tooltip("List of acceptable strings that will advance the number of completed objectives")]
 		public List<string> NamedObjectives;
 
 		/// <summary>
 		/// Last state of the object.
 		/// </summary>
+		[HideInInspector]
 		public QuestNodeState PreviousState { get; private set; }
 
 		private QuestNodeState _currentState;
@@ -124,6 +137,7 @@ namespace D_Quester
 		/// <summary>
 		///	Current state of the object. Automatically updates the previous state. 
 		/// </summary>
+		[HideInInspector]
 		public QuestNodeState CurrentState
 		{
 			get
@@ -143,6 +157,7 @@ namespace D_Quester
 		/// <summary>
 		/// Indicates if object should be hidden from the player. This could be used by a GUI to decide what to populate a task list with.
 		/// </summary>
+		[HideInInspector]
 		public bool IsHiddenFromPlayer = false;
 
 		/// <summary>
@@ -153,7 +168,7 @@ namespace D_Quester
 		{
 			if (CurrentState == QuestNodeState.NotStarted)
 			{
-				print("You just started the quest node: " + Name);
+				print("You just started the quest node: " + QuestNodeName);
 				CurrentState = QuestNodeState.InProgress;
 			}
 		}
@@ -167,11 +182,11 @@ namespace D_Quester
 			if (CurrentState == QuestNodeState.InProgress)
 			{
 				ObjectivesCompleted++;
-				print("You just progressed the quest node: " + Name);
+				print("You just progressed the quest node: " + QuestNodeName);
 
 				if (ObjectivesCompleted == NumObjectives)
 				{
-					print("You just finished the quest node: " + Name);
+					print("You just finished the quest node: " + QuestNodeName);
 
 					if (QuestRewarder != null)
 					{
@@ -195,7 +210,7 @@ namespace D_Quester
 				if (ObjectivesCompleted != 0)
 				{
 					ObjectivesCompleted = 0;
-					print("Your progress in: " + Name + " has just been reset");
+					print("Your progress in: " + QuestNodeName + " has just been reset");
 				}
 			}
 		}
@@ -212,7 +227,7 @@ namespace D_Quester
 				if (ObjectivesCompleted != 0)
 				{
 					ObjectivesCompleted--;
-					print("You have taken a step back in: " + Name);
+					print("You have taken a step back in: " + QuestNodeName);
 				}
 			}
 		}

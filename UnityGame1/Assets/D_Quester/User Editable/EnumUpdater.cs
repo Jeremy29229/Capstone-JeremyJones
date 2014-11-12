@@ -10,11 +10,6 @@ namespace D_Quester
 	public class EnumUpdater : MonoBehaviour
 	{
 		/// <summary>
-		/// Proof of live update.
-		/// </summary>
-		public QuestNodeState CurrentQuestNodeStateEnums;
-
-		/// <summary>
 		/// Runs the YourEnumChanges function whenever "Run Enum Updater" button is clicked.
 		/// </summary>
 		public void RunEnumUpdater()
@@ -35,7 +30,7 @@ namespace D_Quester
 			//Enums.AddEnum("QuestNodeState", "test2");
 			//Enums.AddEnum("QuestNodeState", "test3");
 
-			Enums.ResetToDefault("QuestNodeState");
+			//Enums.ResetToDefault("QuestNodeState");
 
 			//Enums.AddEnum("QuestNodeState", "test1");
 			//Enums.AddEnum("QuestNodeState", "test2");

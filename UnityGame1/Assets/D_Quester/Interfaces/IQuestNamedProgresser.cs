@@ -12,14 +12,14 @@ namespace D_Quester
 	public interface IQuestNamedProgresser
 	{
 		/// <summary>
-		/// Event the quest node needs to be subscribe to in order to be modified.
+		/// Event the Quest Node needs to be subscribe to in order to be modified.
 		/// </summary>
 		event NamedProgressionHandler NamedProgressionEvent;
 		
 		/// <summary>
 		/// Calls NamedProgressionEvent with null handling.
 		/// </summary>
-		/// <param name="objectiveName">Name of the objective being completed</param>
+		/// <param name="objectiveName">Name of the objective being completed.</param>
 		void OnNamedProgressionEvent(string objectiveName);
 	}
 }

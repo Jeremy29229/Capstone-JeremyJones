@@ -11,12 +11,14 @@ namespace D_Quester
 		/// <summary>
 		/// Quest node to be watched for state.
 		/// </summary>
+		[Tooltip("Quest node to be watched for state.")]
 		public QuestNode Requirement;
 
 		/// <summary>
 		/// State or states the quest object must be in for this Quest Requirement to be met.
 		/// By default, QuestObjectState is a bit field backed enumeration allowing for the used of the | operator to signify multiple states.
 		/// </summary>
+		[Tooltip("State or states the quest object must be in for this Quest Requirement to be met.")]
 		public QuestNodeState RequiredStates;
 
 		/// <summary>

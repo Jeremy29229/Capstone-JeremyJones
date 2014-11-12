@@ -7,7 +7,7 @@ namespace D_Quester
 	public interface IInteractable
 	{
 		/// <summary>
-		/// Gets called by Interactable script when a player attempts to interact with the game object.
+		/// Gets called by Interactable script when a player attempts to interact with the GameObject.
 		/// </summary>
 		void InteractWith();
 	}

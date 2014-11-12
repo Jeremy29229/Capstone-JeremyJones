@@ -5,17 +5,21 @@ using System.Collections.Generic;
 
 namespace D_Quester
 {
-	//capacity units: num items, carry weight
+	/// <summary>
+	/// 
+	/// </summary>
 	public class Inventory : MonoBehaviour
 	{
 		/// <summary>
-		/// 
+		/// This represents the maximum number of items the inventory can hold in the form of quantity or carry weight depending on the inventories configuration.
 		/// </summary>
+		[Tooltip("This represents the maximum number of items the inventory can hold in the form of quantity or carry weight depending on the inventories configuration.")]
 		public int Capacity = 100;
 
 		/// <summary>
-		/// 
+		/// The weight or amount of items that are currently in the inventory.
 		/// </summary>
+		[Tooltip("The weight or amount of items that are currently in the inventory.")]
 		public int currentCapacity = 0;
 
 		/// <summary>

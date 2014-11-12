@@ -12,21 +12,25 @@ namespace D_Quester
 		/// Delegate for remotely modifying Rewardable class.
 		/// </summary>
 		/// <param name="rewardInstance">The value added to the RewardableInt.</param>
+		[HideInInspector]
 		public delegate bool RewardDel(T rewardInstance);
 
 		/// <summary>
 		/// Name that represents this rewarder.
 		/// </summary>
+		[Tooltip("Name that represents this rewarder.")]
 		public string Name;
 
 		/// <summary>
 		/// Event that Rewardables must subscribe to.
 		/// </summary>
+		[HideInInspector]
 		public event RewardDel RewardEvent;
 
 		/// <summary>
 		/// Instance that will be given to subscribed Rewardables.
 		/// </summary>
+		[Tooltip("Instance that will be given to subscribed Rewardables.")]
 		public T RewardInstance;
 
 		protected virtual void OnStateChange()

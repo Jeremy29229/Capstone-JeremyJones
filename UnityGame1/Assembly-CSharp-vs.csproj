@@ -58,13 +58,14 @@
      <Compile Include="Assets\D_Quester\Conversation\Interactable.cs" />
      <Compile Include="Assets\D_Quester\Conversation\InteractionManager.cs" />
      <Compile Include="Assets\D_Quester\Conversation\ItemRequirement.cs" />
+     <Compile Include="Assets\D_Quester\Enums\CapacityUnit.cs" />
      <Compile Include="Assets\D_Quester\Enums\DEnumInfo.cs" />
      <Compile Include="Assets\D_Quester\Enums\Enums.cs" />
+     <Compile Include="Assets\D_Quester\Enums\QuestNodeMethod.cs" />
      <Compile Include="Assets\D_Quester\Enums\QuestNodeState.cs" />
      <Compile Include="Assets\D_Quester\Extensions.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestNamedProgresser.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
-     <Compile Include="Assets\D_Quester\Inventory\CapacityUnit.cs" />
      <Compile Include="Assets\D_Quester\Inventory\Inventory.cs" />
      <Compile Include="Assets\D_Quester\Inventory\Item.cs" />
      <Compile Include="Assets\D_Quester\Quest.cs" />

@@ -2,9 +2,17 @@
 
 namespace D_Quester
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class Correspondence : MonoBehaviour
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public Conversation Current;
-		public Conversation[] Conversations;
+
+		//Make random correspsonsenc public Conversation[] Conversations;
 	}
 }

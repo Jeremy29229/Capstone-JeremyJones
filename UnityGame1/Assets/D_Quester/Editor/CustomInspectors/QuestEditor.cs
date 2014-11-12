@@ -30,23 +30,6 @@ namespace D_Quester
 
 			if (questInstance != null)
 			{
-				//DrawDefaultInspector();
-				//m_Property = m_Object.FindProperty("gaob");
-				//EditorGUILayout.PropertyField(m_Property, new GUIContent("MyLabel"), true);
-				//m_Object.ApplyModifiedProperties();
-
-				//EditorGUILayout.PropertyField(
-				//if (quest.CurrentPath != null)
-				//{
-				//	quest.CurrentPath.tacos = EditorGUILayout.IntField("Tacos", quest.CurrentPath.tacos);
-				//}
-
-				//m_Property = m_Object.FindProperty("StartingPath");
-				//EditorGUILayout.PropertyField(m_Property, new GUIContent("StartingPath"), true);
-				//m_Object.ApplyModifiedProperties();		
-
-
-				//questInstanceObject.FindProperty("Title") = "EditorGUILayout.TextField(
 
 				questInstance.Title = EditorGUILayout.TextField("Title", questInstance.Title);
 
@@ -54,7 +37,7 @@ namespace D_Quester
 				EditorGUI.indentLevel++;
 				if (showStartingPath)
 				{
-					EditorGUILayout.PropertyField(questInstanceObject.FindProperty("StartingPath"), new GUIContent(""));
+					EditorGUILayout.PropertyField(questInstanceObject.FindProperty("StartingPath"));
 					if (questInstance.StartingPath != null)
 					{
 						questInstance.StartingPath.QuestPathName = EditorGUILayout.TextField("Quest Path Name", questInstance.StartingPath.QuestPathName);

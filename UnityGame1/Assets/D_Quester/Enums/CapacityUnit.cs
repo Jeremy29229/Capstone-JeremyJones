@@ -5,5 +5,8 @@ using System.Text;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum CapacityUnit { NumItemStacks, CarryWeight };
 }

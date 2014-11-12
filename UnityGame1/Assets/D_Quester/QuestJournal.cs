@@ -11,6 +11,7 @@ namespace D_Quester
 		/// <summary>
 		/// List of quests.
 		/// </summary>
+		[Tooltip("List of quests.")]
 		public List<Quest> Quests;
 	}
 }

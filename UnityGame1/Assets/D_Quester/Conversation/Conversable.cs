@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class Conversable : MonoBehaviour, IInteractable
 	{
 		private Correspondence correspondence;
@@ -17,6 +20,9 @@ namespace D_Quester
 			cm = GameObject.Find("ConvoGUI").GetComponent<ConversationManager>();
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void InteractWith()
 		{
 			GetComponent<Interactable>().IsActive = false;

@@ -11,39 +11,30 @@ namespace D_Quester
 		/// <summary>
 		/// Name of the QuestPath. Useful for Identifying the correct QuestPath in a GameObject.
 		/// </summary>
+		[Tooltip("Name of the QuestPath. Useful for Identifying the correct QuestPath in a GameObject.")]
 		public string QuestPathName;
 
 		/// <summary>
-		/// All node options for this QuestPath
+		/// All node options for this QuestPath.
 		/// </summary>
+		[Tooltip("All node options for this QuestPath.")]
 		public QuestNode[] QuestNodes;
 
 		/// <summary>
 		/// Becomes the next path a quest will take when a node is completed.
 		/// </summary>
+		[Tooltip("Becomes the next path a quest will take when a node is completed.")]
 		public QuestPath SelectedPath = null;
 		
 		/// <summary>
 		/// Indicates if this path is finished or not.
 		/// </summary>
+		[Tooltip("Indicates if this path is finished or not.")]
 		public bool isCompleted = false;
 
 		private bool hasAnyNodeFinished = false;
 		private QuestNode selectedNode = null;
 		private bool isActivePath = true;
-
-		/// <summary>
-		/// Obsolete?
-		/// </summary>
-		/// <param name="node"></param>
-		/// <returns></returns>
-		public static QuestPath MakeSingleNodePath(QuestNode node)
-		{
-			QuestPath p = new QuestPath();
-			p.QuestNodes = new QuestNode[1];
-			p.QuestNodes[0] = node;
-			return p;
-		}
 
 		void Update()
 		{
@@ -66,10 +57,6 @@ namespace D_Quester
 					if (selectedNode.NextPathIfCompleted != null)
 					{
 						SelectedPath = selectedNode.NextPathIfCompleted;
-					}
-					else if (selectedNode.nextNodeIfNoPath != null)
-					{
-						SelectedPath = MakeSingleNodePath(selectedNode.nextNodeIfNoPath);
 					}
 					
 					isCompleted = true;

@@ -33,7 +33,7 @@ namespace D_Quester
 			EditorGUI.indentLevel++;
 			if (showSelectedPath)
 			{
-				EditorGUILayout.PropertyField(questPathInstanceObject.FindProperty("SelectedPath"), new GUIContent(""));
+				EditorGUILayout.PropertyField(questPathInstanceObject.FindProperty("SelectedPath"));
 				if (questPathInstance.SelectedPath != null)
 				{
 					questPathInstance.SelectedPath.QuestPathName = EditorGUILayout.TextField("Quest Path Name", questPathInstance.SelectedPath.QuestPathName);

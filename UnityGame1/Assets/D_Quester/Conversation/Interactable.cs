@@ -9,16 +9,51 @@ namespace D_Quester
 	/// </summary>
 	public class Interactable : MonoBehaviour
 	{
-		private IInteractable behavior;
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public float InteractionRadius = 2.0f;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public KeyCode InteractionKey = KeyCode.E;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public string PlayerObjectName = "Player";
-		private GameObject Player;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public bool IsActive = true;
-		private Canvas UI;
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public string Action;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public string InteractableName;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Tooltip("")]
 		public string AdditionalInformation = "";
+
+		private IInteractable behavior;
+		private GameObject Player;
+		private Canvas UI;
 
 		void Start()
 		{
@@ -41,6 +76,9 @@ namespace D_Quester
 			GameObject.Find("InteractionManager").GetComponent<InteractionManager>().Interactables.Add(gameObject);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void InteractionUpdate()
 		{
 			if (Vector3.Distance(Player.transform.position, gameObject.transform.position) <= InteractionRadius)
@@ -57,6 +95,9 @@ namespace D_Quester
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public void updateGUIText()
 		{
 			UI.GetComponentInChildren<Text>().text = "Press " + InteractionKey.ToString() + " to " + Action + " " + InteractableName;
