@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace D_Quester
+﻿namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// All the different capacity configurations for the Inventory script.
 	/// </summary>
 	public enum CapacityUnit { NumItemStacks, CarryWeight };
 }

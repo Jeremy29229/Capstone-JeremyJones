@@ -4,56 +4,56 @@ using System;
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// A component representing a dialog response the player may choose in response to an NPC dialog.
 	/// </summary>
 	public class DialogResponse : MonoBehaviour
 	{
 		/// <summary>
-		/// 
+		/// Name of this DialogResponse.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Name of this DialogResponse.")]
 		public string DialogResponseName = "";
 
 		/// <summary>
-		/// 
+		/// Resulting NPC dialog if this dialog responses is selected by the player.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Resulting NPC dialog if this dialog responses is selected by the player.")]
 		public Dialog Resulting;
 
 		/// <summary>
-		/// 
+		/// If not null, will change the current starting conversation to this if this dialog response is selected.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("If not null, will change the current starting conversation to this if this dialog response is selected.")]
 		public Conversation NewCurrent;
 
 		/// <summary>
-		/// 
+		/// Text displayed to the player.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Text displayed to the player.")]
 		public string Text = "";
 
 		/// <summary>
-		/// 
+		/// Should this dialog response only be selectable once?
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Should this dialog response only be selectable once?")]
 		public bool IsOneTimeOption = false;
 
 		/// <summary>
-		/// 
+		/// The number of times this DialogResponse has been selected by the player.
 		/// </summary>
-		[Tooltip("")]
+		[HideInInspector]
 		public int NumTimesSelected = 0;
 
 		/// <summary>
-		/// 
+		/// An array of all the item requirements for this DialogResponse to appear for the player.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("An array of all the item requirements for this DialogResponse to appear for the player.")]
 		public ItemRequirement[] Items;
 
 		/// <summary>
-		/// 
+		/// Required state a certain QuestNode for this dialog option to be selectable by the player.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Required state a certain QuestNode for this dialog option to be selectable by the player.")]
 		public QuestRequirement requirement;
 	}
 }

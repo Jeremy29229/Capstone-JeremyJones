@@ -11,16 +11,19 @@ namespace D_Quester
 		/// <summary>
 		/// Title of the quest.
 		/// </summary>
+		[Tooltip("Title of the quest.")]
 		public string Title;
 
 		/// <summary>
-		/// Start path or collection of quest nodes. The first node to complete becomes the chosen path.
+		/// Starting path or collection of quest nodes. The first node to be completed becomes the chosen path.
 		/// </summary>
+		[Tooltip("Starting path or collection of quest nodes. The first node to be completed becomes the chosen path.")]
 		public QuestPath StartingPath;
 
 		/// <summary>
 		/// Current path the quest is on.
 		/// </summary>
+		[Tooltip("Current path the quest is on.")]
 		public QuestPath CurrentPath;
 
 		private void Advance(QuestPath newPath)

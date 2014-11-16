@@ -13,6 +13,7 @@ namespace D_Quester
 		/// <summary>
 		/// The default state new QuestNodes will have based on the settings selected in the D_Quester options window.
 		/// </summary>
+		[HideInInspector]
 		public static QuestNodeState defaultState;
 
 		/// <summary>
@@ -28,9 +29,9 @@ namespace D_Quester
 		public QuestPath NextPathIfCompleted;
 
 		/// <summary>
-		/// The time this node is completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.
+		/// The time this node was completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.
 		/// </summary>
-		[Tooltip("The time this node is completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.")]
+		[Tooltip("The time this node was completed. This is used to break ties if two nodes in the same QuestPath finish around the same time.")]
 		public DateTime CompletionTime;
 
 		/// <summary>
@@ -38,19 +39,19 @@ namespace D_Quester
 		/// </summary>
 		[Tooltip("Method in this QuestNode that will be called when one called by event.")]
 		public QuestNodeMethod[] QuestNodeMethodSubscriptions;
-		
+
 		/// <summary>
 		/// Name of the GameObject that contains the component with the desired event.
 		/// </summary>
 		[Tooltip("Name of the GameObject that contains the component with the desired event.")]
 		public string[] GameObjectWithEventComponentName;
-		
+
 		/// <summary>
 		/// Name of component with the desired event.
 		/// </summary>
 		[Tooltip("Name of component with the desired event.")]
 		public string[] ComponentWithEvent;
-		
+
 		/// <summary>
 		/// Name of event that will be listened to by this QuestNode.
 		/// </summary>
@@ -155,13 +156,13 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Indicates if object should be hidden from the player. This could be used by a GUI to decide what to populate a task list with.
+		/// Indicates if this QuestNode should be hidden from the player. This could be used by a GUI to decide what to populate a task list with.
 		/// </summary>
 		[HideInInspector]
 		public bool IsHiddenFromPlayer = false;
 
 		/// <summary>
-		/// Changes the quest object to be "in-progress" if it is currently in the "not started" state.
+		/// Changes the QuestNode to be "in-progress" if it is currently in the "Not Started" Quest Node State.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
 		public void StartUp()
@@ -174,7 +175,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Increments the number of objectives completed in the quest object if the quest object is in-progress.
+		/// Increments the number of objectives completed in the QuestNode if it is the "In Progress" Quest Node State.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
 		public void Progress()
@@ -200,7 +201,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Changes the quest object's completed objectives to have a count of 0 if the quest object is in-progress.
+		/// Changes the QuestNode's completed objectives to have a count of 0 if the QuestNode is in the "In Progress" Quest Node State.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
 		public void ResetProgress()
@@ -216,8 +217,8 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Decrements the number of objectives completed in the quest object if the quest object is in-progress.
-		/// Will not do anything if the number of objectives is 0.
+		/// Decrements the number of objectives completed in the QuestNode if the QuestNode is in the "In Progress" Quest Node State.
+		/// Will not do anything if the number of objectives is at 0.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
 		public void Regress()
@@ -233,7 +234,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Calls the StartUp() function of the quest object has the string passed in on its named parameter list.
+		/// Calls the StartUp() function of the QuestNode if it has the string passed in on its named parameter list.
 		/// This method is useful for quests nodes that want to advance once a, b, and c happen but QuestProgress emits a, b, c, and d.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
@@ -247,7 +248,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Calls the Progress() function of the quest object has the string passed in on its named parameter list.
+		/// Calls the Progress() function of the QuestNode if it has the string passed in on its named parameter list.
 		/// This method is useful for quests nodes that want to advance once a, b, and c happen but QuestProgress emits a, b, c, and d.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
@@ -261,7 +262,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Calls the ResetProgress() function of the quest object has the string passed in on its named parameter list.
+		/// Calls the ResetProgress() function of the QuestNode if it has the string passed in on its named parameter list.
 		/// This method is useful for quests nodes that want to advance once a, b, and c happen but QuestProgress emits a, b, c, and d.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>
@@ -275,7 +276,7 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// Calls the Regress() function of the quest object has the string passed in on its named parameter list.
+		/// Calls the Regress() function of the QuestNode if it has the string passed in on its named parameter list.
 		/// This method is useful for quests nodes that want to advance once a, b, and c happen but QuestProgress emits a, b, c, and d.
 		/// Can be subscribed to ProgressionEvent which is contained in any class that implements IQuestProgresser.
 		/// </summary>

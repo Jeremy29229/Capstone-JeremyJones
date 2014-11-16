@@ -15,6 +15,9 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>4.6.0b20</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,9 +94,6 @@
     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestPathRelative.cs" />
     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestRelative.cs" />
     <Compile Include="Assets\D_Quester\Editor\QuestNodeStateEditorWindow.cs" />
-    <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
-    <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
-    <None Include="Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

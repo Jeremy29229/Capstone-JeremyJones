@@ -14,9 +14,9 @@ namespace D_Quester
 		/// </summary>
 		[Tooltip("List of all rewards this component has to give out.")]
 		public Rewarder[] rewarders;
-		
+
 		/// <summary>
-		/// Allow QuestNode to deliver rewards when it is completed.
+		/// Allows QuestNode to deliver rewards when it is completed.
 		/// </summary>
 		[HideInInspector]
 		public bool GiveReward = false;

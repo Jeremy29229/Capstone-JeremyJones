@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// A component that can hold D_Quester.Item(s) or any class that inherits from item.
 	/// </summary>
 	public class Inventory : MonoBehaviour
 	{
@@ -23,35 +23,41 @@ namespace D_Quester
 		public int currentCapacity = 0;
 
 		/// <summary>
-		/// 
+		/// The inventory's capacity configuration.
 		/// </summary>
+		[Tooltip("The inventory's capacity configuration.")]
 		public CapacityUnit capacityType;
 
 		/// <summary>
-		/// 
+		/// List of items currently in the inventory.
 		/// </summary>
+		[Tooltip("List of items currently in the inventory.")]
 		public List<Item> items = new List<Item>();
 
 		/// <summary>
-		/// 
+		/// Indicates what key can be pressed to print the contents of the inventory to the debug log.
 		/// </summary>
+		[Tooltip("Indicates what key can be pressed to print the contents of the inventory to the debug log.")]
 		public KeyCode InventoryPrintKey;
 
 		/// <summary>
-		/// 
+		/// Delegate for picking up items.
 		/// </summary>
-		/// <param name="itemName"></param>
+		/// <param name="itemName">Name of the picked up item.</param>
+		[HideInInspector]
 		public delegate void PickupDelegate(string itemName);
 
 		/// <summary>
-		/// 
+		/// Event for picking up items.
 		/// </summary>
+		[HideInInspector]
 		public event PickupDelegate PickupEvent;
 
 		/// <summary>
-		/// 
+		/// Called whenever an item is picked up.
 		/// </summary>
-		/// <param name="name"></param>
+		/// <param name="name">Name of the picked up item.</param>
+		[HideInInspector]
 		public virtual void OnPickUpEvent(string name)
 		{
 			if (PickupEvent != null)
@@ -60,9 +66,6 @@ namespace D_Quester
 			}
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
 		void Update()
 		{
 			if (Input.GetKeyDown(InventoryPrintKey))
@@ -72,9 +75,9 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// 
+		/// Formats the inventory's item's name and quantity.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>String representing this inventory.</returns>
 		public override string ToString()
 		{
 			string inventoryString = "";
@@ -98,6 +101,7 @@ namespace D_Quester
 		/// <summary>
 		/// Attempts to add the item to the inventory with capacity and item size logic.
 		/// </summary>
+		/// <param name="item">Item instance to be added.</param>
 		/// <returns>Returns true if the addition was successful.</returns>
 		public bool Add(Item item)
 		{
@@ -134,7 +138,7 @@ namespace D_Quester
 
 					foreach (var inItem in existingItems)
 					{
-						if(remainItemAmount < 0)
+						if (remainItemAmount < 0)
 						{
 							break;
 						}
@@ -181,7 +185,7 @@ namespace D_Quester
 					}
 				}
 			}
-			else if(capacityType == CapacityUnit.CarryWeight)
+			else if (capacityType == CapacityUnit.CarryWeight)
 			{
 				throw new InvalidOperationException("Carry weight not yet supported.");
 			}
@@ -197,13 +201,19 @@ namespace D_Quester
 			return wasSuccessful;
 		}
 
+		/// <summary>
+		/// Attempts to add the item to the inventory with capacity and item size logic.
+		/// </summary>
+		/// <param name="itemName">Name of the item.</param>
+		/// <param name="quantity">Quantity of the item.</param>
+		/// <returns>Returns true if the addition was successful.</returns>
 		public bool Add(string itemName, int quantity = 1)
 		{
 			return Add(new Item(itemName, quantity));
 		}
 
 		/// <summary>
-		/// Attempts to remove item from the inventory if it exists.
+		/// ---NOT YET IMPLEMENTED--- Attempts to remove item from the inventory if it exists. ---NOT YET IMPLEMENTED---
 		/// </summary>
 		/// <returns>Returns true if the item existed in the inventory</returns>
 		public bool Remove(Item item)
@@ -212,36 +222,36 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// 
+		/// ---NOT YET IMPLEMENTED---
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>---NOT YET IMPLEMENTED---</returns>
 		public bool Remove(string itemName, int quantity = 1)
 		{
 			return Remove(new Item(itemName, quantity));
 		}
 
 		/// <summary>
-		/// 
+		/// ---NOT YET IMPLEMENTED---
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>---NOT YET IMPLEMENTED---</returns>
 		public bool AddRange()
 		{
 			throw new NotImplementedException("Method not supported in current D_Quester version.");
 		}
 
 		/// <summary>
-		/// 
+		/// ---NOT YET IMPLEMENTED---
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>---NOT YET IMPLEMENTED---</returns>
 		public bool RemoveRange()
 		{
 			throw new NotImplementedException("Method not supported in current D_Quester version.");
 		}
 
 		/// <summary>
-		/// /
+		/// ---NOT YET IMPLEMENTED---
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>---NOT YET IMPLEMENTED---</returns>
 		public Item[] AddWhatFits()
 		{
 			throw new NotImplementedException("Method not supported in current D_Quester version.");

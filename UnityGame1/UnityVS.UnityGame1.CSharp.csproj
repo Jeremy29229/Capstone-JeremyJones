@@ -7,16 +7,17 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B0ED3641-446B-72C0-8732-629DD002FBD5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>4.6.0b20</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -65,6 +66,7 @@
     <Compile Include="Assets\D_Quester\Conversation\Interactable.cs" />
     <Compile Include="Assets\D_Quester\Conversation\InteractionManager.cs" />
     <Compile Include="Assets\D_Quester\Conversation\ItemRequirement.cs" />
+    <Compile Include="Assets\D_Quester\Enums\CapacityUnit.cs" />
     <Compile Include="Assets\D_Quester\Enums\DEnumInfo.cs" />
     <Compile Include="Assets\D_Quester\Enums\Enums.cs" />
     <Compile Include="Assets\D_Quester\Enums\QuestNodeMethod.cs" />
@@ -72,7 +74,6 @@
     <Compile Include="Assets\D_Quester\Extensions.cs" />
     <Compile Include="Assets\D_Quester\Interfaces\IQuestNamedProgresser.cs" />
     <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
-    <Compile Include="Assets\D_Quester\Enums\CapacityUnit.cs" />
     <Compile Include="Assets\D_Quester\Inventory\Inventory.cs" />
     <Compile Include="Assets\D_Quester\Inventory\Item.cs" />
     <Compile Include="Assets\D_Quester\Quest.cs" />

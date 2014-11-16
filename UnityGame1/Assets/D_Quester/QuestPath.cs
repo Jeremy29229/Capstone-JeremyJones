@@ -3,7 +3,7 @@
 namespace D_Quester
 {
 	/// <summary>
-	/// Holds nodes for a dynamic player choice. The node first marked as completed will become the selected path or node.
+	/// Holds nodes for a dynamic player choice. The node first marked as completed will have its resulting path selected.
 	/// </summary>
 	[System.Serializable]
 	public class QuestPath : MonoBehaviour
@@ -12,7 +12,7 @@ namespace D_Quester
 		/// Name of the QuestPath. Useful for Identifying the correct QuestPath in a GameObject.
 		/// </summary>
 		[Tooltip("Name of the QuestPath. Useful for Identifying the correct QuestPath in a GameObject.")]
-		public string QuestPathName;
+		public string QuestPathName = "";
 
 		/// <summary>
 		/// All node options for this QuestPath.
@@ -25,7 +25,7 @@ namespace D_Quester
 		/// </summary>
 		[Tooltip("Becomes the next path a quest will take when a node is completed.")]
 		public QuestPath SelectedPath = null;
-		
+
 		/// <summary>
 		/// Indicates if this path is finished or not.
 		/// </summary>
@@ -58,7 +58,7 @@ namespace D_Quester
 					{
 						SelectedPath = selectedNode.NextPathIfCompleted;
 					}
-					
+
 					isCompleted = true;
 					isActivePath = false;
 				}

@@ -27,7 +27,6 @@ namespace D_Quester
 		private static Dictionary<string, Type> enumerationAdditions = new Dictionary<string, Type>();
 		private static Dictionary<string, Type> enumerationRemovals = new Dictionary<string, Type>();
 		private static List<string> enumerationsWithFlagChanges = new List<string>();
-		//[Obsolete("This code should be removed after it is run in a script at least once.")]
 
 		/// <summary>
 		/// Adds an enumerator to an existing enumeration in D_Quester.
@@ -66,7 +65,7 @@ namespace D_Quester
 
 			List<string> currentEnums = Enum.GetNames(enumeration).ToList();
 
-			foreach ( var pair in enumerationAdditions.Where(x => x.Value == enumeration))
+			foreach (var pair in enumerationAdditions.Where(x => x.Value == enumeration))
 			{
 				currentEnums.Add(pair.Key);
 			}
@@ -152,7 +151,7 @@ namespace D_Quester
 			{
 				string message = "You cannot remove any default enumerators from an enumeration. The default enumerators for " + enumeration.Name + " are:\r\n";
 
-				foreach(string defaultEnumerator in ENUMERATION_INFORMATION[enumeration.Name].DefaultEnumerators)
+				foreach (string defaultEnumerator in ENUMERATION_INFORMATION[enumeration.Name].DefaultEnumerators)
 				{
 					message += defaultEnumerator + "\r\n";
 				}
@@ -204,7 +203,7 @@ namespace D_Quester
 
 			SaveEnumeration(enumeration.Name, enumerationLine, enumeration.HasFlags(), enumUnityFilePath);
 
-			if(enumerationAdditions.Keys.Contains(enumerator))
+			if (enumerationAdditions.Keys.Contains(enumerator))
 			{
 				enumerationAdditions.Remove(enumerator);
 			}
@@ -262,8 +261,8 @@ namespace D_Quester
 			enumerationLine += " }";
 
 			SaveEnumeration(enumeration.Name, enumerationLine, ENUMERATION_INFORMATION[enumeration.Name].HasFlags, enumUnityFilePath);
-			
-			if(!enumerationsWithFlagChanges.Contains(enumeration.Name))
+
+			if (!enumerationsWithFlagChanges.Contains(enumeration.Name))
 			{
 				enumerationsWithFlagChanges.Add(enumeration.Name);
 			}
@@ -285,7 +284,7 @@ namespace D_Quester
 					enumerationRemovals.Add(oldEnumerator, enumeration);
 				}
 			}
-			
+
 		}
 
 		/// <summary>

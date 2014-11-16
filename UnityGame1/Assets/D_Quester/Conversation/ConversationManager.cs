@@ -7,25 +7,28 @@ using System.Linq;
 namespace D_Quester
 {
 	/// <summary>
-	/// 
+	/// Handles the displaying of conversations and the behind the scenes changes associated with the dialog response options.
 	/// </summary>
 	public class ConversationManager : MonoBehaviour
 	{
 		/// <summary>
-		/// 
+		/// Delegate for dialog responses.
 		/// </summary>
 		/// <param name="responseName"></param>
+		[HideInInspector]
 		public delegate void ResponseDelegate(string responseName);
-		
+
 		/// <summary>
-		/// 
+		/// Event for dialog responses.
 		/// </summary>
+		[HideInInspector]
 		public event ResponseDelegate ResponseEvent;
-		
+
 		/// <summary>
-		/// 
+		/// Notifies all subscribes of the dialog response selected by name.
 		/// </summary>
-		/// <param name="responseName"></param>
+		/// <param name="responseName">Name of the dialog response.</param>
+		[HideInInspector]
 		public virtual void OnResponseEvent(string responseName)
 		{
 			if (ResponseEvent != null)
@@ -35,12 +38,10 @@ namespace D_Quester
 		}
 
 		private Canvas UI;
-
 		private GameObject[] buttons;
 		private Text[] responseTextDisplay;
 		private Text npcText;
 		private Text npcName;
-
 		private Inventory inventory;
 		private GameObject player;
 		private Dialog last;
@@ -86,9 +87,9 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// 
+		/// Process the current NPC dialog in a conversation and display all associated dialog responses.
 		/// </summary>
-		/// <param name="d"></param>
+		/// <param name="d">Current dialog being processed.</param>
 		public void ProcessDialog(Dialog d)
 		{
 			if (d == null)
@@ -135,9 +136,9 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// 
+		/// Processes dialog response selected by the player.
 		/// </summary>
-		/// <param name="choiceIndex"></param>
+		/// <param name="choiceIndex">The index of the dialog response selected by the player.</param>
 		public void ProcessDialog(int choiceIndex)
 		{
 			DialogResponse choice = null;

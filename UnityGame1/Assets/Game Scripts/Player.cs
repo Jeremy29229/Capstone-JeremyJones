@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+#pragma warning disable 0414, 0219
 	GameObject UI;
 	Hurtable hurtable;
 	MeshCollider thwakerTrigger;
@@ -41,4 +42,5 @@ public class Player : MonoBehaviour
 			isWeaponActive = !isWeaponActive;
 		}
 	}
+#pragma warning restore 0414, 0219
 }

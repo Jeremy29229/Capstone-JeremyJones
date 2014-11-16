@@ -16,19 +16,19 @@ namespace D_Quester
 		/// <summary>
 		/// Indicates which method will be subscribing to each event.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Indicates which method will be subscribing to each event.")]
 		public string[] RewardableMethods;
 
 		/// <summary>
-		/// Game object that contains the rewarder.
+		/// GameObject that contains the rewarder.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("GameObject that contains the rewarder.")]
 		public string[] GameObjectsWithRewardNames;
 
 		/// <summary>
 		/// Name of the rewarder to disambiguate between GameObjects with multiple rewarders.
 		/// </summary>
-		[Tooltip("")]
+		[Tooltip("Name of the rewarder to disambiguate between GameObjects with multiple rewarders.")]
 		public string[] RewarderName;
 
 		private List<EventInfo> eventinfos = new List<EventInfo>();
@@ -38,15 +38,17 @@ namespace D_Quester
 		/// <summary>
 		/// Underlying type instance being rewarded to.
 		/// </summary>
+		[Tooltip("Underlying type instance being rewarded to.")]
 		public T Value;
 
 		/// <summary>
 		/// Name that represents Rewardable.
 		/// </summary>
+		[Tooltip("Name that represents Rewardable.")]
 		public string Name;
 
 		/// <summary>
-		/// Adds the instance of amount to the underlying Value, if possible.
+		/// Adds the instance of amount to the underlying value, if possible.
 		/// </summary>
 		/// <param name="amount">Instance of generic being added to Value.</param>
 		/// <returns>Return true if addition was successful.</returns>

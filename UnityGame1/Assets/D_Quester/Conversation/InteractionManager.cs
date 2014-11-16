@@ -4,26 +4,35 @@ using System.Collections.Generic;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// Handles the displaying of the interactable's popups and updating the GUI's text appropriately.
+	/// </summary>
 	public class InteractionManager : MonoBehaviour
 	{
 		/// <summary>
-		/// List of the all existing interactables that the placer can see if they are close enough to them. Do not directly add to this list. Use the Interactable script.
+		/// List of the all existing interactables that the player can see if they are close enough to them. Do not directly add to this list. Use the Interactable script.
 		/// </summary>
-		[Tooltip("List of the all existing interactables that the placer can see if they are close enough to them. Do not directly add to this list. Use the Interactable script.")]
+		[Tooltip("List of the all existing interactables that the player can see if they are close enough to them. Do not directly add to this list. Use the Interactable script.")]
 		public List<GameObject> Interactables;
 
 		/// <summary>
-		/// Name of the GameObject the player is in.
+		/// Name of the GameObject that represents the player. The player must have a component of type Inventory for this component to function correctly.
 		/// </summary>
-		[Tooltip("Name of the GameObject the player is in.")]
+		[Tooltip("Name of the GameObject that represents the player. The player must have a component of type Inventory for this component to function correctly.")]
 		public string PlayerObjectName = "Player";
+
+		/// <summary>
+		/// Name of the GameObject is prefabed to the InteractionGUI.
+		/// </summary>
+		[Tooltip("Name of the GameObject is prefabed to the InteractionGUI.")]
+		public string InteractionGUIObjectName = "InteractionGUI";
 
 		private GameObject player;
 		private Canvas UI;
 
 		void Start()
 		{
-			UI = (Canvas)GameObject.Find("InteractionGUI").GetComponent(typeof(Canvas));
+			UI = (Canvas)GameObject.Find(InteractionGUIObjectName).GetComponent(typeof(Canvas));
 			player = GameObject.Find(PlayerObjectName);
 		}
 

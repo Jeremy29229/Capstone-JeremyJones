@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace D_Quester
 {
+	/// <summary>
+	/// Internal class for D_Quester. Do not use.
+	/// </summary>
 	class DEnumInfo
 	{
 		public string Name;

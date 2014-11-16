@@ -12,10 +12,10 @@ namespace D_Quester
 	public interface IQuestProgresser
 	{
 		/// <summary>
-		/// Event the quest node needs to be subscribe to in order to be modified.
+		/// Event QuestNodes needs to be subscribe to in order to be modified.
 		/// </summary>
 		event ProgressionHandler ProgressionEvent;
-		
+
 		/// <summary>
 		/// Calls ProgressionEvent with null handling.
 		/// </summary>
