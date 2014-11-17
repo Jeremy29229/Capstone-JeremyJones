@@ -46,25 +46,40 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuest.cs" />
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuestJournal.cs" />
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuestNode.cs" />
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuestPath.cs" />
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuestRequirement.cs" />
-     <Compile Include="Assets\D_Quester\Editor\Components\AddQuestRewarder.cs" />
-     <Compile Include="Assets\D_Quester\Editor\CustomInspectors\EnumUpdaterEditor.cs" />
-     <Compile Include="Assets\D_Quester\Editor\CustomInspectors\QuestEditor.cs" />
-     <Compile Include="Assets\D_Quester\Editor\CustomInspectors\QuestPathEditor.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateEnumUpdater.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuest.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestJournal.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestJournalRelative.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestNode.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestNodeRelative.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestPath.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestPathRelative.cs" />
-     <Compile Include="Assets\D_Quester\Editor\GameObjects\CreateQuestRelative.cs" />
-     <Compile Include="Assets\D_Quester\Editor\QuestNodeStateEditorWindow.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddConversationComponent.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddConversationComponentWithOthers.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddCorrespondence.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddCorrespondenceWithOthers.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddDialog.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddDialogAndResponse.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\AddDialogResponse.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateBasicNPC.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateCollectable.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateConversationInformation.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateInteractionManager.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\AddInventory.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreateInventory.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreatePlayerI.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Options\QuestNodeStateEditorWindow.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuest.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuestJournal.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuestNode.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuestPath.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuestRequirement.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\AddQuestRewarder.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateEnumUpdater.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreatePlayerQ.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuest.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestJournal.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestJournalRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestNode.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestNodeRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestPath.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestPathRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Quests\CreateQuestRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\EnumUpdaterEditor.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestEditor.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestPathEditor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

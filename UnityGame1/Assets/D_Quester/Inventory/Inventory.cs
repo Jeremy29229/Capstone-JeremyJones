@@ -187,7 +187,21 @@ namespace D_Quester
 			}
 			else if (capacityType == CapacityUnit.CarryWeight)
 			{
-				throw new InvalidOperationException("Carry weight not yet supported.");
+				if (item.Quantity * item.SizeInInventory <= Capacity - currentCapacity)
+				{
+					Item existingItem = items.FirstOrDefault(x => x.ItemName == item.ItemName);
+					if (existingItem == null)
+					{
+						items.Add(item);
+
+					}
+					else
+					{
+						existingItem.Quantity += item.Quantity;
+					}
+					currentCapacity += item.Quantity * item.SizeInInventory;
+					wasSuccessful = true;
+				}
 			}
 
 			if (wasSuccessful)
@@ -213,48 +227,244 @@ namespace D_Quester
 		}
 
 		/// <summary>
-		/// ---NOT YET IMPLEMENTED--- Attempts to remove item from the inventory if it exists. ---NOT YET IMPLEMENTED---
+		/// Attempts to remove item from the inventory if it exists.
 		/// </summary>
-		/// <returns>Returns true if the item existed in the inventory</returns>
+		/// <param name="item">Item instance to be removed.</param>
+		/// <returns>Returns true if the item existed in the inventory.</returns>
 		public bool Remove(Item item)
 		{
-			return false;
+			bool wasSuccessful = false;
+
+			int amountRemaining = item.Quantity;
+
+			Item[] allItems = items.Where(x => x.ItemName == item.ItemName).ToArray();
+			int amountAvailable = 0;
+
+			foreach (Item i in allItems)
+			{
+				amountAvailable += i.Quantity;
+			}
+
+			if (amountAvailable <= amountRemaining)
+			{
+				foreach (Item i in allItems)
+				{
+					if (i.Quantity <= amountRemaining)
+					{
+						items.Remove(i);
+						amountRemaining -= i.Quantity;
+						if (capacityType == CapacityUnit.NumItemStacks)
+						{
+							currentCapacity -= i.Quantity;
+						}
+						else if (capacityType == CapacityUnit.CarryWeight)
+						{
+							currentCapacity -= i.Quantity * i.SizeInInventory;
+						}
+					}
+					else
+					{
+						if (capacityType == CapacityUnit.NumItemStacks)
+						{
+							currentCapacity -= amountRemaining;
+						}
+						else if (capacityType == CapacityUnit.CarryWeight)
+						{
+							currentCapacity -= amountRemaining * i.SizeInInventory;
+						}
+						i.Quantity -= amountRemaining;
+						amountRemaining = 0;
+					}
+				}
+				wasSuccessful = true;
+			}
+
+			return wasSuccessful;
 		}
 
 		/// <summary>
-		/// ---NOT YET IMPLEMENTED---
+		/// Attempts to remove item from the inventory if it exists.
 		/// </summary>
-		/// <returns>---NOT YET IMPLEMENTED---</returns>
+		/// <param name="itemName">Name of the item being removed.</param>
+		/// <param name="quantity">Quantity of the item being removed.</param>
+		/// <returns>Returns true if the item existed in the inventory.</returns>
 		public bool Remove(string itemName, int quantity = 1)
 		{
 			return Remove(new Item(itemName, quantity));
 		}
 
 		/// <summary>
-		/// ---NOT YET IMPLEMENTED---
+		/// Attempts to add all items in the collection passed in. If any items fail to fit into the inventory, none will be added.
 		/// </summary>
-		/// <returns>---NOT YET IMPLEMENTED---</returns>
-		public bool AddRange()
+		/// <returns>Returns true if the operation succeeds.</returns>
+		public bool AddRange(IEnumerable<Item> items)
 		{
-			throw new NotImplementedException("Method not supported in current D_Quester version.");
+			bool wasSuccessful = true;
+
+			foreach (var i in items)
+			{
+				if (!IsItemAddable(i))
+				{
+					wasSuccessful = false;
+					break;
+				}
+			}
+
+			if (wasSuccessful)
+			{
+				foreach (var i in items)
+				{
+					Add(i);
+				}
+			}
+
+			return wasSuccessful;
 		}
 
 		/// <summary>
-		/// ---NOT YET IMPLEMENTED---
+		/// Attempts to remove all items in the collection passed in. If any items fail to be found in the inventory, none will be removed.
 		/// </summary>
-		/// <returns>---NOT YET IMPLEMENTED---</returns>
-		public bool RemoveRange()
+		/// <returns>Returns true if the operation succeeds.</returns>
+		public bool RemoveRange(IEnumerable<Item> items)
 		{
-			throw new NotImplementedException("Method not supported in current D_Quester version.");
+			bool wasSuccessful = true;
+
+			foreach (var i in items)
+			{
+				if (!IsItemRemovable(i))
+				{
+					wasSuccessful = false;
+					break;
+				}
+			}
+
+			if (wasSuccessful)
+			{
+				foreach (var i in items)
+				{
+					Remove(i);
+				}
+			}
+
+			return wasSuccessful;
 		}
 
 		/// <summary>
-		/// ---NOT YET IMPLEMENTED---
+		/// Adds all items that will fit into the inventory.
 		/// </summary>
-		/// <returns>---NOT YET IMPLEMENTED---</returns>
-		public Item[] AddWhatFits()
+		/// <returns>All items that did not fit into the inventory.</returns>
+		public IEnumerable<Item> AddWhatFits(IEnumerable<Item> items)
 		{
-			throw new NotImplementedException("Method not supported in current D_Quester version.");
+			List<Item> leftoverItems = new List<Item>();
+
+			foreach (var i in items)
+			{
+				if (!Add(i))
+				{
+					leftoverItems.Add(i);
+				}
+			}
+
+			return leftoverItems;
+		}
+
+		private bool IsItemAddable(Item item)
+		{
+			bool wasSuccessful = false;
+
+			if (capacityType == CapacityUnit.NumItemStacks)
+			{
+				int remainItemAmount = item.Quantity;
+
+				if (items.FirstOrDefault(x => x.ItemName == item.ItemName) == null)
+				{
+					while (currentCapacity < Capacity && remainItemAmount > 0)
+					{
+						if (item.NumberPerStack < 0 || item.NumberPerStack > item.Quantity)
+						{
+							remainItemAmount = 0;
+							wasSuccessful = true;
+						}
+						else
+						{
+							remainItemAmount -= item.NumberPerStack;
+						}
+					}
+				}
+				else
+				{
+					var existingItems = items.Where(x => x.ItemName == item.ItemName);
+
+					foreach (var inItem in existingItems)
+					{
+						if (remainItemAmount < 0)
+						{
+							break;
+						}
+
+						if (inItem.NumberPerStack < 1)
+						{
+							remainItemAmount = 0;
+							wasSuccessful = true;
+						}
+						else if (inItem.Quantity < inItem.NumberPerStack)
+						{
+							if (remainItemAmount > inItem.NumberPerStack - inItem.Quantity)
+							{
+								remainItemAmount -= inItem.NumberPerStack - inItem.Quantity;
+							}
+							else
+							{
+								remainItemAmount = 0;
+								wasSuccessful = true;
+							}
+						}
+					}
+
+					while (currentCapacity < Capacity && remainItemAmount > 0)
+					{
+						if (item.NumberPerStack < 0 || item.NumberPerStack > item.Quantity)
+						{
+							remainItemAmount = 0;
+							wasSuccessful = true;
+						}
+						else
+						{
+							remainItemAmount -= item.NumberPerStack;
+						}
+					}
+				}
+			}
+			else if (capacityType == CapacityUnit.CarryWeight)
+			{
+				if (item.Quantity * item.SizeInInventory <= Capacity - currentCapacity)
+				{
+					wasSuccessful = true;
+				}
+			}
+
+			return wasSuccessful;
+		}
+		private bool IsItemRemovable(Item item)
+		{
+			bool wasSuccessful = false;
+
+			int amountRemaining = item.Quantity;
+
+			Item[] allItems = items.Where(x => x.ItemName == item.ItemName).ToArray();
+			int amountAvailable = 0;
+
+			foreach (Item i in allItems)
+			{
+				amountAvailable += i.Quantity;
+			}
+
+			if (amountAvailable <= amountRemaining)
+			{
+				wasSuccessful = true;
+			}
+
+			return wasSuccessful;
 		}
 	}
 }

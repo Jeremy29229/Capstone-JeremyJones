@@ -84,8 +84,12 @@
     <Compile Include="Assets\D_Quester\QuestRewarder.cs" />
     <Compile Include="Assets\D_Quester\Rewardables\AbstractRewardable.cs" />
     <Compile Include="Assets\D_Quester\Rewardables\Rewardable.cs" />
+    <Compile Include="Assets\D_Quester\Rewardables\RewardableBool.cs" />
+    <Compile Include="Assets\D_Quester\Rewardables\RewardableFloat.cs" />
     <Compile Include="Assets\D_Quester\Rewardables\RewardableInt.cs" />
     <Compile Include="Assets\D_Quester\Rewarders\AbstractRewarder.cs" />
+    <Compile Include="Assets\D_Quester\Rewarders\BoolRewarder.cs" />
+    <Compile Include="Assets\D_Quester\Rewarders\FloatRewarder.cs" />
     <Compile Include="Assets\D_Quester\Rewarders\IntRewarder.cs" />
     <Compile Include="Assets\D_Quester\Rewarders\Rewarder.cs" />
     <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
