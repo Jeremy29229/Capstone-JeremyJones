@@ -6,3 +6,6 @@ C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\Temp\Unit
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\obj\Debug\Assembly-CSharp.dll
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\obj\Debug\UnityVS.UnityGame1.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Jeremy Jones\Documents\GitHub\Capstone-JeremyJones\UnityGame1\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml

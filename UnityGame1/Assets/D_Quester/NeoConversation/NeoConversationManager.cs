@@ -9,7 +9,7 @@ namespace D_Quester
 	/// <summary>
 	/// Handles the displaying of conversations and the behind the scenes changes associated with the dialog response options.
 	/// </summary>
-	public class ConversationManager : MonoBehaviour
+	public class NeoConversationManager : MonoBehaviour
 	{
 		/// <summary>
 		/// Delegate for dialog responses.
@@ -45,13 +45,13 @@ namespace D_Quester
 
 		private Canvas UI;
 		private GameObject[] buttons;
-		private GameObject[] newButtons;
+		private GameObject[] oldButtons;
 		private Text[] responseTextDisplay;
 		private Text npcText;
 		private Text npcName;
 		private Inventory inventory;
 		private GameObject player;
-		private Dialog last;
+		private NeoDialog last;
 		private int optionCount = 0;
 		private bool ignoreSelection = false;
 
@@ -64,17 +64,17 @@ namespace D_Quester
 			player = GameObject.Find(PlayerObjectName);
 			inventory = player.GetComponent<Inventory>();
 
-			newButtons = new GameObject[4];
-			newButtons[0] = GameObject.Find("NeoDialog1Button");
-			newButtons[1] = GameObject.Find("NeoDialog2Button");
-			newButtons[2] = GameObject.Find("NeoDialog3Button");
-			newButtons[3] = GameObject.Find("NeoDialog4Button");
-
 			buttons = new GameObject[4];
-			buttons[0] = GameObject.Find("Dialog1Button");
-			buttons[1] = GameObject.Find("Dialog2Button");
-			buttons[2] = GameObject.Find("Dialog3Button");
-			buttons[3] = GameObject.Find("Dialog4Button");
+			buttons[0] = GameObject.Find("NeoDialog1Button");
+			buttons[1] = GameObject.Find("NeoDialog2Button");
+			buttons[2] = GameObject.Find("NeoDialog3Button");
+			buttons[3] = GameObject.Find("NeoDialog4Button");
+
+			oldButtons = new GameObject[4];
+			oldButtons[0] = GameObject.Find("Dialog1Button");
+			oldButtons[1] = GameObject.Find("Dialog2Button");
+			oldButtons[2] = GameObject.Find("Dialog3Button");
+			oldButtons[3] = GameObject.Find("Dialog4Button");
 
 			responseTextDisplay = new Text[4];
 			responseTextDisplay[0] = buttons[0].GetComponentInChildren<Text>();
@@ -103,9 +103,9 @@ namespace D_Quester
 		/// Process the current NPC dialog in a conversation and display all associated dialog responses.
 		/// </summary>
 		/// <param name="d">Current dialog being processed.</param>
-		public void ProcessDialog(Dialog d)
+		public void ProcessDialog(NeoDialog d)
 		{
-			foreach (GameObject g in newButtons)
+			foreach (GameObject g in oldButtons)
 			{
 				g.SetActive(false);
 			}
@@ -115,7 +115,7 @@ namespace D_Quester
 				UI.enabled = false;
 				if (last != null)
 				{
-					last.gameObject.GetComponent<Interactable>().IsActive = true;
+					last.Correspondence.GetComponent<Interactable>().IsActive = true;
 				}
 			}
 			else
@@ -130,15 +130,17 @@ namespace D_Quester
 					buttons[i].SetActive(false);
 				}
 
-				for (int i = 0; i < d.Responses.Length && i < buttons.Length; i++)
+				NeoDialogResponse[] responses = d.GetComponentsInChildren<NeoDialogResponse>();
+
+				for (int i = 0; i < responses.Length && i < buttons.Length; i++)
 				{
-					if (d.Responses[i] != null && IsDialogVisiable(d.Responses[i]))
+					if (responses[i] != null && IsDialogVisiable(responses[i]))
 					{
 						optionCount++;
 						buttons[i].SetActive(true);
-						buttons[i].GetComponentInChildren<Text>().text = d.Responses[i].Text;
+						buttons[i].GetComponentInChildren<Text>().text = responses[i].Text;
 						npcText.text = "\"" + d.NPCDialog + "\"";
-						npcName.text = d.GetNPCName();
+						npcName.text = d.Correspondence.GetComponent<Interactable>().InteractableName;
 					}
 				}
 
@@ -147,7 +149,7 @@ namespace D_Quester
 					buttons[0].SetActive(true);
 					buttons[0].GetComponentInChildren<Text>().text = "<Leave>";
 					npcText.text = "\"" + d.NPCDialog + "\"";
-					npcName.text = d.GetNPCName();
+					npcName.text = d.Correspondence.GetComponent<Interactable>().InteractableName;
 					ignoreSelection = true;
 				}
 			}
@@ -159,22 +161,23 @@ namespace D_Quester
 		/// <param name="choiceIndex">The index of the dialog response selected by the player.</param>
 		public void ProcessDialog(int choiceIndex)
 		{
-			DialogResponse choice = null;
-			Dialog next = null;
+			NeoDialogResponse choice = null;
+			NeoDialog next = null;
+			NeoDialogResponse[] responses = last.GetComponentsInChildren<NeoDialogResponse>();
 
-			if (!ignoreSelection && choiceIndex < last.Responses.Length)
+			if (!ignoreSelection && choiceIndex < responses.Length)
 			{
-				choice = last.Responses[choiceIndex];
+				choice = responses[choiceIndex];
 				OnResponseEvent(choice.DialogResponseName);
 				if (!ignoreSelection)
 				{
 					choice.NumTimesSelected++;
 				}
-				next = choice.Resulting;
+				next = choice.GetComponentInChildren<NeoDialog>();
 
-				if (choice != null && choice.NewCurrent != null)
+				if (choice != null && !string.IsNullOrEmpty(choice.NewConversationName))
 				{
-					choice.gameObject.GetComponent<Correspondence>().Current = choice.NewCurrent;
+					choice.Correspondence.CurrentConversationName = choice.NewConversationName;
 				}
 
 				if (choice != null && choice.Items != null)
@@ -192,7 +195,7 @@ namespace D_Quester
 			ProcessDialog(next);
 		}
 
-		private bool IsDialogVisiable(DialogResponse d)
+		private bool IsDialogVisiable(NeoDialogResponse d)
 		{
 			return d != null
 				&& HasRequiredItems(d)
@@ -200,7 +203,7 @@ namespace D_Quester
 				&& HasCorrectSelectionState(d);
 		}
 
-		private bool HasRequiredItems(DialogResponse d)
+		private bool HasRequiredItems(NeoDialogResponse d)
 		{
 			bool hasItems = true;
 
@@ -220,7 +223,7 @@ namespace D_Quester
 			return hasItems;
 		}
 
-		private bool HasRequiredQuestNodeState(DialogResponse d)
+		private bool HasRequiredQuestNodeState(NeoDialogResponse d)
 		{
 			bool isMet = true;
 
@@ -232,7 +235,7 @@ namespace D_Quester
 			return isMet;
 		}
 
-		private bool HasCorrectSelectionState(DialogResponse d)
+		private bool HasCorrectSelectionState(NeoDialogResponse d)
 		{
 			return !d.IsOneTimeOption || d.NumTimesSelected == 0;
 		}
