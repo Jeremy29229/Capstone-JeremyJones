@@ -17,7 +17,8 @@ namespace D_Quester
 			interactable.InteractableName = "CollectableName";
 			collectable.AddComponent<Collectable>();
 
-			Selection.activeTransform = collectable.transform;
+			Selection.activeGameObject = collectable;
+			SceneView.lastActiveSceneView.MoveToView(collectable.transform);
 		}
 	}
 }

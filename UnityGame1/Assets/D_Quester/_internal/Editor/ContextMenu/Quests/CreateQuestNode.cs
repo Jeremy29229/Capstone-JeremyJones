@@ -13,62 +13,8 @@ namespace D_Quester
 
 			questNode.name = "QuestNode";
 			questNode.AddComponent<QuestNode>();
-			Selection.activeTransform = questNode.transform;
-		}
-
-		void OnGUI()
-		{
-			Debug.Log("OnGUI");
-		}
-
-		void Update()
-		{
-			Debug.Log("Update");
-		}
-
-		void OnEnable()
-		{
-			Debug.Log("OnEnable");
-		}
-
-		void OnDisable()
-		{
-			Debug.Log("OnDisable");
-		}
-
-		void OnDestroy()
-		{
-			Debug.Log("OnDestroy");
-		}
-
-		void OnFocus()
-		{
-			Debug.Log("OnFocus");
-		}
-
-		void OnHierarchyChange()
-		{
-			Debug.Log("OnHierarchyChange");
-		}
-
-		void OnInspectorUpdate()
-		{
-			Debug.Log("OnInspectorUpdate");
-		}
-
-		void OnLostFocus()
-		{
-			Debug.Log("OnLostFocus");
-		}
-
-		void OnProjectChange()
-		{
-			Debug.Log("OnProjectChange");
-		}
-
-		void OnSelectionChange()
-		{
-			Debug.Log("OnSelectionChange");
+			Selection.activeGameObject = questNode;
+			SceneView.lastActiveSceneView.MoveToView(questNode.transform);
 		}
 	}
 }

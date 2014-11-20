@@ -67,7 +67,7 @@ namespace D_Quester
 		private GameObject Player;
 		private Canvas UI;
 
-		void Start()
+		public virtual void Start()
 		{
 			UI = (Canvas)GameObject.Find(InteractionGUIObjectName).GetComponent(typeof(Canvas));
 			UI.enabled = false;
@@ -109,7 +109,7 @@ namespace D_Quester
 		/// <summary>
 		/// Called by the InteractionManager component to update the interaction popup when this object is the closest in-range.
 		/// </summary>
-		public void updateGUIText()
+		public virtual void updateGUIText()
 		{
 			UI.GetComponentInChildren<Text>().text = "Press " + InteractionKey.ToString() + " to " + Action + " " + InteractableName;
 			if (!string.IsNullOrEmpty(AdditionalInformation))

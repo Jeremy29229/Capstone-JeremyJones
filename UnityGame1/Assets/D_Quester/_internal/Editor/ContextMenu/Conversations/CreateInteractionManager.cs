@@ -14,7 +14,8 @@ namespace D_Quester
 			interactionManager.name = "InteractionManager";
 			interactionManager.AddComponent<InteractionManager>();
 
-			Selection.activeTransform = interactionManager.transform;
+			Selection.activeGameObject = interactionManager;
+			SceneView.lastActiveSceneView.MoveToView(interactionManager.transform);
 		}
 	}
 }

@@ -13,7 +13,8 @@ namespace D_Quester
 
 			quest.name = "Quest";
 			quest.AddComponent<Quest>();
-			Selection.activeTransform = quest.transform;
+			Selection.activeGameObject = quest;
+			SceneView.lastActiveSceneView.MoveToView(quest.transform);
 		}
 	}
 }

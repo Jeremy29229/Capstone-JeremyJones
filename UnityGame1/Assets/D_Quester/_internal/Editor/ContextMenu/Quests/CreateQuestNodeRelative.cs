@@ -36,7 +36,8 @@ namespace D_Quester
 
 			questNode.name = "QuestNode";
 			questNode.AddComponent<QuestNode>();
-			Selection.activeTransform = questNode.transform;
+			Selection.activeGameObject = questNode;
+			SceneView.lastActiveSceneView.MoveToView(questNode.transform);
 		}
 	}
 }

@@ -24,7 +24,8 @@ namespace D_Quester
 			convo.Beginning = dialog;
 			dialog.Responses[0] = dialogResponse;
 
-			Selection.activeTransform = conversationInfo.transform;
+			Selection.activeGameObject = conversationInfo;
+			SceneView.lastActiveSceneView.MoveToView(conversationInfo.transform);
 		}
 	}
 }

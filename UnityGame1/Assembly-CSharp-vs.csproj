@@ -64,16 +64,16 @@
      <Compile Include="Assets\D_Quester\Enums\QuestNodeMethod.cs" />
      <Compile Include="Assets\D_Quester\Enums\QuestNodeState.cs" />
      <Compile Include="Assets\D_Quester\Extensions.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierConversable.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierConversation.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierConversationManager.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierCorrespondence.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierDialog.cs" />
+     <Compile Include="Assets\D_Quester\HierConversation\HierDialogResponse.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestNamedProgresser.cs" />
      <Compile Include="Assets\D_Quester\Interfaces\IQuestProgresser.cs" />
      <Compile Include="Assets\D_Quester\Inventory\Inventory.cs" />
      <Compile Include="Assets\D_Quester\Inventory\Item.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoConversable.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoConversation.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoConversationManager.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoCorrespondence.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoDialog.cs" />
-     <Compile Include="Assets\D_Quester\NeoConversation\NeoDialogResponse.cs" />
      <Compile Include="Assets\D_Quester\Quest.cs" />
      <Compile Include="Assets\D_Quester\QuestJournal.cs" />
      <Compile Include="Assets\D_Quester\QuestNode.cs" />
@@ -91,6 +91,8 @@
      <Compile Include="Assets\D_Quester\Rewarders\IntRewarder.cs" />
      <Compile Include="Assets\D_Quester\Rewarders\Rewarder.cs" />
      <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
+     <Compile Include="Assets\DoNothing.cs" />
+     <Compile Include="Assets\Examinable.cs" />
      <Compile Include="Assets\Game Scripts\DingoSpawner.cs" />
      <Compile Include="Assets\Game Scripts\Droper.cs" />
      <Compile Include="Assets\Game Scripts\Hurtable.cs" />
@@ -102,6 +104,7 @@
      <Compile Include="Assets\Game Scripts\Player.cs" />
      <Compile Include="Assets\Game Scripts\PlayerDeath.cs" />
      <Compile Include="Assets\Game Scripts\Weapon.cs" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

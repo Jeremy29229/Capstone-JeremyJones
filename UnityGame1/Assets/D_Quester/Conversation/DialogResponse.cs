@@ -48,12 +48,12 @@ namespace D_Quester
 		/// An array of all the item requirements for this DialogResponse to appear for the player.
 		/// </summary>
 		[Tooltip("An array of all the item requirements for this DialogResponse to appear for the player.")]
-		public ItemRequirement[] Items;
+		public ItemRequirement[] ItemRequirements;
 
 		/// <summary>
 		/// Required state a certain QuestNode for this dialog option to be selectable by the player.
 		/// </summary>
-		[Tooltip("Required state a certain QuestNode for this dialog option to be selectable by the player.")]
-		public QuestRequirement requirement;
+		[Tooltip("Required state a certain QuestNode needs to be in for this dialog option to be selectable by the player.")]
+		public QuestRequirement Quest_Requirement;
 	}
 }

@@ -65,10 +65,10 @@ namespace D_Quester
 			inventory = player.GetComponent<Inventory>();
 
 			newButtons = new GameObject[4];
-			newButtons[0] = GameObject.Find("NeoDialog1Button");
-			newButtons[1] = GameObject.Find("NeoDialog2Button");
-			newButtons[2] = GameObject.Find("NeoDialog3Button");
-			newButtons[3] = GameObject.Find("NeoDialog4Button");
+			newButtons[0] = GameObject.Find("HierDialog1Button");
+			newButtons[1] = GameObject.Find("HierDialog2Button");
+			newButtons[2] = GameObject.Find("HierDialog3Button");
+			newButtons[3] = GameObject.Find("HierDialog4Button");
 
 			buttons = new GameObject[4];
 			buttons[0] = GameObject.Find("Dialog1Button");
@@ -177,9 +177,9 @@ namespace D_Quester
 					choice.gameObject.GetComponent<Correspondence>().Current = choice.NewCurrent;
 				}
 
-				if (choice != null && choice.Items != null)
+				if (choice != null && choice.ItemRequirements != null)
 				{
-					foreach (var item in choice.Items)
+					foreach (var item in choice.ItemRequirements)
 					{
 						if (item.AreItemsTaken)
 						{
@@ -204,9 +204,9 @@ namespace D_Quester
 		{
 			bool hasItems = true;
 
-			if (d.Items != null)
+			if (d.ItemRequirements != null)
 			{
-				foreach (var itemRequirement in d.Items)
+				foreach (var itemRequirement in d.ItemRequirements)
 				{
 					var item = inventory.items.FirstOrDefault(x => x.ItemName == itemRequirement.ItemName);
 
@@ -224,7 +224,7 @@ namespace D_Quester
 		{
 			bool isMet = true;
 
-			if (d.requirement != null && !d.requirement.IsMet())
+			if (d.Quest_Requirement != null && !d.Quest_Requirement.IsMet())
 			{
 				isMet = false;
 			}

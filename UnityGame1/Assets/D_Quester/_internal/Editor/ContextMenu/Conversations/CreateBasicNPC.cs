@@ -30,7 +30,8 @@ namespace D_Quester
 			convo.Beginning = dialog;
 			dialog.Responses[0] = dialogResponse;
 
-			Selection.activeTransform = npc.transform;
+			Selection.activeGameObject = npc;
+			SceneView.lastActiveSceneView.MoveToView(npc.transform);
 		}
 	}
 }

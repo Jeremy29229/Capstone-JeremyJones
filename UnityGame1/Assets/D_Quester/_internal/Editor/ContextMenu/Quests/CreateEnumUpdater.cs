@@ -12,7 +12,8 @@ namespace D_Quester
 			Undo.RegisterCreatedObjectUndo(enumUpdater, "Created EnumUpdater");
 			enumUpdater.name = "EnumUpdater";
 			enumUpdater.AddComponent<EnumUpdater>();
-			Selection.activeTransform = enumUpdater.transform;
+			Selection.activeGameObject = enumUpdater;
+			SceneView.lastActiveSceneView.MoveToView(enumUpdater.transform);
 		}
 	}
 }

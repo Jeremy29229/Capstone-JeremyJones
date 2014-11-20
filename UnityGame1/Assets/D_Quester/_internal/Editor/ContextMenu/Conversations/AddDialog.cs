@@ -11,8 +11,7 @@ namespace D_Quester
 			if (Selection.activeTransform != null && Selection.activeTransform.gameObject != null)
 			{
 				var selectedGameObject = Selection.activeTransform.gameObject;
-				Undo.RegisterCreatedObjectUndo(selectedGameObject, "Added Dialog");
-				selectedGameObject.AddComponent<Dialog>();
+				Undo.AddComponent<Dialog>(selectedGameObject);
 			}
 			else
 			{

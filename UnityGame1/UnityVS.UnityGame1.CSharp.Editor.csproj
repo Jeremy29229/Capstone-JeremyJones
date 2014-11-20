@@ -7,16 +7,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB6117C6-FF84-CAD9-AF36-DAD72BAD09EA}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>4.6.0b20</UnityVersion>
@@ -88,6 +86,11 @@
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateCollectable.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateConversationInformation.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateInteractionManager.cs" />
+    <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierConversationInfoRelative.cs" />
+    <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierConversationRelative.cs" />
+    <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierDialogRelative.cs" />
+    <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierDialogResponseRelative.cs" />
+    <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierNPC.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\AddInventory.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreateInventory.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreatePlayerI.cs" />
@@ -111,6 +114,9 @@
     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\EnumUpdaterEditor.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestEditor.cs" />
     <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestPathEditor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

@@ -11,8 +11,7 @@ namespace D_Quester
 			if (Selection.activeTransform != null && Selection.activeTransform.gameObject != null)
 			{
 				var selectedGameObject = Selection.activeTransform.gameObject;
-				Undo.RegisterCreatedObjectUndo(selectedGameObject, "Added Quest");
-				selectedGameObject.AddComponent<Quest>();
+				Undo.AddComponent<Quest>(selectedGameObject);
 			}
 			else
 			{

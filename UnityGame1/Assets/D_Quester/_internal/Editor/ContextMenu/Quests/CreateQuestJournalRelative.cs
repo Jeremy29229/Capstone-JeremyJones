@@ -33,10 +33,15 @@ namespace D_Quester
 				questJournal.transform.localRotation = Quaternion.identity;
 				questJournal.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			}
+			else
+			{
+				Debug.Log("try again");
+			}
 
 			questJournal.name = "QuestJournal";
 			questJournal.AddComponent<QuestJournal>();
-			Selection.activeTransform = questJournal.transform;
+			Selection.activeGameObject = questJournal;
+			SceneView.lastActiveSceneView.MoveToView(questJournal.transform);
 		}
 	}
 }

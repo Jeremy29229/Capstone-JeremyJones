@@ -13,7 +13,8 @@ namespace D_Quester
 
 			questJournal.name = "QuestJournal";
 			questJournal.AddComponent<QuestJournal>();
-			Selection.activeTransform = questJournal.transform;
+			Selection.activeGameObject = questJournal;
+			SceneView.lastActiveSceneView.MoveToView(questJournal.transform);
 		}
 	}
 }

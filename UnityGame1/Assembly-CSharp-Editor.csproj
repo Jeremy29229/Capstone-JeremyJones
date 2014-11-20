@@ -57,6 +57,11 @@
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateCollectable.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateConversationInformation.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Conversations\CreateInteractionManager.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierConversationInfoRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierConversationRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierDialogRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierDialogResponseRelative.cs" />
+     <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\HierConversations\CreateHierNPC.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\AddInventory.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreateInventory.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\ContextMenu\Inventory\CreatePlayerI.cs" />
@@ -80,6 +85,7 @@
      <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\EnumUpdaterEditor.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestEditor.cs" />
      <Compile Include="Assets\D_Quester\_internal\Editor\CustomInspectors\QuestPathEditor.cs" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

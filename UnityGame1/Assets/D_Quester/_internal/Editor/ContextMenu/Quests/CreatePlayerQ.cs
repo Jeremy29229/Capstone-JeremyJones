@@ -13,7 +13,8 @@ namespace D_Quester
 
 			player.name = "Player";
 			player.AddComponent<Inventory>();
-			Selection.activeTransform = player.transform;
+			Selection.activeGameObject = player;
+			SceneView.lastActiveSceneView.MoveToView(player.transform);
 		}
 	}
 }

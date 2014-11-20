@@ -36,7 +36,8 @@ namespace D_Quester
 
 			questPath.name = "QuestPath";
 			questPath.AddComponent<QuestPath>();
-			Selection.activeTransform = questPath.transform;
+			Selection.activeGameObject = questPath;
+			SceneView.lastActiveSceneView.MoveToView(questPath.transform);
 		}
 	}
 }
