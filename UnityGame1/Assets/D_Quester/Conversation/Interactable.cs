@@ -63,9 +63,9 @@ namespace D_Quester
 		[Tooltip("Name of the GameObject that contains the InteractionManager script.")]
 		public string InteractionManagerObjectName = "InteractionManager";
 
-		private IInteractable behavior;
-		private GameObject Player;
-		private Canvas UI;
+		protected IInteractable behavior;
+		protected GameObject Player;
+		protected Canvas UI;
 
 		public virtual void Start()
 		{

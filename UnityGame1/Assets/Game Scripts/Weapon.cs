@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class Weapon : MonoBehaviour
 {
-	public float Damage = 1;
+	public float DamagePerSecond = 1.0f;
+	public bool HasConstantDamage = true;
+
+	public float DamagePerHit = 0.25f;
 
 	private List<Hurtable> targets;
 	private GameObject theThing;
@@ -35,29 +38,32 @@ public class Weapon : MonoBehaviour
 
 	void Update()
 	{
-		foreach (var target in targets)
+		if (HasConstantDamage)
 		{
-			target.currentHealth -= Damage * Time.deltaTime;
-		}
-
-		if (theThing == null)
-		{
-			//e.enableEmission = false;
-			if (flame != null)
+			foreach (var target in targets)
 			{
-				//flame.SetActive(false);
+				target.currentHealth -= DamagePerSecond * Time.deltaTime;
+			}
 
-				foreach (Transform child in flame.transform)
+			if (theThing == null)
+			{
+				//e.enableEmission = false;
+				if (flame != null)
 				{
-					if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+					//flame.SetActive(false);
+
+					foreach (Transform child in flame.transform)
 					{
-						var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
-						ps.particleEmitter.emit = false;
+						if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+						{
+							var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
+							ps.particleEmitter.emit = false;
+						}
 					}
-				}
-				foreach(var light in flame.GetComponentsInChildren<Light>())
-				{
-					light.enabled = false;
+					foreach (var light in flame.GetComponentsInChildren<Light>())
+					{
+						light.enabled = false;
+					}
 				}
 			}
 		}
@@ -65,66 +71,85 @@ public class Weapon : MonoBehaviour
 
 	void OnTriggerEnter(Collider c)
 	{
-		if (!c.isTrigger)
+		if (HasConstantDamage)
+		{
+			if (!c.isTrigger)
+			{
+				Hurtable target = c.gameObject.GetComponent<Hurtable>();
+
+				if (target != null)
+				{
+					targets.Add(target);
+				}
+
+				if (flame != null)
+				{
+					foreach (Transform child in flame.transform)
+					{
+						if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+						{
+							var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
+							ps.particleEmitter.emit = true;
+						}
+					}
+					foreach (var light in flame.GetComponentsInChildren<Light>())
+					{
+						light.enabled = true;
+					}
+				}
+
+				//if (e != null)
+				//{
+				//	e.enableEmission = true;
+				//}
+
+				theThing = c.gameObject;
+			}
+		}
+		else
 		{
 			Hurtable target = c.gameObject.GetComponent<Hurtable>();
 
 			if (target != null)
 			{
-				targets.Add(target);
+				target.currentHealth -= DamagePerHit;
 			}
-
-			if (flame != null)
-			{
-				foreach (Transform child in flame.transform)
-				{
-					if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
-					{
-						var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
-						ps.particleEmitter.emit = true;
-					}
-				}
-				foreach (var light in flame.GetComponentsInChildren<Light>())
-				{
-					light.enabled = true;
-				}
-			}
-
-			//if (e != null)
-			//{
-			//	e.enableEmission = true;
-			//}
-
-			theThing = c.gameObject;
 		}
 	}
 
 	void OnTriggerExit(Collider c)
 	{
-		if (!c.isTrigger)
+		if (HasConstantDamage)
 		{
-			Hurtable target = c.gameObject.GetComponent<Hurtable>();
-
-			if (target != null)
+			if (!c.isTrigger)
 			{
-				targets.Remove(target);
-			}
+				Hurtable target = c.gameObject.GetComponent<Hurtable>();
 
-			if (flame != null)
-			{
-				foreach (Transform child in flame.transform)
+				if (target != null)
 				{
-					if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+					targets.Remove(target);
+				}
+
+				if (flame != null)
+				{
+					foreach (Transform child in flame.transform)
 					{
-						var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
-						ps.particleEmitter.emit = false;
+						if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+						{
+							var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
+							ps.particleEmitter.emit = false;
+						}
+					}
+					foreach (var light in flame.GetComponentsInChildren<Light>())
+					{
+						light.enabled = false;
 					}
 				}
-				foreach (var light in flame.GetComponentsInChildren<Light>())
-				{
-					light.enabled = false;
-				}
 			}
+		}
+		else
+		{
+
 		}
 	}
 }

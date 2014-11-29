@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	Hurtable hurtable;
 	MeshCollider thwakerTrigger;
 	MeshRenderer thwakerGraphic;
+	GameObject sword;
+	GameObject swordSheathed;
 
 	bool isWeaponActive = true;
 
@@ -17,8 +19,12 @@ public class Player : MonoBehaviour
 	{
 		UI = GameObject.Find("PlayerGUI");
 		hurtable = GetComponent<Hurtable>();
-		thwakerTrigger = GameObject.Find("thwaker").GetComponent<MeshCollider>();
-		thwakerGraphic = GameObject.Find("thwaker").GetComponent<MeshRenderer>();
+		sword = GameObject.Find("jcSword");
+		swordSheathed = GameObject.Find("cSword_");
+		swordSheathed.SetActive(false);
+		thwakerTrigger = GameObject.Find("jcSword").GetComponent<MeshCollider>();
+		thwakerGraphic = GameObject.Find("jcSword").GetComponent<MeshRenderer>();
+		bool isWeaponActive = true;
 	}
 
 	void Update()
@@ -26,17 +32,17 @@ public class Player : MonoBehaviour
 		int percentHealth = (int)(100 * (hurtable.currentHealth / hurtable.MaxHealth));
 		//UI.GetComponentInChildren<Text>().text = "Health: " + percentHealth + "%";
 
-		if (Input.GetKeyDown("l"))
+		if (Input.GetKeyDown("l") && !TestCamera.Instance.IsInConversation)
 		{
 			if (isWeaponActive)
 			{
-				thwakerTrigger.enabled = false;
-				thwakerGraphic.enabled = false;
+				sword.SetActive(false);
+				swordSheathed.SetActive(true);
 			}
 			else
 			{
-				thwakerTrigger.enabled = true;
-				thwakerGraphic.enabled = true;
+				sword.SetActive(true);
+				swordSheathed.SetActive(false);
 			}
 
 			isWeaponActive = !isWeaponActive;

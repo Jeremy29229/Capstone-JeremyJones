@@ -57,6 +57,7 @@ namespace D_Quester
 
 		void Start()
 		{
+			Screen.lockCursor = true;
 
 			UI = gameObject.GetComponent<Canvas>();
 			UI.enabled = false;
@@ -91,6 +92,8 @@ namespace D_Quester
 			if (Input.GetKeyDown(KeyCode.Q))
 			{
 				UI.enabled = false;
+				Screen.lockCursor = true;
+				TestCamera.Instance.IsInConversation = false;
 
 				if (last != null)
 				{
@@ -113,6 +116,8 @@ namespace D_Quester
 			if (d == null)
 			{
 				UI.enabled = false;
+				Screen.lockCursor = true;
+				TestCamera.Instance.IsInConversation = false;
 				if (last != null)
 				{
 					last.gameObject.GetComponent<Interactable>().IsActive = true;

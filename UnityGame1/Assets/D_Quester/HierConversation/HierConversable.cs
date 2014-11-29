@@ -54,6 +54,8 @@ namespace D_Quester
 				}
 				else
 				{
+					Screen.lockCursor = false;
+					TestCamera.Instance.IsInConversation = true;
 					cm.ProcessDialog(startingDialog);
 				}
 			}

@@ -40,6 +40,8 @@ namespace D_Quester
 		public void InteractWith()
 		{
 			GetComponent<Interactable>().IsActive = false;
+			Screen.lockCursor = false;
+			TestCamera.Instance.IsInConversation = true;
 			cm.ProcessDialog(correspondence.Current.Beginning);
 		}
 	}

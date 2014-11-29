@@ -6,10 +6,6 @@ public class Examinable : Interactable
 {
 	public string MonsterName = "Nope";
 	public float Health = 1.0f;
-
-	private IInteractable behavior;
-	private GameObject Player;
-	private Canvas UI;
 	private Hurtable h;
 
 

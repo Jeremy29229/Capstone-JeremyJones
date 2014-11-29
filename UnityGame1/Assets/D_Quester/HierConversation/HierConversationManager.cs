@@ -91,6 +91,8 @@ namespace D_Quester
 			if (Input.GetKeyDown(KeyCode.Q))
 			{
 				UI.enabled = false;
+				Screen.lockCursor = true;
+				TestCamera.Instance.IsInConversation = false;
 
 				if (last != null)
 				{
@@ -113,6 +115,8 @@ namespace D_Quester
 			if (d == null)
 			{
 				UI.enabled = false;
+				Screen.lockCursor = true;
+				TestCamera.Instance.IsInConversation = false;
 				if (last != null)
 				{
 					last.Correspondence.GetComponent<Interactable>().IsActive = true;
@@ -130,9 +134,18 @@ namespace D_Quester
 					buttons[i].SetActive(false);
 				}
 
-				HierDialogResponse[] responses = d.GetComponentsInChildren<HierDialogResponse>();
+				List<HierDialogResponse> responses = new List<HierDialogResponse>();
+					//d.GetComponentsInChildren<HierDialogResponse>();
 
-				for (int i = 0; i < responses.Length && i < buttons.Length; i++)
+				foreach (Transform child in d.transform)
+				{
+					if (child.parent == d.transform)
+					{
+						responses.Add(child.GetComponent<HierDialogResponse>());
+					}
+				}
+
+				for (int i = 0; i < responses.Count && i < buttons.Length; i++)
 				{
 					if (responses[i] != null && IsDialogVisiable(responses[i]))
 					{

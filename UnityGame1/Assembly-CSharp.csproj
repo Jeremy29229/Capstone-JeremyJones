@@ -100,10 +100,15 @@
      <Compile Include="Assets\Game Scripts\MonsterDeath.cs" />
      <Compile Include="Assets\Game Scripts\MonsterMovement.cs" />
      <Compile Include="Assets\Game Scripts\Movement.cs" />
-     <Compile Include="Assets\Game Scripts\NPCDeath.cs" />
      <Compile Include="Assets\Game Scripts\Player.cs" />
      <Compile Include="Assets\Game Scripts\PlayerDeath.cs" />
      <Compile Include="Assets\Game Scripts\Weapon.cs" />
+     <Compile Include="Assets\InputHelper.cs" />
+     <Compile Include="Assets\NPCDeath.cs" />
+     <Compile Include="Assets\Swing.cs" />
+     <Compile Include="Assets\TestCamera.cs" />
+     <Compile Include="Assets\TestController.cs" />
+     <Compile Include="Assets\TestMotor.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
