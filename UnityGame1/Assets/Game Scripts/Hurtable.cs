@@ -8,21 +8,37 @@ public class Hurtable : MonoBehaviour
 	public float MaxHealth = 1;
 	public float currentHealth;
 
-	private GameObject UI;
+	/// <summary>
+	/// Delegate for picking up items.
+	/// </summary>
+	/// <param name="itemName">Name of the picked up item.</param>
+	[HideInInspector]
+	public delegate void PickupDelegate(string itemName);
 
-#pragma warning disable 0414
-	private Text monsterName;
-	private Text health;
-#pragma warning restore 0414
+	/// <summary>
+	/// Event for picking up items.
+	/// </summary>
+	[HideInInspector]
+	public event PickupDelegate PickupEvent;
+
+
+
+	/// <summary>
+	/// Called whenever an item is picked up.
+	/// </summary>
+	/// <param name="name">Name of the picked up item.</param>
+	[HideInInspector]
+	public virtual void OnPickUpEvent(string name)
+	{
+		if (PickupEvent != null)
+		{
+			PickupEvent(name);
+		}
+	}
 
 	void Start()
 	{
 		currentHealth = MaxHealth;
-		UI = GameObject.Find("NameDisplayManager");
-		UI.GetComponent<Canvas>().enabled = true;
-		monsterName = GameObject.Find("MonsterNameText").GetComponent<Text>();
-		health = GameObject.Find("HealthText").GetComponent<Text>();
-		UI.GetComponent<Canvas>().enabled = false;
 	}
 
 	void Update()
@@ -33,6 +49,7 @@ public class Hurtable : MonoBehaviour
 
 			if (target != null)
 			{
+				OnPickUpEvent(gameObject.name);
 				target.Die();
 			}
 		}

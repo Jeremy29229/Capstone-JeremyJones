@@ -17,7 +17,7 @@ public class Swing : MonoBehaviour
 	{
 		if (isSwinging)
 		{
-			if (rotationAmount >= -180.0f && !isReturning)
+			if (rotationAmount >= -100.0f && !isReturning)
 			{
 				transform.Rotate(new Vector3(0, -RotationPerUpdate, 0.0f));
 				rotationAmount -= RotationPerUpdate;

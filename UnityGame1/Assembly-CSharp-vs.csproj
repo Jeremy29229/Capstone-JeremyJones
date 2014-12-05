@@ -91,8 +91,6 @@
      <Compile Include="Assets\D_Quester\Rewarders\IntRewarder.cs" />
      <Compile Include="Assets\D_Quester\Rewarders\Rewarder.cs" />
      <Compile Include="Assets\D_Quester\User Editable\EnumUpdater.cs" />
-     <Compile Include="Assets\DoNothing.cs" />
-     <Compile Include="Assets\Examinable.cs" />
      <Compile Include="Assets\Game Scripts\DingoSpawner.cs" />
      <Compile Include="Assets\Game Scripts\Droper.cs" />
      <Compile Include="Assets\Game Scripts\Hurtable.cs" />
@@ -103,12 +101,18 @@
      <Compile Include="Assets\Game Scripts\Player.cs" />
      <Compile Include="Assets\Game Scripts\PlayerDeath.cs" />
      <Compile Include="Assets\Game Scripts\Weapon.cs" />
-     <Compile Include="Assets\InputHelper.cs" />
-     <Compile Include="Assets\NPCDeath.cs" />
-     <Compile Include="Assets\Swing.cs" />
-     <Compile Include="Assets\TestCamera.cs" />
-     <Compile Include="Assets\TestController.cs" />
-     <Compile Include="Assets\TestMotor.cs" />
+     <Compile Include="Assets\Other\DingoScene.cs" />
+     <Compile Include="Assets\Other\DoNothing.cs" />
+     <Compile Include="Assets\Other\DoorOpener.cs" />
+     <Compile Include="Assets\Other\Examinable.cs" />
+     <Compile Include="Assets\Other\HealthUpdate.cs" />
+     <Compile Include="Assets\Other\InputHelper.cs" />
+     <Compile Include="Assets\Other\NPCDeath.cs" />
+     <Compile Include="Assets\Other\RemoveFloor.cs" />
+     <Compile Include="Assets\Other\Swing.cs" />
+     <Compile Include="Assets\Other\TestCamera.cs" />
+     <Compile Include="Assets\Other\TestController.cs" />
+     <Compile Include="Assets\Other\TestMotor.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

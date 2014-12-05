@@ -176,9 +176,19 @@ namespace D_Quester
 		{
 			HierDialogResponse choice = null;
 			HierDialog next = null;
-			HierDialogResponse[] responses = last.GetComponentsInChildren<HierDialogResponse>();
+			//HierDialogResponse[] responses = new //last.GetComponentsInChildren<HierDialogResponse>();
 
-			if (!ignoreSelection && choiceIndex < responses.Length)
+			List<HierDialogResponse> responses = new List<HierDialogResponse>();
+
+			foreach (Transform child in last.transform)
+			{
+				if (child.parent == last.transform)
+				{
+					responses.Add(child.GetComponent<HierDialogResponse>());
+				}
+			}
+
+			if (!ignoreSelection && choiceIndex < responses.Count)
 			{
 				choice = responses[choiceIndex];
 				OnResponseEvent(choice.DialogResponseName);

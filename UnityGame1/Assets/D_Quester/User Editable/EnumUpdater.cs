@@ -26,7 +26,8 @@ namespace D_Quester
 		/// </summary>
 		void YourEnumChanges()
 		{
-			//Enums.AddEnum("QuestNodeState", "test1");
+			Enums.AddEnum("QuestNodeState", "test1");
+
 			//Enums.AddEnum("QuestNodeState", "test2");
 			//Enums.AddEnum("QuestNodeState", "test3");
 

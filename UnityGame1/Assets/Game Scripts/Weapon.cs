@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 	public bool HasConstantDamage = true;
 
 	public float DamagePerHit = 0.25f;
+	public bool IsPlayers = false;
 
 	private List<Hurtable> targets;
 	private GameObject theThing;
@@ -24,7 +25,7 @@ public class Weapon : MonoBehaviour
 			//e.enableEmission = false;
 		}
 
-		if(transform.FindChild("Flame") != null)
+		if (transform.FindChild("Flame") != null)
 		{
 			flame = transform.FindChild("Flame").gameObject;
 			foreach (ParticleSystem ps in flame.GetComponentsInChildren<ParticleSystem>())
@@ -32,8 +33,8 @@ public class Weapon : MonoBehaviour
 				ps.enableEmission = false;
 			}
 		}
-		
-		
+
+
 	}
 
 	void Update()
@@ -71,48 +72,51 @@ public class Weapon : MonoBehaviour
 
 	void OnTriggerEnter(Collider c)
 	{
-		if (HasConstantDamage)
+		if (!IsPlayers || c.GetComponent<Player>() == null)
 		{
-			if (!c.isTrigger)
+			if (HasConstantDamage)
+			{
+				if (!c.isTrigger)
+				{
+					Hurtable target = c.gameObject.GetComponent<Hurtable>();
+
+					if (target != null)
+					{
+						targets.Add(target);
+					}
+
+					if (flame != null)
+					{
+						foreach (Transform child in flame.transform)
+						{
+							if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
+							{
+								var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
+								ps.particleEmitter.emit = true;
+							}
+						}
+						foreach (var light in flame.GetComponentsInChildren<Light>())
+						{
+							light.enabled = true;
+						}
+					}
+
+					//if (e != null)
+					//{
+					//	e.enableEmission = true;
+					//}
+
+					theThing = c.gameObject;
+				}
+			}
+			else
 			{
 				Hurtable target = c.gameObject.GetComponent<Hurtable>();
 
 				if (target != null)
 				{
-					targets.Add(target);
+					target.currentHealth -= DamagePerHit;
 				}
-
-				if (flame != null)
-				{
-					foreach (Transform child in flame.transform)
-					{
-						if (child.gameObject.GetComponent("EllipsoidParticleEmitter") != null)
-						{
-							var ps = child.gameObject.GetComponent("EllipsoidParticleEmitter");
-							ps.particleEmitter.emit = true;
-						}
-					}
-					foreach (var light in flame.GetComponentsInChildren<Light>())
-					{
-						light.enabled = true;
-					}
-				}
-
-				//if (e != null)
-				//{
-				//	e.enableEmission = true;
-				//}
-
-				theThing = c.gameObject;
-			}
-		}
-		else
-		{
-			Hurtable target = c.gameObject.GetComponent<Hurtable>();
-
-			if (target != null)
-			{
-				target.currentHealth -= DamagePerHit;
 			}
 		}
 	}
